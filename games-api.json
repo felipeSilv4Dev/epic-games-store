@@ -1,0 +1,187 @@
+[
+  {
+    "id": 1,
+    "subtitle": "jogo base",
+    "title": "Fortnite",
+    "porcentage": 100,
+    "img": {
+      "src2": "img/ofertas/fort-game.jpg",
+      "src1": "img/games/fort-game.png",
+      "logo": "img/logo/fort-logo.png",
+      "src3": "img/banner/fort-banner.jpg"
+    },
+    "oldPrice": "205,60",
+    "newPrice": "",
+    "descriptionText": "Grátis - 03 de mar ás 19:00",
+    "home": {
+      "span": "Já Disponível",
+      "text": "Viva o Oeste em Red Dead, onde suas escolhas moldam seu destino.",
+      "btn": "Compre agora"
+    },
+    "popular": true,
+    "gratis": true
+  },
+  {
+    "id": 2,
+    "subtitle": "jogo base",
+    "title": "red dead redemption 2",
+    "porcentage": 50,
+    "img": {
+      "src2": "img/ofertas/red-game.jpg",
+      "src1": "img/games/red-game.png",
+      "logo": "img/logo/red-logo.png",
+      "src3": "img/banner/red-banner.jpg"
+    },
+    "oldPrice": "510",
+    "newPrice": "255",
+    "home": {
+      "span": "Já Disponível",
+      "text": "Viva o Oeste em Red Dead, onde suas escolhas moldam seu destino.",
+      "btn": "Compre agora"
+    },
+    "desconto": true,
+    "gratis": true,
+    "descriptionText": "disponível - 03 de abr ás 11:00"
+  },
+
+  {
+    "id": 3,
+    "subtitle": "jogo base",
+    "title": "Hogwarts legacy",
+    "porcentage": 25,
+    "img": {
+      "src2": "",
+      "src1": "img/games/hog-game.jpg",
+      "logo": "img/logo/hog-logo.png",
+      "src3": "img/banner/hog-banner.jpg"
+    },
+    "oldPrice": "315,0",
+    "newPrice": "236,2",
+    "desconto": true,
+    "home": {
+      "span": "Disponível em 6 de março",
+      "text": "Descubra a magia de Hogwarts em uma emocionante jornada.",
+      "btn": "Compre já na pré venda"
+    }
+  },
+  {
+    "id": 4,
+    "subtitle": "jogo base",
+    "title": "Valorant",
+    "porcentage": 10,
+    "img": {
+      "src2": "",
+      "src1": "img/games/valo-game.png",
+      "logo": "img/logo/valo-logo.png",
+      "src3": "img/banner/valo-banner.jpg"
+    },
+    "oldPrice": "500",
+    "newPrice": "450",
+    "desconto": true,
+    "home": {
+      "span": "Disponível em 5 de Setembro",
+      "text": "Vingue seu mestre em Sifu, dominando artes marciais com maestria.",
+      "btn": "Compre já na pré venda"
+    }
+  },
+  {
+    "id": 5,
+    "subtitle": "jogo base",
+    "title": "Cyberpunk 2077",
+    "porcentage": 50,
+    "img": {
+      "src2": "",
+      "src1": "img/games/cyber-game.jpg",
+      "logo": "img/logo/cyber-logo.png",
+      "src3": "img/banner/cyber-banner.jpg"
+    },
+    "oldPrice": "2,000",
+    "newPrice": "1,000",
+    "desconto": true,
+    "home": {
+      "span": "Disponível próxima semana",
+      "text": "Ação rápida, estratégia afiada. Escolha seu agente, forme sua equipe.",
+      "btn": "Compre na pré venda"
+    }
+  },
+
+  {
+    "id": 6,
+    "subtitle": "jogo base",
+    "title": "The Last of Us II",
+    "porcentage": 25,
+    "img": {
+      "src2": "",
+      "src1": "img/games/last-game.png",
+      "logo": "img/logo/last-logo.png",
+      "src3": "img/banner/last-banner.jpg"
+    },
+    "oldPrice": "4,500",
+    "newPrice": "3,375",
+    "home": {
+      "span": "Já Disponível",
+      "text": "Mergulhe em Uma jornada emocionante em um mundo pós-apocalíptico.",
+      "btn": "Compre agora"
+    },
+    "desconto": true
+  },
+  {
+    "id": 7,
+    "subtitle": "jogo base",
+    "title": "Alan wake 2",
+    "porcentage": 50,
+    "img": {
+      "src2": "img/ofertas/alan-game.jpg",
+      "src1": "img/games/alan-game.jpg"
+    },
+    "oldPrice": "4,500",
+    "newPrice": "2,250",
+    "oferta": true,
+    "popular": true
+  },
+
+  {
+    "id": 8,
+    "subtitle": "jogo base",
+    "title": "fifa 24",
+    "porcentage": 10,
+    "img": {
+      "src2": "img/ofertas/fifa-game.jpg",
+      "src1": "img/games/fifa-game.jpg"
+    },
+    "oldPrice": "1,000",
+    "newPrice": "990",
+    "oferta": true,
+    "popular": true
+  },
+
+  {
+    "id": 9,
+    "subtitle": "jogo base",
+    "title": "Nakara : bladepoint",
+    "porcentage": 100,
+    "img": {
+      "src2": "img/ofertas/naka-game.jpg",
+      "src1": "img/games/naka-game.jpg"
+    },
+    "oldPrice": "149,50",
+    "newPrice": "",
+    "gratis": true,
+    "descriptionText": "Grátis - 03 de abr ás 11:00",
+    "popular": true
+  },
+  {
+    "id": 10,
+    "subtitle": "jogo base",
+    "title": "god of war ragnarok",
+    "porcentage": 50,
+    "img": {
+      "src2": "img/ofertas/god-game.jpg",
+      "src1": "img/games/god-game.jpg"
+    },
+    "oldPrice": "399,0",
+    "newPrice": "199,0",
+    "oferta": true,
+    "popular": true
+  }
+]
