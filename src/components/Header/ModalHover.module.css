@@ -1,0 +1,43 @@
+.container {
+  height: 10rem;
+  position: absolute;
+  width: 14%;
+  z-index: 100;
+  background-color: transparent;
+  transform: translateY(-2.7rem);
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  background: var(--bg-4);
+  margin-top: 1rem;
+  padding: 2rem 1rem;
+  border-radius: 0.8rem;
+  z-index: 100;
+  top: 3rem;
+  opacity: 0;
+  animation: show-start 0.3s forwards;
+}
+
+@keyframes show-start {
+  0% {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.content li a {
+  padding: 0.6rem 1.6rem;
+  border-radius: 0.5rem;
+  color: var(--type-2-light);
+  font-size: 1.4rem;
+}
+
+.container li a:hover {
+  color: var(--type-3-light);
+}

@@ -1,0 +1,33 @@
+.link {
+  display: flex;
+  align-items: center;
+  gap: 1.3rem;
+  padding: 1rem 1.4rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  width: auto;
+  transition: all 0.3s;
+}
+.link li {
+  display: block;
+  font-size: 1.4rem;
+  color: var(--type-3-light);
+}
+.link:hover {
+  background-color: var(--type-5-dark);
+}
+
+.link i {
+  color: var(--type-3-light);
+  font-size: 1.4rem;
+}
+
+@media only screen and (max-width: 48em) {
+  .link li {
+    font-size: 1.6rem;
+  }
+
+  .link i {
+    font-size: 1.8rem;
+  }
+}

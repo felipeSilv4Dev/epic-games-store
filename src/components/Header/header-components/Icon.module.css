@@ -1,0 +1,9 @@
+.icon {
+  font-size: 1.4rem;
+  color: var(--type-4-light);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.icon:hover {
+  color: var(--type-3-light);
+}

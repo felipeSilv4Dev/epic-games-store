@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+
+:root {
+  --font-1: "Inter", Arial, Helvetica, sans-serif;
+  --header-bg: #18181c;
+  --header-2-bg: #101014;
+  --body-bg: #121212;
+  --modal-bg: #202020;
+  --modal-2-bg: #1b1b20;
+
+  /* light */
+  --type-1-light: #ffffff;
+  --type-2-light: #f5f5f5;
+  --type-3-light: #e6e6ea;
+  --type-4-light: #aaaaaa;
+  --type-5-light: #a09ea0;
+
+  /* dark */
+  --type-1-dark: #000;
+  --type-2-dark: #2d2d31;
+  --type-3-dark: #2a2a2a;
+  --type-4-dark: #ffffff14;
+  --type-5-dark: #404044;
+  --type-6-dark: #ffffff27;
+
+  /* btn */
+  --btn-1: #26bbff;
+  --btn-2: #61cdff;
+  --btn-3: #0074e4;
+  --bg-4: #202024;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+img {
+  max-width: 100%;
+}
+ul,
+li {
+  list-style: none;
+}
+
+body {
+  font-family: var(--font-1);
+  background: var(--body-bg);
+  position: relative;
+  text-transform: capitalize;
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+body,
+a {
+  text-decoration: none;
+  color: var(--type-1-light);
+}
+
+.max {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+a,
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 400;
+}
+
+@media (min-width: 160em) {
+  html {
+    font-size: 100%;
+  }
+}
+
+@media (min-width: 100em) {
+  html {
+    font-size: 71.4287%;
+  }
+}
+
+@media only screen and (max-width: 64em) {
+  .max {
+    width: initial;
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 57em) {
+  html {
+    font-size: 56.25%;
+  }
+}
