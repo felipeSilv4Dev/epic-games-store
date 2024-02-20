@@ -25,7 +25,7 @@
   opacity: 0;
   overflow: hidden;
   visibility: hidden;
-  box-shadow: 0 10px 2rem 0.4rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 .overlay:global(.active) {
   visibility: visible;
@@ -56,6 +56,6 @@
     grid-template-columns: 1fr;
     margin: 2rem;
     width: calc(100vw - 4rem);
-    background-color: var(--modal-bg);
+    background-color: var(--modal-2-bg);
   }
 }
