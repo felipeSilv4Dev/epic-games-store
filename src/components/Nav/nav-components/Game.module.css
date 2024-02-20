@@ -1,0 +1,41 @@
+.container {
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  gap: 1.2rem;
+}
+
+.img {
+  height: 4.3rem;
+  border-radius: 0.5rem;
+}
+
+.title {
+  font-size: 1.2rem;
+  transition: all 0.2s;
+  color: var(--type-2-light);
+}
+
+.container:hover .title {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 64em) {
+  .img {
+    height: 5rem;
+  }
+  .container:hover {
+    background-color: initial;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+}
+
+@media only screen and (max-width: 48em) {
+  .title {
+    font-size: 1.6rem;
+  }
+}

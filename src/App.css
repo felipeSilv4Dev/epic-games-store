@@ -69,11 +69,6 @@ a {
   margin-right: auto;
 }
 
-.flex {
-  display: flex;
-  align-items: center;
-}
-
 a,
 h1,
 h2,
@@ -82,6 +77,24 @@ h4 {
   font-weight: 400;
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  font-size: 1.4rem;
+  padding: 0.6rem 1.6rem;
+  border-radius: 0.5rem;
+  color: var(--type-4-light);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: var(--type-3-light);
+  background-color: var(--type-5-dark);
+}
 @media (min-width: 160em) {
   html {
     font-size: 100%;

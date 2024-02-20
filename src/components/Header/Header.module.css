@@ -44,20 +44,6 @@
   margin-right: auto;
 }
 
-.nav li {
-  font-size: 1.4rem;
-  padding: 0.6rem 1.6rem;
-  border-radius: 0.5rem;
-  color: var(--type-4-light);
-  transition: all 0.2s;
-  cursor: pointer;
-}
-
-.nav li:hover {
-  color: var(--type-3-light);
-  background-color: var(--type-5-dark);
-}
-
 .store img {
   height: 1.8rem;
   transition: all 0.3s;
