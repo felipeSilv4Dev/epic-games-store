@@ -28,8 +28,11 @@
   margin-top: 3px;
 }
 .photo {
-  border-radius: 0.5rem;
+  flex: 0 0 auto;
+}
+.photo img {
   height: 3.5vw;
+  border-radius: 0.5rem;
 }
 
 @keyframes scale {
@@ -69,7 +72,7 @@
   }
 }
 @media only screen and (max-width: 64em) {
-  .photo {
+  .photo img {
     height: 4.8vw;
   }
 }

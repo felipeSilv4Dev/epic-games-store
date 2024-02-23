@@ -92,15 +92,34 @@ const Home = () => {
 
       setTimeout(() => {
         setTime(false);
-      }, 200);
+      }, 300);
 
       if (!time) {
         changeGame(count);
       }
 
+      window.addEventListener("resize", () => {
+        if (!match) {
+          if (!banner.current) return;
+          gameArr[count].classList.remove("active");
+          translateBanner(banner.current.offsetLeft);
+          setCount(0);
+          changeGame(0);
+        }
+      });
+
       return () => clearInterval(TimeGame);
     }
-  }, [data, count, changeGame, arrayGame, time, arrayBanner]);
+  }, [
+    data,
+    count,
+    changeGame,
+    arrayGame,
+    time,
+    arrayBanner,
+    match,
+    translateBanner,
+  ]);
 
   if (loading) return <Loading loading={loading} />;
 

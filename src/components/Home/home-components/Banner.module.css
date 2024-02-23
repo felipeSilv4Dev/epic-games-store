@@ -6,6 +6,8 @@
   opacity: 0;
   overflow: hidden;
   visibility: hidden;
+  display: grid;
+  cursor: pointer;
 }
 
 .time {
@@ -85,7 +87,7 @@
   border-radius: 1rem;
 }
 
-.logo {
+.logo img {
   position: relative;
   left: -1.8vw;
   height: 4vw;
@@ -94,7 +96,7 @@
   transition: transform 0.3s 0.3s, opacity 0.3s 0.2s;
 }
 
-.container:global(.active) .logo {
+.container:global(.active) .logo img {
   opacity: 1;
   transform: translateX(0);
 }
@@ -107,7 +109,38 @@
   margin-left: 3vw;
   bottom: 3vw;
 }
+
+.skeleton {
+  position: relative;
+  display: block;
+  height: 100%;
+  border-radius: 1rem;
+  background-image: linear-gradient(
+    90deg,
+    var(--type-2-dark) 0%,
+    var(--modal-bg) 50%,
+    var(--type-2-dark) 100%
+  );
+  background-color: var(--type-2-dark);
+  background-size: 200%;
+  animation: infinite skeleton 3s linear;
+  grid-area: 1/1;
+  z-index: 100;
+}
+
+@keyframes skeleton {
+  from {
+    background-position: 200%;
+  }
+
+  to {
+    background-position: -200%;
+  }
+}
+
 .banner {
+  display: block;
+  grid-area: 1/1;
   border-radius: 1rem;
 }
 
@@ -204,7 +237,7 @@
     opacity: 0.06;
   }
 
-  .container .logo {
+  .container .logo img {
     opacity: 1;
     transform: translateX(0);
     margin-bottom: 2rem;
@@ -214,7 +247,7 @@
     bottom: 5vw;
   }
 
-  .logo {
+  .logo img {
     height: 6vw;
   }
 
@@ -270,7 +303,7 @@
 }
 
 @media only screen and (max-width: 36em) {
-  .logo {
+  .logo img {
     height: 10vw;
     left: -4vw;
   }
