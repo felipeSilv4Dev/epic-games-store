@@ -1,0 +1,10 @@
+.banner {
+  display: flex;
+  flex: 0 0 80%;
+  overflow: hidden;
+}
+
+.content {
+  margin-left: 2vw;
+  cursor: pointer;
+}

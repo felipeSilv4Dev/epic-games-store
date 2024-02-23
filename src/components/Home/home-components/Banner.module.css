@@ -1,0 +1,284 @@
+.container {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  animation: final 0.3s ease;
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.time {
+  position: absolute;
+  display: grid;
+  width: 60%;
+  height: 34vw;
+  z-index: 1000;
+  border-radius: 1rem;
+  background-image: linear-gradient(
+    90deg,
+    var(--type-3-dark) 0%,
+    var(--body-bg) 50%,
+    var(--type-3-dark) 100%
+  );
+  background-size: 200%;
+  animation: infinite time 6s linear;
+}
+
+@keyframes time {
+  from {
+    background-position: 200%;
+  }
+
+  to {
+    background-position: -200%;
+  }
+}
+
+@keyframes final {
+  0% {
+    opacity: 1;
+    left: 0;
+    overflow: visible;
+    visibility: visible;
+  }
+
+  100% {
+    left: -20rem;
+    overflow: hidden;
+    visibility: hidden;
+  }
+}
+
+@keyframes inicio {
+  0% {
+    opacity: 1;
+    left: 9rem;
+  }
+
+  100% {
+    opacity: 1;
+    left: 0;
+    visibility: visible;
+    overflow: visible;
+  }
+}
+
+.container:global(.active) {
+  overflow: hidden;
+  visibility: hidden;
+  animation: inicio 0.3s 0.22s forwards;
+}
+
+.overlay {
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  background-image: linear-gradient(
+    270deg,
+    rgba(11, 11, 11, 0) 0%,
+    #0b0b0b 100%,
+    #0b0b0b 100%
+  );
+  opacity: 0.6;
+  z-index: 0;
+  border-radius: 1rem;
+}
+
+.logo {
+  position: relative;
+  left: -1.8vw;
+  height: 4vw;
+  transform: translateX(10rem);
+  opacity: 0;
+  transition: transform 0.3s 0.3s, opacity 0.3s 0.2s;
+}
+
+.container:global(.active) .logo {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.content {
+  position: absolute;
+  align-items: start;
+  flex-direction: column;
+  gap: 2vw;
+  margin-left: 3vw;
+  bottom: 3vw;
+}
+.banner {
+  border-radius: 1rem;
+}
+
+.info span {
+  text-transform: uppercase;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--type-2-light);
+}
+
+.info p {
+  margin-top: 1rem;
+  font-size: 1.6rem;
+  max-width: 32rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.info span,
+.info p {
+  opacity: 0;
+  transition: all 0.3s 0.3s;
+}
+.container:global(.active) .info span,
+.container:global(.active) .info p {
+  opacity: 1;
+}
+
+.btn {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+.btn span {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+.btn p {
+  flex: 1;
+  padding: 1.2rem 2rem;
+  text-transform: uppercase;
+  width: 100%;
+  margin-top: 1rem;
+  color: var(--type-2-dark);
+  background-color: var(--type-1-light);
+  font-size: 1.4rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn p:hover {
+  background-color: var(--type-3-light);
+  color: var(--type-1-dark);
+}
+@media only screen and (max-width: 64em) {
+  .time {
+    width: 78%;
+    height: 43vw;
+  }
+}
+
+@media only screen and (max-width: 48em) {
+  .container:global(.animation) {
+    animation: none;
+  }
+  .container {
+    opacity: 1;
+    visibility: visible;
+    overflow-y: hidden;
+    gap: 2rem;
+    width: 85%;
+    height: 100vw;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .container::before {
+    content: "";
+    display: flex;
+    width: 100%;
+    height: 99.3%;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    border-radius: 0.5rem;
+    background-color: var(--type-1-light);
+    transition: opacity 0.1s ease;
+  }
+  .container:hover::before {
+    opacity: 0.06;
+  }
+
+  .container .logo {
+    opacity: 1;
+    transform: translateX(0);
+    margin-bottom: 2rem;
+  }
+  .content {
+    margin-left: 5vw;
+    bottom: 5vw;
+  }
+
+  .logo {
+    height: 6vw;
+  }
+
+  .banner {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1.5rem;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+  }
+  .container:first-child .banner {
+    object-position: 50%;
+  }
+  .container:nth-child(2) .banner {
+    object-position: 57%;
+  }
+  .container:nth-child(3) .banner {
+    object-position: 65%;
+  }
+  .container:nth-child(4) .banner {
+    object-position: 45%;
+  }
+
+  .container:nth-child(5) .banner {
+    object-position: 75%;
+  }
+  .info {
+    opacity: 1;
+  }
+  .info span {
+    opacity: 1;
+    font-size: 1.4rem;
+  }
+  .info p {
+    opacity: 1;
+    font-size: 1.8rem;
+    max-width: 55vw;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+  }
+
+  .btn span {
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-transform: initial;
+    line-height: 1.6;
+    max-width: 8ch;
+  }
+  .btn p {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 36em) {
+  .logo {
+    height: 10vw;
+    left: -4vw;
+  }
+  .info span {
+    font-size: 11px;
+  }
+  .info p {
+    font-size: 14px;
+    max-width: 65vw;
+  }
+}

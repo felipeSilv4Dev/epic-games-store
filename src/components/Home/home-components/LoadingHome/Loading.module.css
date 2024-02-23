@@ -1,0 +1,46 @@
+.container {
+  width: 100%;
+  gap: 2vw;
+}
+
+.banner {
+  flex: 0 0 80%;
+  background-color: var(--type-3-dark);
+  height: 34vw;
+  border-radius: 1rem;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.game {
+  flex: 0 0 auto;
+  background-color: var(--type-3-dark);
+  width: 12vw;
+  height: 6.5vw;
+  border-radius: 1.6rem;
+}
+
+@media only screen and (max-width: 64em) {
+  .banner {
+    height: 40vw;
+  }
+  .game {
+    border-radius: 1rem;
+    height: 7.5vw;
+    width: 17vw;
+  }
+}
+
+@media only screen and (max-width: 48em) {
+  .banner {
+    height: 100vw;
+    width: 80vw;
+    border-radius: 1.6rem;
+    box-shadow: 77vw 0 0 0 currentColor;
+  }
+  .content {
+    display: none;
+  }
+}

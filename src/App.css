@@ -95,15 +95,16 @@ h4 {
   color: var(--type-3-light);
   background-color: var(--type-5-dark);
 }
-@media (min-width: 160em) {
-  html {
-    font-size: 100%;
-  }
-}
 
 @media (min-width: 100em) {
   html {
     font-size: 71.4287%;
+  }
+}
+
+@media (min-width: 160em) {
+  html {
+    font-size: 100%;
   }
 }
 
