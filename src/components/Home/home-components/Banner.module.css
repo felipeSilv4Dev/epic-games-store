@@ -210,6 +210,9 @@
   .container:global(.animation) {
     animation: none;
   }
+  .overlay {
+    opacity: 0.7;
+  }
   .container {
     opacity: 1;
     visibility: visible;
@@ -274,7 +277,7 @@
   }
 
   .container:nth-child(5) .banner {
-    object-position: 75%;
+    object-position: 50%;
   }
   .info {
     opacity: 1;

@@ -5,6 +5,7 @@
   z-index: 100;
   background-color: transparent;
   transform: translateY(-2.7rem);
+  top: 7.4rem;
 }
 
 .content {

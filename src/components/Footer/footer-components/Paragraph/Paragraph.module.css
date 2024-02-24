@@ -1,0 +1,15 @@
+.paragraph {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.paragraph:hover {
+  color: var(--btn-3);
+}
+
+@media only screen and (max-width: 75em) {
+  .paragraph {
+    font-size: 1.4rem;
+  }
+}
