@@ -12,9 +12,9 @@
 
 .time {
   position: absolute;
-  display: grid;
   width: 60%;
   height: 34vw;
+  top: 17.5rem;
   z-index: 1000;
   border-radius: 1rem;
   background-image: linear-gradient(
@@ -202,6 +202,7 @@
   .time {
     width: 78%;
     height: 43vw;
+    top: 16.8rem;
   }
 }
 

@@ -8,11 +8,11 @@
   border-radius: 0.5rem;
   background-image: linear-gradient(
     90deg,
-    var(--type-2-dark) 0%,
-    var(--modal-bg) 50%,
-    var(--type-2-dark) 100%
+    var(--type-3-dark) 0%,
+    var(--body-bg) 50%,
+    var(--type-3-dark) 100%
   );
-  background-color: var(--type-2-dark);
+  background-color: var(--type-3-dark);
   background-size: 200%;
   animation: infinite skeleton 3s linear;
   grid-area: 1/1;

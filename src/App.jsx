@@ -7,14 +7,16 @@ import Image from "./components/Components/Image/Image";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Main />} />
-      </Routes>
-      <Image />
-    </BrowserRouter>
+    <section className="app">
+      <BrowserRouter>
+        <Header />
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Main />} />
+        </Routes>
+        <Image />
+      </BrowserRouter>
+    </section>
   );
 }
 

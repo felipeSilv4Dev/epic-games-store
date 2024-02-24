@@ -96,6 +96,15 @@ h4 {
   background-color: var(--type-5-dark);
 }
 
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh + 70rem);
+}
+.appMain {
+  flex: 1;
+}
+
 @media (min-width: 100em) {
   html {
     font-size: 71.4287%;

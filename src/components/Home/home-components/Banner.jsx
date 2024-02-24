@@ -22,15 +22,16 @@ const Banner = ({ id, title, img, home, newPrice, time }) => {
       {time && <div className={styles.time}></div>}
       <section onClick={handleClick} id={id} className={styles.container}>
         <div className={styles.overlay}></div>
+        <div>
+          {skeleton && <div className={styles.skeleton}></div>}
 
-        {skeleton && <div className={styles.skeleton}></div>}
-
-        <img
-          className={styles.banner}
-          onLoad={handleLoad}
-          src={img.src3}
-          alt={title}
-        />
+          <img
+            className={styles.banner}
+            onLoad={handleLoad}
+            src={img.src3}
+            alt={title}
+          />
+        </div>
 
         <div className={styles.content + " flex"}>
           <div className={styles.logo}>
