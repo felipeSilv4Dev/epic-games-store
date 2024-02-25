@@ -1,0 +1,104 @@
+.container {
+  flex-direction: column;
+  align-items: start;
+  gap: 1rem;
+  color: var(--type-2-light);
+  cursor: pointer;
+}
+
+.image {
+  position: relative;
+}
+
+.circle {
+  position: absolute;
+  top: 1vw;
+  right: 1vw;
+  font-size: 2rem;
+  z-index: 100;
+  transition: opacity 0.1s ease;
+  color: var(--type-2-light);
+  opacity: 0;
+}
+.image {
+  position: relative;
+}
+.image img {
+  border-radius: 0.5rem;
+}
+.image:hover {
+  mix-blend-mode: screen;
+}
+.image:hover .circle {
+  opacity: 1;
+}
+
+.subtitle {
+  font-size: 1rem;
+  text-transform: uppercase;
+  opacity: 0.6;
+  letter-spacing: 0.1rem;
+}
+
+.title {
+  font-size: 1.4rem;
+  width: 14vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.description {
+  font-size: 1.4rem;
+  color: var(--type-4-light);
+  margin-bottom: 2rem;
+}
+.footer {
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  background-color: var(--body-bg);
+  padding: 0.5rem 0;
+  font-size: 1.2rem;
+  bottom: 0;
+  border-radius: 0 0 0.4rem 0.4rem;
+}
+
+@media only screen and (max-width: 64em) {
+  .title {
+    font-size: 1.6rem;
+    width: 22vw;
+  }
+  .description {
+    font-size: 1.6rem;
+  }
+}
+
+@media only screen and (max-width: 48em) {
+  .container {
+    flex-shrink: 0;
+    width: 70%;
+    overflow-x: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .container:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .circle {
+    top: 3vw;
+    right: 3vw;
+    opacity: 1;
+    font-size: 2.5rem;
+  }
+  .title {
+    all: unset;
+    font-size: 1.6rem;
+  }
+}
+
+@media only screen and (max-width: 17.5em) {
+  .circle {
+    font-size: 1.6rem;
+  }
+}

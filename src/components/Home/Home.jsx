@@ -7,6 +7,7 @@ import Carousel from "../Components/Carousel/Carousel";
 import useFetch from "../../Hooks/useFetch";
 import { useNavigate } from "react-router-dom";
 import Loading from "./home-components/LoadingHome/Loading";
+import { API_URL } from "../../Api/Api";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const Home = () => {
 
   useEffect(() => {
     async function fetchGame() {
-      await request("../../games-api.json");
+      await request(API_URL);
     }
     fetchGame();
   }, [request]);

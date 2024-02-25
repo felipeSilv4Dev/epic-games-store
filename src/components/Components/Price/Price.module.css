@@ -1,0 +1,73 @@
+.price,
+.priceCurrent {
+  width: 100%;
+  gap: 1rem;
+  font-size: 1.4rem;
+}
+
+.porcentage {
+  font-size: 1rem;
+  padding: 4px 8px;
+  border-radius: 0.4rem;
+  background-color: var(--btn-3);
+}
+
+.oldPrice {
+  position: relative;
+  color: var(--type-4-light);
+}
+
+.oldPrice::before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  background-color: currentColor;
+}
+
+@media only screen and (max-width: 80em) {
+  .price {
+    justify-content: space-between;
+  }
+  .priceCurrent {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+  }
+}
+@media only screen and (max-width: 64em) {
+  .priceCurrent {
+    font-size: 1.6rem;
+  }
+  .porcentage {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (max-width: 48em) {
+  .price {
+    gap: 2rem;
+    width: initial;
+  }
+  .priceCurrent {
+    all: unset;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.6rem;
+    gap: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 17.5em) {
+  .price {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .priceCurrent {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+  }
+}

@@ -1,0 +1,60 @@
+.container {
+  margin-top: 4rem;
+}
+
+.header {
+  color: var(--type-2-light);
+  text-transform: initial;
+  justify-content: space-between;
+}
+
+.header h2 {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.header h3 {
+  font-size: 1.2rem;
+  padding: 7px 15px;
+  text-align: center;
+  border: 0.9px solid currentColor;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.header h3:hover {
+  border-color: var(--type-5-light);
+}
+.card {
+  margin-top: 2rem;
+  flex: 1;
+  gap: 1.5rem;
+}
+
+@media only screen and (max-width: 64em) {
+  .header h2 {
+    font-size: 2rem;
+  }
+  .header h3 {
+    font-size: 1.4rem;
+  }
+}
+
+@media only screen and (max-width: 48em) {
+  .header h2 {
+    font-size: 1.6rem;
+  }
+  .header h3 {
+    font-size: 1.4rem;
+  }
+}
+
+@media only screen and (max-width: 17.5em) {
+  .header h2 {
+    font-size: 1.5rem;
+  }
+  .header h3 {
+    font-size: 1.2rem;
+    padding: 8px;
+  }
+}
