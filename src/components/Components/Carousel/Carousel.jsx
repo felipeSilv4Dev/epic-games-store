@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 const Carousel = forwardRef(function SildeComponent(props, ref) {
   const wrapper = ref;
-
   const slide = useRef();
   const controls = useRef();
   const navigate = useNavigate();
+  const { children, custom, control } = props;
+
   let dist = useCallback(() => {
     return {
       pageX: 0,
@@ -33,10 +34,9 @@ const Carousel = forwardRef(function SildeComponent(props, ref) {
     dist.slideArray = [...slide.current.children].map((element, i, arr) => {
       let position;
       if (i === 0) {
-        position = element.offsetLeft;
+        position = 0;
       } else if (i === arr.length - 1) {
         let porcet = wrapper.current.offsetWidth - element.offsetWidth;
-
         position = -element.offsetLeft + porcet;
       } else {
         const right =
@@ -87,9 +87,7 @@ const Carousel = forwardRef(function SildeComponent(props, ref) {
       if (clientX > 0) {
         slideConfig();
       }
-      if (dist.mov > 350) {
-        document.body.style.overflowY = "hidden";
-      }
+
       const positionMovement = slidePosition(clientX);
 
       moveSlide(positionMovement);
@@ -135,7 +133,7 @@ const Carousel = forwardRef(function SildeComponent(props, ref) {
 
   const changeSlideOnEnd = useCallback(() => {
     if (dist.mov) {
-      const lengthProps = props.children.length;
+      const lengthProps = children.length;
       if (dist.movement > 20 * lengthProps && indexDetect.next !== null) {
         activeNextSlide();
       }
@@ -145,7 +143,14 @@ const Carousel = forwardRef(function SildeComponent(props, ref) {
         changeSlide(indexDetect.now);
       }
     }
-  }, [activeNextSlide, changeSlide, dist, activePrevSlide, indexDetect, props]);
+  }, [
+    activeNextSlide,
+    changeSlide,
+    dist,
+    activePrevSlide,
+    indexDetect,
+    children,
+  ]);
 
   const addControlActive = useCallback(() => {
     if (!controls.current) return;
@@ -162,7 +167,6 @@ const Carousel = forwardRef(function SildeComponent(props, ref) {
   const onEnd = useCallback(
     (e) => {
       const event = e.type === "mouseup" ? "mousemove" : "touchmove";
-      document.body.style.overflowY = "initial";
 
       if (!wrapper.current) return;
 
@@ -231,42 +235,59 @@ const Carousel = forwardRef(function SildeComponent(props, ref) {
     [dist, navigate]
   );
 
-  useEffect(() => {
-    const addSlide = () => {
-      if (wrapper.current) {
-        wrapper.current.addEventListener("mousedown", onStart);
-        wrapper.current.addEventListener("touchstart", onStart);
+  const addSlide = useCallback(() => {
+    if (wrapper.current) {
+      wrapper.current.addEventListener("mousedown", onStart);
+      wrapper.current.addEventListener("touchstart", onStart);
 
-        slideConfig();
-        changeSlide(0);
-        window.addEventListener("pointerdown", () => (dist.mov = 0));
-      }
+      slideConfig();
+      changeSlide(0);
 
-      if (!props.control) return;
+      window.addEventListener("pointerdown", () => (dist.mov = 0));
+
+      if (!control) return;
       if (!controls.current.children.length) return;
       controls.current.children[0].classList.add("active");
-    };
+    }
+  }, [wrapper, slideConfig, onStart, changeSlide, control, dist]);
+
+  useEffect(() => {
     addSlide();
-  }, [wrapper, slideConfig, onStart, changeSlide, props, addControlActive, dist]);
+  }, [addSlide]);
 
   return (
     <div ref={wrapper} className={styles.wrapper}>
       <div onClick={handleClick} ref={slide} className={styles.slide}>
-        {props.children}
+        {children}
       </div>
 
-      {props.control && (
+      {control && (
         <span className={styles.controls}>
           <ul ref={controls} data-control="slide">
-            {props.children
-              .filter((child) => child !== undefined)
-              .map((child, i) => {
-                const { id } = child.props;
+            {!custom &&
+              children
+                .filter((child) => child !== undefined)
+                .map((child, i) => {
+                  const { id } = child.props;
 
+                  return (
+                    <a key={id} id={i} onClick={eventControl} href={"#" + id}>
+                      {id}
+                    </a>
+                  );
+                })}
+
+            {custom &&
+              custom.map((item, i) => {
                 return (
-                  <a key={id} id={i} onClick={eventControl} href={"#" + id}>
-                    {id}
-                  </a>
+                  <div
+                    className={styles.control}
+                    onClick={eventControl}
+                    key={item.props.id}
+                    id={i}
+                  >
+                    {item}
+                  </div>
                 );
               })}
           </ul>
