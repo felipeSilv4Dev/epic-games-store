@@ -6,6 +6,7 @@ import useMatch from "../../Hooks/useMatch";
 import Carousel from "../Components/Carousel/Carousel";
 import { NavLink } from "react-router-dom";
 import LoadingOfertas from "./ofertas-components/LoadingOfertas/LoadingOfertas";
+import { API_URL } from "../../Api/Api";
 
 const Ofertas = () => {
   const match = useMatch("48em");
@@ -13,7 +14,7 @@ const Ofertas = () => {
   const refOfertas = useRef();
 
   useEffect(() => {
-    (async () => await request("../../games-api.json"))();
+    (async () => await request(API_URL))();
   }, [request]);
 
   if (loading) return <LoadingOfertas />;
