@@ -5,6 +5,7 @@ import NavModal from "./nav-components/NavModal";
 import SearchModal from "./nav-components/SearchModal";
 import useFetch from "../../Hooks/useFetch";
 import Game from "./nav-components/Game";
+import { API_URL } from "../../Api/Api";
 
 const Nav = () => {
   const container = useRef();
