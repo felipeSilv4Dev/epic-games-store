@@ -1,6 +1,7 @@
 import React from "react";
 import Home from "../Home/Home";
 import Games from "../Games/Games";
+import Ofertas from "../Ofertas/Ofertas";
 
 const Main = () => {
   return (
@@ -11,6 +12,7 @@ const Main = () => {
         textButton="ver mais"
         keyApi="desconto"
       />
+      <Ofertas />
     </main>
   );
 };
