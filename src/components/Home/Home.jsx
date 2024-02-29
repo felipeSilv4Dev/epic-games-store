@@ -20,10 +20,7 @@ const Home = () => {
   const homeRef = useRef();
 
   useEffect(() => {
-    async function fetchGame() {
-      await request(API_URL);
-    }
-    fetchGame();
+    (async () => await request(API_URL))();
   }, [request]);
 
   const arrayBanner = useCallback(() => {

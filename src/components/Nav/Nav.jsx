@@ -31,10 +31,7 @@ const Nav = () => {
   }
 
   useEffect(() => {
-    async function fetchGame() {
-      await request("../../games-api.json");
-    }
-    fetchGame();
+    (async () => await request(API_URL))();
   }, [request]);
 
   useEffect(() => {
