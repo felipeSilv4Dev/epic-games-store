@@ -28,8 +28,40 @@
   background-color: var(--type-2-light);
 }
 
+.control {
+  opacity: 0.7;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  height: 5rem;
+  width: 8rem;
+}
+.control:hover {
+  opacity: 1;
+}
+.control:global(.active) {
+  border-color: var(--type-1-light);
+  opacity: 1;
+}
+
 @media only screen and (max-width: 17.5em) {
   .slide {
     gap: 4vw;
+  }
+}
+
+@media only screen and (max-width: 33.75em) {
+  .control {
+    margin-top: 1rem;
+    height: 3rem;
+    width: 5rem;
+  }
+}
+@media only screen and (max-width: 17.5em) {
+  .control {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
   }
 }
