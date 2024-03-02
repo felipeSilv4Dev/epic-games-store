@@ -40,7 +40,7 @@ const CardGame = ({
         {footerImg && (
           <p
             style={{
-              backgroundColor: newPrice ? "var(--body-bg)" : "var(--btn-4)",
+              backgroundColor: newPrice ? "var(--body-bg)" : "var(--btn-3)",
             }}
             className={styles.footer}
           >
