@@ -3,6 +3,7 @@ import Home from "../Home/Home";
 import Games from "../Games/Games";
 import Ofertas from "../Ofertas/Ofertas";
 import Galery from "../Galery/Galery";
+import ListGame from "../List-game/ListGame";
 
 const Main = () => {
   return (
@@ -15,6 +16,7 @@ const Main = () => {
       />
       <Ofertas />
       <Galery />
+      <ListGame />
     </main>
   );
 };
