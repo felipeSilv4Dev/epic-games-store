@@ -19,7 +19,24 @@
       "btn": "Compre agora"
     },
     "popular": true,
-    "gratis": true
+    "gratis": true,
+    "profile": {
+      "img": [
+        "img/profile/fort/fort-1.jpg",
+        "img/profile/fort/fort-2.jpg",
+        "img/profile/fort/fort-3.jpg",
+        "img/profile/fort/fort-4.jpg",
+        "img/profile/fort/fort-5.jpg"
+      ],
+      "company": "Epic games",
+      "date": "21/07/17",
+      "score": {
+        "primary": 86,
+        "secondary": 90,
+        "terciary": 98
+      },
+      "theme": "#3ECD3B"
+    }
   },
   {
     "id": 2,
@@ -41,7 +58,25 @@
     },
     "desconto": true,
     "gratis": true,
-    "descriptionText": "disponível - 03 de abr ás 11:00"
+    "descriptionText": "disponível - 03 de abr ás 11:00",
+    "profile": {
+      "img": [
+        "img/profile/red/red-1.jpg",
+        "img/profile/red/red-2.jpg",
+        "img/profile/red/red-3.jpg",
+        "img/profile/red/red-4.jpg",
+        "img/profile/red/red-5.jpg"
+      ],
+      "company": "Rock start games",
+      "date": "05/11/19",
+      "logo": "img/logo/red-logo.png",
+      "score": {
+        "primary": 96,
+        "secondary": 98,
+        "terciary": 98
+      },
+      "theme": "#EB2B2B"
+    }
   },
 
   {
@@ -62,6 +97,24 @@
       "span": "Disponível em 6 de março",
       "text": "Descubra a magia de Hogwarts em uma emocionante jornada.",
       "btn": "Compre já na pré venda"
+    },
+    "profile": {
+      "img": [
+        "img/profile/hog/hog-1.jpg",
+        "img/profile/hog/hog-2.jpg",
+        "img/profile/hog/hog-3.jpg",
+        "img/profile/hog/hog-4.jpg",
+        "img/profile/hog/hog-5.jpg"
+      ],
+      "company": "Avalanche Software",
+      "date": "10/02/23",
+      "logo": "img/logo/hog-logo.png",
+      "score": {
+        "primary": 87,
+        "secondary": 85,
+        "terciary": 95
+      },
+      "theme": "#0DB7A2"
     }
   },
   {
@@ -82,6 +135,24 @@
       "span": "Disponível em 5 de Setembro",
       "text": "Vingue seu mestre em Sifu, dominando artes marciais com maestria.",
       "btn": "Compre já na pré venda"
+    },
+    "profile": {
+      "img": [
+        "img/profile/valo/valo-1.jpg",
+        "img/profile/valo/valo-2.jpg",
+        "img/profile/valo/valo-3.jpg",
+        "img/profile/valo/valo-4.jpg",
+        "img/profile/valo/valo-5.jpg"
+      ],
+      "company": "Riot Games",
+      "date": "02/06/20",
+      "logo": "img/logo/valo-logo.png",
+      "score": {
+        "primary": 79,
+        "secondary": 80,
+        "terciary": 97
+      },
+      "theme": "#DD306E"
     }
   },
   {
@@ -102,6 +173,24 @@
       "span": "Disponível próxima semana",
       "text": "Ação rápida, estratégia afiada. Escolha seu agente, forme sua equipe.",
       "btn": "Compre na pré venda"
+    },
+    "profile": {
+      "img": [
+        "img/profile/cyber/cyber-1.jpg",
+        "img/profile/cyber/cyber-2.jpg",
+        "img/profile/cyber/cyber-3.jpg",
+        "img/profile/cyber/cyber-4.jpg",
+        "img/profile/cyber/cyber-5.jpg"
+      ],
+      "company": "CD PROJEKT RED",
+      "date": "09/12/20",
+      "logo": "img/logo/cyber-logo.png",
+      "score": {
+        "primary": 88,
+        "secondary": 91,
+        "terciary": 97
+      },
+      "theme": "#D7BC2F"
     }
   },
 
@@ -123,7 +212,25 @@
       "text": "Mergulhe em Uma jornada emocionante em um mundo pós-apocalíptico.",
       "btn": "Compre agora"
     },
-    "desconto": true
+    "desconto": true,
+    "profile": {
+      "img": [
+        "img/profile/last/last-1.jpg",
+        "img/profile/last/last-2.jpg",
+        "img/profile/last/last-3.jpg",
+        "img/profile/last/last-4.jpg",
+        "img/profile/last/last-5.jpg"
+      ],
+      "company": "Naughty Dog LLC",
+      "date": "28/03/23",
+      "logo": "img/logo/last-logo.png",
+      "score": {
+        "primary": 96,
+        "secondary": 98,
+        "terciary": 98
+      },
+      "theme": "#3C5ED9"
+    }
   },
   {
     "id": 7,
@@ -137,7 +244,25 @@
     "oldPrice": "4,500",
     "newPrice": "2,250",
     "oferta": true,
-    "popular": true
+    "popular": true,
+    "profile": {
+      "img": [
+        "img/profile/alan/alan-1.jpg",
+        "img/profile/alan/alan-2.jpg",
+        "img/profile/alan/alan-3.jpg",
+        "img/profile/alan/alan-4.jpg",
+        "img/profile/alan/alan-5.jpg"
+      ],
+      "company": "Remedy Entertainment",
+      "date": "27/10/23",
+      "logo": "img/logo/alan-logo.png",
+      "score": {
+        "primary": 96,
+        "secondary": 98,
+        "terciary": 98
+      },
+      "theme": "#EB2B2B"
+    }
   },
 
   {
@@ -152,7 +277,25 @@
     "oldPrice": "1,000",
     "newPrice": "990",
     "oferta": true,
-    "popular": true
+    "popular": true,
+    "profile": {
+      "img": [
+        "img/profile/fifa/fifa-1.jpg",
+        "img/profile/fifa/fifa-2.jpg",
+        "img/profile/fifa/fifa-3.jpg",
+        "img/profile/fifa/fifa-4.jpg",
+        "img/profile/fifa/fifa-5.jpg"
+      ],
+      "company": "EA Canada",
+      "date": "28/09/23",
+      "logo": "img/logo/fifa-logo.png",
+      "score": {
+        "primary": 96,
+        "secondary": 98,
+        "terciary": 98
+      },
+      "theme": "#3ECD3B"
+    }
   },
 
   {
@@ -168,7 +311,25 @@
     "newPrice": "",
     "gratis": true,
     "descriptionText": "Grátis - 03 de abr ás 11:00",
-    "popular": true
+    "popular": true,
+    "profile": {
+      "img": [
+        "img/profile/naka/naka-1.jpg",
+        "img/profile/naka/naka-2.jpg",
+        "img/profile/naka/naka-3.jpg",
+        "img/profile/naka/naka-4.jpg",
+        "img/profile/naka/naka-5.jpg"
+      ],
+      "company": "Netease Thunderfire",
+      "date": "10/11/21",
+      "logo": "img/logo/naka-logo.png",
+      "score": {
+        "primary": 96,
+        "secondary": 98,
+        "terciary": 98
+      },
+      "theme": "#EB2B2B"
+    }
   },
   {
     "id": 10,
@@ -182,6 +343,24 @@
     "oldPrice": "399,0",
     "newPrice": "199,0",
     "oferta": true,
-    "popular": true
+    "popular": true,
+    "profile": {
+      "img": [
+        "img/profile/god/god-1.jpg",
+        "img/profile/god/god-2.jpg",
+        "img/profile/god/god-3.jpg",
+        "img/profile/god/god-4.jpg",
+        "img/profile/god/god-5.jpg"
+      ],
+      "company": "Santa Monica Studio",
+      "date": "9/11/22",
+      "logo": "img/logo/god-logo.png",
+      "score": {
+        "primary": 96,
+        "secondary": 98,
+        "terciary": 98
+      },
+      "theme": "#3C5ED9"
+    }
   }
 ]
