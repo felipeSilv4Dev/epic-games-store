@@ -11,11 +11,18 @@ const Main = () => {
       <Home />
       <Games
         header="Jogos em destaque"
-        textButton="ver mais"
+        textButton="ver todas as ofertas"
         keyApi="desconto"
       />
       <Ofertas />
       <Galery />
+      <ListGame />
+
+      <Games
+        header="Jogos em populares"
+        textButton="ver todos os jogos"
+        keyApi="popular"
+      />
       <ListGame />
     </main>
   );
