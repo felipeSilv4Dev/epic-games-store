@@ -40,9 +40,9 @@ const Galery = () => {
                       key={props.id}
                       {...props}
                       width={85}
-                      description={true}
                       img={props.img.src2}
                       footerImg={true}
+                      porcentage={""}
                     />
                   </NavLink>
                 );
@@ -56,9 +56,9 @@ const Galery = () => {
                       key={props.id}
                       {...props}
                       width={85}
-                      description={true}
                       img={props.img.src2}
                       footerImg={true}
+                      porcentage={""}
                     />
                   );
                 })}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./Card.module.css";
 import Price from "../Price/Price";
 import Image from "../Image/Image";
@@ -6,21 +6,57 @@ import useMatch from "../../../Hooks/useMatch";
 
 const CardGame = ({
   width,
-  price,
-  description,
   title,
   img,
   subtitle,
   oldPrice,
   newPrice,
   porcentage,
-  subtitleOpen,
   descriptionText,
   id,
   footerImg,
   icon,
 }) => {
   const macth = useMatch("48em");
+  const [active, setActive] = useState(true);
+
+  const setLocal = useCallback(({ id }) => {
+    const isLocal = localStorage.getItem("game");
+
+    if (isLocal) {
+      const gamesArr = JSON.parse(isLocal);
+      const index = gamesArr.indexOf(id);
+
+      if (index !== -1) {
+        gamesArr.splice(index, 1);
+        localStorage.setItem("game", JSON.stringify([...gamesArr]));
+      } else {
+        localStorage.setItem("game", JSON.stringify([...gamesArr, id]));
+      }
+    } else {
+      localStorage.setItem("game", JSON.stringify([id]));
+    }
+  }, []);
+
+  const initial = useCallback(() => {
+    const game = localStorage.getItem("game");
+    if (game) {
+      const arrGame = JSON.parse(game);
+
+      if (arrGame.includes(id)) {
+        setActive(false);
+      }
+    }
+  }, [id]);
+
+  useEffect(() => {
+    initial();
+  }, [initial, id]);
+  const handleClick = async (e) => {
+    e.preventDefault();
+    setActive(!active);
+    setLocal({ id });
+  };
 
   return (
     <section
@@ -33,7 +69,23 @@ const CardGame = ({
           <Image src={img} alt={title} />
 
           {icon && (
-            <i className={styles.circle + " fa-solid fa-circle-plus"}></i>
+            <div onClick={handleClick} className={styles.iconContainer}>
+              <i
+                style={{
+                  opacity: active ? 1 : 0,
+                  transform: !active ? "rotate(0deg)" : "",
+                }}
+                className={styles.icon + " fa-solid  fa-plus"}
+              ></i>
+
+              <i
+                style={{
+                  opacity: !active ? 1 : 0,
+                  transform: active ? "rotate(0deg)" : "",
+                }}
+                className={styles.icon + " fa-solid  fa-check"}
+              ></i>
+            </div>
           )}
         </div>
 
@@ -49,11 +101,13 @@ const CardGame = ({
         )}
       </div>
 
-      {subtitleOpen && <span className={styles.subtitle}>{subtitle}</span>}
+      {subtitle && <span className={styles.subtitle}>{subtitle}</span>}
       <h2 className={styles.title}>{title}</h2>
-      {description && <p className={styles.description}>{descriptionText}</p>}
+      {descriptionText && (
+        <p className={styles.description}>{descriptionText}</p>
+      )}
 
-      {price && (
+      {porcentage && (
         <Price
           porcentage={porcentage}
           oldPrice={oldPrice}

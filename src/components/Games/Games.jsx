@@ -38,7 +38,7 @@ const Games = ({ header, textButton, keyApi }) => {
                 <Card
                   {...item}
                   subtitleOpen={true}
-                  price={true}
+                  descriptionText={""}
                   radius={0.4}
                   img={item.img.src1}
                   icon={true}
@@ -55,7 +55,7 @@ const Games = ({ header, textButton, keyApi }) => {
                   radius={0.4}
                   width={70}
                   subtitleOpen={true}
-                  price={true}
+                  descriptionText={""}
                   img={item.img.src1}
                   icon={true}
                 />

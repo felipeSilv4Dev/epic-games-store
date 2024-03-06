@@ -10,16 +10,36 @@
   position: relative;
 }
 
-.circle {
+.iconContainer {
+  display: grid;
   position: absolute;
   top: 1vw;
   right: 1vw;
-  font-size: 2rem;
   z-index: 100;
+  background-color: var(--body-bg);
+  width: 1.8rem;
+  height: 1.8rem;
   transition: opacity 0.1s ease;
-  color: var(--type-2-light);
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--type-2-light), 0 0 15px rgba(0, 0, 0, 0.7);
   opacity: 0;
 }
+
+.icon {
+  display: grid;
+  color: var(--type-2-light);
+  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
+  height: 1.8rem;
+  text-align: center;
+  transform: rotate(360deg);
+  grid-area: 1/1;
+  transition: transform 0.4s linear, opacity 0.1s 0.4s linear;
+}
+
 .image {
   position: relative;
 }
@@ -29,7 +49,7 @@
 .image:hover {
   mix-blend-mode: screen;
 }
-.image:hover .circle {
+.image:hover .iconContainer {
   opacity: 1;
 }
 
@@ -85,11 +105,20 @@
     margin-right: 0;
   }
 
-  .circle {
-    top: 3vw;
-    right: 3vw;
+  .iconContainer {
+    top: 3.5vw;
+    right: 3.5vw;
+    height: 4vw;
+    width: 4vw;
     opacity: 1;
-    font-size: 2.5rem;
+    box-shadow: 0 0 0 1.5px var(--type-2-light);
+  }
+
+  .icon {
+    height: 4vw;
+    width: 4vw;
+    font-size: 1rem;
+    border-radius: 50%;
   }
   .title {
     all: unset;
@@ -100,5 +129,10 @@
 @media only screen and (max-width: 17.5em) {
   .circle {
     font-size: 1.6rem;
+  }
+
+  .icon {
+    font-size: 0.8rem;
+    text-indent: -0.2px;
   }
 }

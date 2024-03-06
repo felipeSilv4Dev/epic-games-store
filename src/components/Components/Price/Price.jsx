@@ -1,10 +1,16 @@
 import React from "react";
 import styles from "./Price.module.css";
 
-const Price = ({ porcentage, oldPrice, newPrice }) => {
+const Price = ({ porcentage, oldPrice, newPrice, theme }) => {
+  const style = {
+    backgroundColor: theme ? theme : "var(--btn-3)",
+  };
+
   return (
     <div className={styles.price + " flex"}>
-      <span className={styles.porcentage}>-{porcentage}%</span>
+      <span style={style} className={styles.porcentage}>
+        -{porcentage}%
+      </span>
       <div className={styles.priceCurrent + " flex"}>
         <p className={styles.oldPrice}>R$ {oldPrice}</p>
         <p className={styles.newPrice}>
