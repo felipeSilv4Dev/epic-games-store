@@ -3,6 +3,7 @@ import styles from "./Card.module.css";
 import Price from "../Price/Price";
 import Image from "../Image/Image";
 import useMatch from "../../../Hooks/useMatch";
+import useLocalStorage from "../../../Hooks/useLocalStore";
 
 const CardGame = ({
   width,
@@ -18,46 +19,15 @@ const CardGame = ({
   icon,
 }) => {
   const macth = useMatch("48em");
-  const [active, setActive] = useState(true);
-
-  const setLocal = useCallback(({ id }) => {
-    const isLocal = localStorage.getItem("game");
-
-    if (isLocal) {
-      const gamesArr = JSON.parse(isLocal);
-      const index = gamesArr.indexOf(id);
-
-      if (index !== -1) {
-        gamesArr.splice(index, 1);
-        localStorage.setItem("game", JSON.stringify([...gamesArr]));
-      } else {
-        localStorage.setItem("game", JSON.stringify([...gamesArr, id]));
-      }
-    } else {
-      localStorage.setItem("game", JSON.stringify([id]));
-    }
-  }, []);
-
-  const initial = useCallback(() => {
-    const game = localStorage.getItem("game");
-    if (game) {
-      const arrGame = JSON.parse(game);
-
-      if (arrGame.includes(id)) {
-        setActive(false);
-      }
-    }
-  }, [id]);
+  const {
+    $any: setItem,
+    initial,
+    active,
+  } = useLocalStorage({ key: "game", id });
 
   useEffect(() => {
     initial();
-  }, [initial, id]);
-  const handleClick = async (e) => {
-    e.preventDefault();
-    setActive(!active);
-    setLocal({ id });
-  };
-
+  }, [initial]);
   return (
     <section
       id={id}
@@ -69,19 +39,19 @@ const CardGame = ({
           <Image src={img} alt={title} />
 
           {icon && (
-            <div onClick={handleClick} className={styles.iconContainer}>
+            <div onClick={setItem} className={styles.iconContainer}>
               <i
                 style={{
-                  opacity: active ? 1 : 0,
-                  transform: !active ? "rotate(0deg)" : "",
+                  opacity: !active ? 1 : 0,
+                  transform: active ? "rotate(0deg)" : "",
                 }}
                 className={styles.icon + " fa-solid  fa-plus"}
               ></i>
 
               <i
                 style={{
-                  opacity: !active ? 1 : 0,
-                  transform: active ? "rotate(0deg)" : "",
+                  opacity: active ? 1 : 0,
+                  transform: !active ? "rotate(0deg)" : "",
                 }}
                 className={styles.icon + " fa-solid  fa-check"}
               ></i>

@@ -7,7 +7,7 @@ import useFetch from "../../Hooks/useFetch";
 import Game from "./nav-components/Game";
 import { API_URL } from "../../Api/Api";
 
-const Nav = () => {
+const Nav = ({ setDist }) => {
   const container = useRef();
   const match = useMatch("80em");
   const matchMobile = useMatch("64em");
@@ -30,6 +30,13 @@ const Nav = () => {
       container.current.classList.add("active");
     }
   }
+
+  useEffect(() => {
+    if (container.current) {
+      const { offsetHeight } = container.current;
+      setDist((dist) => ({ ...dist, height: offsetHeight }));
+    }
+  }, [setDist]);
 
   useEffect(() => {
     (async () => await request(API_URL))();
