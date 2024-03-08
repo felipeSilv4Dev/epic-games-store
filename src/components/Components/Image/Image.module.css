@@ -1,5 +1,6 @@
 .container {
   display: grid;
+  flex: 0 0 100%;
 }
 
 .skeleton {

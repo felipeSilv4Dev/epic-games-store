@@ -1,0 +1,51 @@
+.container {
+  flex: 0 0 100%;
+  padding: 0 2rem;
+  border-left: 1px solid var(--type-3-dark);
+  flex: 1;
+}
+
+.title {
+  font-size: 1.4rem;
+  color: var(--type-5-light);
+  font-weight: 500;
+}
+.gnereContainer {
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.genre {
+  font-size: 1.4rem;
+  text-decoration: underline;
+  transition: all 0.2s;
+}
+
+.genre:hover {
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 48em) {
+  .container {
+    flex: auto;
+  }
+
+  .title {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .genre {
+    font-size: 1.6rem;
+  }
+}
+
+@media only screen and (max-width: 17.5em) {
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .genre {
+    font-size: 1.4rem;
+  }
+}

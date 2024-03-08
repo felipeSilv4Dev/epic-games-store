@@ -44,12 +44,12 @@ const Carousel = forwardRef(function SildeComponent(props, ref) {
             (element.offsetWidth + wrapper.current.offsetLeft * 2)) /
           2;
 
-        position = -(element.offsetLeft - right);
+        position = custom ? -element.offsetLeft : -(element.offsetLeft - right);
       }
 
       return { element, position };
     });
-  }, [dist, slide, wrapper]);
+  }, [dist, slide, wrapper, custom]);
 
   const transition = useCallback(
     (active) => {
@@ -283,7 +283,7 @@ const Carousel = forwardRef(function SildeComponent(props, ref) {
                   <div
                     className={styles.control}
                     onClick={eventControl}
-                    key={item.props.id}
+                    key={i * Math.random()}
                     id={i}
                   >
                     {item}

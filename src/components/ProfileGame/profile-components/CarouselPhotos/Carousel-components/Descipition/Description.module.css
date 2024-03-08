@@ -1,0 +1,33 @@
+.container {
+  color: var(--type-2-light);
+}
+.title {
+  font-size: 1.4rem;
+}
+.description {
+  flex-direction: column;
+  margin-top: 2rem;
+  gap: 2rem;
+  align-items: start;
+  font-size: 1.4rem;
+  color: var(--type-4-light);
+  line-height: 1.5;
+}
+
+@media only screen and (max-width: 48em) {
+  .description {
+    font-size: 1.6rem;
+  }
+  .title {
+    font-size: 1.6rem;
+  }
+}
+
+@media only screen and (max-width: 17.5em) {
+  .description {
+    font-size: 1.4rem;
+  }
+  .title {
+    font-size: 1.4rem;
+  }
+}

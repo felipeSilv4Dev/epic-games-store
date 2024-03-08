@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Image.module.css";
 
-const Image = ({ alt, src, radius }) => {
+const Image = ({ alt, src, radius, id }) => {
   const [skeleton, setSkeleton] = useState(true);
 
   const handleLoad = ({ target }) => {
@@ -10,7 +10,7 @@ const Image = ({ alt, src, radius }) => {
   };
 
   return (
-    <div className={styles.container}>
+    <div id={id ? id : ""} className={styles.container}>
       {skeleton && <div className={styles.skeleton}></div>}
       <img
         style={{ borderRadius: radius + "rem" }}
