@@ -6,6 +6,7 @@ import CarouselPhotos from "../CarouselPhotos/CarouselPhotos";
 import Loading from "../../../Loading/Loading";
 import MenuBuy from "../../profile-components/MenuBuy/MenuBuy";
 import useLocalStorage from "../../../../Hooks/useLocalStore";
+import { API_URL } from "../../../../Api/Api";
 
 const Profile = ({ dist }) => {
   const params = useParams();
@@ -29,7 +30,7 @@ const Profile = ({ dist }) => {
   }, [carrinhoInitial, gameInitial]);
 
   useEffect(() => {
-    (async () => await request("../../games-api.json"))();
+    (async () => await request(API_URL))();
   }, [request]);
 
   if (loading) return <Loading />;
