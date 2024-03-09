@@ -17,6 +17,7 @@ const CardGame = ({
   id,
   footerImg,
   icon,
+  theme,
 }) => {
   const macth = useMatch("48em");
   const {
@@ -36,7 +37,9 @@ const CardGame = ({
     >
       <div id={id} className={styles.image}>
         <div>
-          <Image src={img} alt={title} />
+          <figure>
+            <Image src={img} alt={title} />
+          </figure>
 
           {icon && (
             <div onClick={setItem} className={styles.iconContainer}>
@@ -82,6 +85,7 @@ const CardGame = ({
           porcentage={porcentage}
           oldPrice={oldPrice}
           newPrice={newPrice}
+          theme={theme}
         />
       )}
     </section>

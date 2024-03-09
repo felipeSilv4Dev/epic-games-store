@@ -1,0 +1,32 @@
+.info {
+  width: 100%;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--type-6-dark);
+}
+
+.info span {
+  font-size: 1.4rem;
+}
+
+.info span:first-child {
+  color: var(--type-5-light);
+}
+
+@media only screen and (max-width: 48em) {
+  .info {
+    padding-bottom: 1.5rem;
+  }
+  .info span {
+    font-size: 1.6rem;
+  }
+}
+
+@media only screen and (max-width: 17.5em) {
+  .info {
+    padding-bottom: 1.4rem;
+  }
+  .info span {
+    font-size: 1.4rem;
+  }
+}

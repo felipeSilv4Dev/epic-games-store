@@ -35,7 +35,7 @@
         "secondary": 90,
         "terciary": 98
       },
-      "theme": "#3ECD3B"
+      "theme": "#259D17"
     }
   },
   {
@@ -114,7 +114,7 @@
         "secondary": 85,
         "terciary": 95
       },
-      "theme": "#0DB7A2"
+      "theme": "#417970"
     }
   },
   {
@@ -190,7 +190,7 @@
         "secondary": 91,
         "terciary": 97
       },
-      "theme": "#D7BC2F"
+      "theme": "#AFAD15"
     }
   },
 
@@ -239,7 +239,8 @@
     "porcentage": 50,
     "img": {
       "src2": "img/ofertas/alan-game.jpg",
-      "src1": "img/games/alan-game.jpg"
+      "src1": "img/games/alan-game.jpg",
+      "logo": "img/logo/alan-logo.png"
     },
     "oldPrice": "4,500",
     "newPrice": "2,250",
@@ -272,7 +273,8 @@
     "porcentage": 10,
     "img": {
       "src2": "img/ofertas/fifa-game.jpg",
-      "src1": "img/games/fifa-game.jpg"
+      "src1": "img/games/fifa-game.jpg",
+      "logo": "img/logo/fifa-logo.png"
     },
     "oldPrice": "1,000",
     "newPrice": "990",
@@ -294,7 +296,7 @@
         "secondary": 98,
         "terciary": 98
       },
-      "theme": "#3ECD3B"
+      "theme": "#259D17"
     }
   },
 
@@ -305,7 +307,8 @@
     "porcentage": 100,
     "img": {
       "src2": "img/ofertas/naka-game.jpg",
-      "src1": "img/games/naka-game.jpg"
+      "src1": "img/games/naka-game.jpg",
+      "logo": "img/logo/naka-logo.png"
     },
     "oldPrice": "149,50",
     "newPrice": "",
@@ -338,7 +341,8 @@
     "porcentage": 50,
     "img": {
       "src2": "img/ofertas/god-game.jpg",
-      "src1": "img/games/god-game.jpg"
+      "src1": "img/games/god-game.jpg",
+      "logo": "img/logo/god-logo.png"
     },
     "oldPrice": "399,0",
     "newPrice": "199,0",
@@ -360,7 +364,7 @@
         "secondary": 98,
         "terciary": 98
       },
-      "theme": "#3C5ED9"
+      "theme": "#5A86A9"
     }
   }
 ]

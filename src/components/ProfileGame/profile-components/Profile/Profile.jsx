@@ -4,21 +4,39 @@ import { useParams } from "react-router";
 import useFetch from "../../../../Hooks/useFetch";
 import CarouselPhotos from "../CarouselPhotos/CarouselPhotos";
 import Loading from "../../../Loading/Loading";
+import MenuBuy from "../../profile-components/MenuBuy/MenuBuy";
+import useLocalStorage from "../../../../Hooks/useLocalStore";
 
-const Profile = () => {
+const Profile = ({ dist }) => {
   const params = useParams();
   const { id } = params;
   const { request, data, loading } = useFetch();
+  const {
+    $any: gameClick,
+    active: activeGame,
+    initial: gameInitial,
+  } = useLocalStorage({ key: "game", id });
+
+  const {
+    $any: carrinhoClick,
+    active: activeCarrinho,
+    initial: carrinhoInitial,
+  } = useLocalStorage({ key: "carrinho", id });
+
+  useEffect(() => {
+    gameInitial();
+    carrinhoInitial();
+  }, [carrinhoInitial, gameInitial]);
 
   useEffect(() => {
     (async () => await request("../../games-api.json"))();
   }, [request]);
 
   if (loading) return <Loading />;
+
   if (data) {
     const [game] = data.filter((item) => item.id === Number(id));
 
-    console.log(game);
     return (
       <section className={styles.container}>
         <h1>{game.title}</h1>
@@ -39,6 +57,14 @@ const Profile = () => {
 
         <div className={styles.content + " flex"}>
           <CarouselPhotos {...game} />
+          <MenuBuy
+            gameClick={gameClick}
+            activeGame={activeGame}
+            carrinhoClick={carrinhoClick}
+            activeCarrinho={activeCarrinho}
+            dist={dist}
+            {...game}
+          />
         </div>
       </section>
     );
