@@ -50,10 +50,14 @@
   position: relative;
   left: 1.5rem;
 }
+.nav a:global(.active) {
+  color: var(--light-2-light);
+}
 .nav a .nav,
 .carrinho {
   gap: 0.5rem;
 }
+
 .container a {
   padding: 10px;
   border: 1px solid transparent;
@@ -99,6 +103,7 @@
     font-size: 1.4rem;
     transition: all 0.3s;
   }
+
   .nav {
     position: relative;
     left: 1.5rem;
@@ -152,6 +157,7 @@
   .input i:hover {
     color: var(--type-1-light);
   }
+
   .nav li i {
     top: 0.2rem;
     font-size: 1.2rem;
@@ -170,7 +176,8 @@
     transition: all 0.2s;
   }
 
-  .carrinho i:hover {
+  .carrinho i:hover,
+  .icon:global(.active) i {
     color: var(--type-1-light);
   }
 

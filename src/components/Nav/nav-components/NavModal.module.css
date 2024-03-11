@@ -35,6 +35,9 @@
   border-color: var(--type-1-light);
   color: var(--type-1-light);
 }
+.content li a:global(.active) {
+  color: var(--type-1-light);
+}
 
 .overlay {
   position: absolute;

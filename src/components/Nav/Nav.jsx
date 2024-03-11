@@ -6,6 +6,7 @@ import SearchModal from "./nav-components/SearchModal";
 import useFetch from "../../Hooks/useFetch";
 import Game from "./nav-components/Game";
 import { API_URL } from "../../Api/Api";
+import { NavLink, useParams } from "react-router-dom";
 
 const Nav = ({ setDist }) => {
   const container = useRef();
@@ -16,7 +17,19 @@ const Nav = ({ setDist }) => {
   const [search, setSearch] = useState(false);
   const [gameSearch, setGameSearch] = useState([]);
   const [value, setValue] = useState("");
+  const [path, setPath] = useState("/");
+  const { pathname } = window.location;
 
+  const pathNow = useCallback(() => {
+    const { pathname } = window.location;
+    setPath(pathname);
+  }, []);
+
+  useEffect(() => {
+    setPath(pathname);
+  }, [pathname]);
+
+  console.log(path);
   function handleScroll() {
     if (!container.current) return;
     const active = container.current.classList.contains("active");
@@ -106,17 +119,18 @@ const Nav = ({ setDist }) => {
 
           {!match && (
             <div className={styles.nav + " flex"}>
-              <a className="link" href="#Descobrir">
+              <NavLink className="link" to="/">
                 Descobrir
-              </a>
-              <a className="link" href="#Navegar">
+              </NavLink>
+              <NavLink className="link" to="navegar">
                 Navegar
-              </a>
-              <a className="link" href="#Novidades">
-                Novidades
-              </a>
+              </NavLink>
+              <NavLink className="link" to="novidades">
+                Novidade
+              </NavLink>
             </div>
           )}
+
           {match && (
             <div>
               <button
@@ -124,29 +138,46 @@ const Nav = ({ setDist }) => {
                 className={styles.nav + `${nav ? " active" : ""}`}
               >
                 <li className="flex">
-                  <span className={styles.link}>Descobrir</span>
+                  {path === "/" && (
+                    <span className={styles.link}>Descobrir</span>
+                  )}
+                  {path === "/navegar" && (
+                    <span className={styles.link}>navegar</span>
+                  )}
+                  {path === "/novidades" && (
+                    <span className={styles.link}>novidades</span>
+                  )}
                   <i className="fa-solid fa-chevron-down "></i>
                 </li>
               </button>
 
-              <NavModal setNav={setNav} nav={nav} />
+              <NavModal setNav={setNav} nav={nav} pathNow={pathNow} />
             </div>
           )}
         </div>
 
         <div className={styles.carrinho + " flex"}>
           {!matchMobile && (
-            <a className="link" href="#Lista de desejos">
+            <NavLink className="link" to="markup">
               Lista de desejos
-            </a>
+            </NavLink>
           )}
           {!matchMobile && (
-            <a className="link" href="#carrinho">
+            <NavLink className="link" to="carrinho">
               carrinho
-            </a>
+            </NavLink>
           )}
-          {matchMobile && <i className="fa-regular fa-circle-check"></i>}
-          {matchMobile && <i className="fa-solid fa-cart-shopping"></i>}
+          {matchMobile && (
+            <NavLink className={styles.icon} to="carrinho">
+              <i className="fa-regular fa-circle-check"></i>
+            </NavLink>
+          )}
+
+          {matchMobile && (
+            <NavLink className={styles.icon} to="markup">
+              <i className="fa-solid fa-cart-shopping"></i>
+            </NavLink>
+          )}
         </div>
       </div>
     </section>
