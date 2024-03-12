@@ -57,7 +57,9 @@
 .carrinho {
   gap: 0.5rem;
 }
-
+.carrinho a:global(.active) {
+  color: var(--type-1-light);
+}
 .container a {
   padding: 10px;
   border: 1px solid transparent;
@@ -169,6 +171,7 @@
   .carrinho {
     gap: 2rem;
   }
+
   .carrinho i {
     color: var(--type-5-light);
     font-size: 2rem;

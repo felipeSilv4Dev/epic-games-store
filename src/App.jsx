@@ -6,6 +6,8 @@ import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
 import ProfileGame from "./components/ProfileGame/Profile.Game";
 import { useState } from "react";
+import Markup from "./components/Markup/Markup";
+import Car from "./components/Car/Car";
 
 function App() {
   const [dist, setDist] = useState({ height: "" });
@@ -17,6 +19,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="game/:id" element={<ProfileGame dist={dist} />} />
+          <Route path="markup" element={<Markup />} />
+          <Route path="carrinho" element={<Car />} />
         </Routes>
       </BrowserRouter>
       <Footer />

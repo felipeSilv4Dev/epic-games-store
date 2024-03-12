@@ -157,7 +157,7 @@ const Nav = ({ setDist }) => {
 
         <div className={styles.carrinho + " flex"}>
           {!matchMobile && (
-            <NavLink className="link" to="markup">
+            <NavLink className="link " to="markup">
               Lista de desejos
             </NavLink>
           )}
@@ -166,14 +166,15 @@ const Nav = ({ setDist }) => {
               carrinho
             </NavLink>
           )}
+
           {matchMobile && (
-            <NavLink className={styles.icon} to="carrinho">
+            <NavLink className={styles.icon} to="markup">
               <i className="fa-regular fa-circle-check"></i>
             </NavLink>
           )}
 
           {matchMobile && (
-            <NavLink className={styles.icon} to="markup">
+            <NavLink className={styles.icon} to="carrinho">
               <i className="fa-solid fa-cart-shopping"></i>
             </NavLink>
           )}
