@@ -13,18 +13,8 @@
 }
 
 .oldPrice {
-  position: relative;
   color: var(--type-4-light);
-}
-
-.oldPrice::before {
-  content: "";
-  width: 100%;
-  height: 1px;
-  display: block;
-  position: absolute;
-  top: 50%;
-  background-color: currentColor;
+  text-decoration: line-through;
 }
 
 @media only screen and (max-width: 80em) {

@@ -3,7 +3,7 @@ import styles from "./Games.module.css";
 import Card from "../Components/Card/Card";
 import useFetch from "../../Hooks/useFetch";
 import useMatch from "../../Hooks/useMatch";
-import Carousel from "../Components/Carousel/Carousel";
+import { Carousel } from "../Components/Carousel/Carousel";
 import { NavLink } from "react-router-dom";
 import LoadingGame from "./Loading/LoadingGame";
 import { API_URL } from "../../Api/Api";

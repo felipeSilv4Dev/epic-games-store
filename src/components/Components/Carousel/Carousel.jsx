@@ -2,7 +2,7 @@ import React, { forwardRef, useCallback, useEffect, useRef } from "react";
 import styles from "./Carousel.module.css";
 import { useNavigate } from "react-router-dom";
 
-const Carousel = forwardRef(function SildeComponent(props, ref) {
+export const Carousel = forwardRef(function SildeComponent(props, ref) {
   const wrapper = ref;
   const slide = useRef();
   const controls = useRef();
@@ -297,5 +297,3 @@ const Carousel = forwardRef(function SildeComponent(props, ref) {
     </div>
   );
 });
-
-export default Carousel;

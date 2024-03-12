@@ -10,7 +10,7 @@
       "logo": "img/logo/fort-logo.png",
       "src3": "img/banner/fort-banner.jpg"
     },
-    "oldPrice": "205,60",
+    "oldPrice": "205,6",
     "newPrice": "",
     "descriptionText": "Grátis - 03 de mar ás 19:00",
     "home": {
@@ -49,8 +49,8 @@
       "logo": "img/logo/red-logo.png",
       "src3": "img/banner/red-banner.jpg"
     },
-    "oldPrice": "510",
-    "newPrice": "255",
+    "oldPrice": "510,0",
+    "newPrice": "255,0",
     "home": {
       "span": "Já Disponível",
       "text": "Viva o Oeste em Red Dead, onde suas escolhas moldam seu destino.",
@@ -128,8 +128,8 @@
       "logo": "img/logo/valo-logo.png",
       "src3": "img/banner/valo-banner.jpg"
     },
-    "oldPrice": "500",
-    "newPrice": "450",
+    "oldPrice": "500,0",
+    "newPrice": "450,0",
     "desconto": true,
     "home": {
       "span": "Disponível em 5 de Setembro",
@@ -277,7 +277,7 @@
       "logo": "img/logo/fifa-logo.png"
     },
     "oldPrice": "1,000",
-    "newPrice": "990",
+    "newPrice": "990,0",
     "oferta": true,
     "popular": true,
     "profile": {
@@ -310,7 +310,7 @@
       "src1": "img/games/naka-game.jpg",
       "logo": "img/logo/naka-logo.png"
     },
-    "oldPrice": "149,50",
+    "oldPrice": "149,5",
     "newPrice": "",
     "gratis": true,
     "descriptionText": "Grátis - 03 de abr ás 11:00",

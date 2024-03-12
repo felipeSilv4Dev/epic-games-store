@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import styles from "./CarouselPhotos.module.css";
-import Carousel from "../../../Components/Carousel/Carousel";
+import { Carousel } from "../../../Components/Carousel/Carousel";
 import Genre from "./Carousel-components/Genre/Genre";
 import Description from "./Carousel-components/Descipition/Description";
 import Photos from "./Carousel-components/Photos/Photos";

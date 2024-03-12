@@ -14,6 +14,7 @@ const Game = ({ id, title, img }) => {
       className={styles.container + " flex"}
     >
       <Image src={deep ? "../" + img.src1 : img.src1} alt={title} />
+
       <h2 className={styles.title}>{title}</h2>
     </div>
   );

@@ -6,6 +6,9 @@
   gap: 1.2rem;
 }
 
+.container > div {
+  flex: 0 0 auto;
+}
 .container img {
   height: 4.3rem;
   border-radius: 0.5rem;

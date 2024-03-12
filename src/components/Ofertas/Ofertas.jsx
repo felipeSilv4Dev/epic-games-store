@@ -3,7 +3,7 @@ import styles from "./Ofertas.module.css";
 import useFetch from "../../Hooks/useFetch";
 import Card from "../Components/Card/Card";
 import useMatch from "../../Hooks/useMatch";
-import Carousel from "../Components/Carousel/Carousel";
+import { Carousel } from "../Components/Carousel/Carousel";
 import { NavLink } from "react-router-dom";
 import LoadingOfertas from "./ofertas-components/LoadingOfertas/LoadingOfertas";
 import { API_URL } from "../../Api/Api";

@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import style from "./ListGame.module.css";
 import List from "./list-components/List/List";
 import useMatch from "../../Hooks/useMatch";
-import Carousel from "../Components/Carousel/Carousel";
+import { Carousel } from "../Components/Carousel/Carousel";
 
 const ListGame = () => {
   const match = useMatch("48em");

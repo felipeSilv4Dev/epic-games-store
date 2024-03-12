@@ -3,7 +3,7 @@ import styles from "./Home.module.css";
 import Banner from "./home-components/Banner";
 import Game from "./home-components/Game";
 import useMatch from "../../Hooks/useMatch";
-import Carousel from "../Components/Carousel/Carousel";
+import { Carousel } from "../Components/Carousel/Carousel";
 import useFetch from "../../Hooks/useFetch";
 import { useNavigate } from "react-router-dom";
 import Loading from "./home-components/LoadingHome/Loading";
