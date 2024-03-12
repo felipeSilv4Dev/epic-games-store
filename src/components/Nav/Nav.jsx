@@ -29,7 +29,6 @@ const Nav = ({ setDist }) => {
     setPath(pathname);
   }, [pathname]);
 
-  console.log(path);
   function handleScroll() {
     if (!container.current) return;
     const active = container.current.classList.contains("active");

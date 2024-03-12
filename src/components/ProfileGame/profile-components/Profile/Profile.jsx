@@ -16,13 +16,13 @@ const Profile = ({ dist }) => {
     $any: gameClick,
     active: activeGame,
     initial: gameInitial,
-  } = useLocalStorage({ key: "game", id });
+  } = useLocalStorage({ key: "game", id: +id });
 
   const {
     $any: carrinhoClick,
     active: activeCarrinho,
     initial: carrinhoInitial,
-  } = useLocalStorage({ key: "carrinho", id });
+  } = useLocalStorage({ key: "carrinho", id: +id });
 
   useEffect(() => {
     gameInitial();

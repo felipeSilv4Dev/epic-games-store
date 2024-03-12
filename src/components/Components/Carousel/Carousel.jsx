@@ -226,8 +226,9 @@ const Carousel = forwardRef(function SildeComponent(props, ref) {
     ({ target }) => {
       if (dist.mov == 0) {
         const { id } = target.closest("section");
+        const icon = target === target.closest("i");
 
-        if (id) {
+        if (id && !icon) {
           navigate(`game/${id}`);
         }
       }

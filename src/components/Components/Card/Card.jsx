@@ -19,20 +19,29 @@ const CardGame = ({
   icon,
   theme,
 }) => {
-  const macth = useMatch("48em");
+  const match = useMatch("48em");
+  const [open, setOpen] = useState(false);
   const {
     $any: setItem,
     initial,
     active,
   } = useLocalStorage({ key: "game", id });
 
+  const handleOver = () => {
+    setOpen(true);
+  };
+  const handleOut = () => {
+    setOpen(false);
+  };
+
   useEffect(() => {
     initial();
   }, [initial]);
+
   return (
     <section
       id={id}
-      style={{ width: `${macth && width}%` }}
+      style={{ width: `${match && width}%` }}
       className={styles.container + " flex"}
     >
       <div id={id} className={styles.image}>
@@ -42,7 +51,12 @@ const CardGame = ({
           </figure>
 
           {icon && (
-            <div onClick={setItem} className={styles.iconContainer}>
+            <div
+              onMouseOut={handleOut}
+              onMouseOver={handleOver}
+              onClick={setItem}
+              className={styles.iconContainer}
+            >
               <i
                 style={{
                   opacity: !active ? 1 : 0,
@@ -71,6 +85,14 @@ const CardGame = ({
           >
             {newPrice ? "Em breve" : "gratuito"}
           </p>
+        )}
+
+        {icon && !match && open && (
+          <span className={styles.popUp}>
+            {!active
+              ? "Para a lista de desejos"
+              : "Remover da lista de desejos"}
+          </span>
         )}
       </div>
 
