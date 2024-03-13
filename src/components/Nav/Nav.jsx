@@ -6,7 +6,7 @@ import SearchModal from "./nav-components/SearchModal";
 import useFetch from "../../Hooks/useFetch";
 import Game from "./nav-components/Game";
 import { API_URL } from "../../Api/Api";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Nav = ({ setDist }) => {
   const container = useRef();
@@ -18,16 +18,11 @@ const Nav = ({ setDist }) => {
   const [gameSearch, setGameSearch] = useState([]);
   const [value, setValue] = useState("");
   const [path, setPath] = useState("/");
-  const { pathname } = window.location;
-
-  const pathNow = useCallback(() => {
-    const { pathname } = window.location;
-    setPath(pathname);
-  }, []);
+  const loaction = useLocation();
 
   useEffect(() => {
-    setPath(pathname);
-  }, [pathname]);
+    setPath(loaction.pathname);
+  }, [loaction]);
 
   function handleScroll() {
     if (!container.current) return;
@@ -137,20 +132,39 @@ const Nav = ({ setDist }) => {
                 className={styles.nav + `${nav ? " active" : ""}`}
               >
                 <li className="flex">
-                  {path === "/" && (
-                    <span className={styles.link}>Descobrir</span>
+                  {path !== "/navegar" && path !== "/novidades" && (
+                    <span
+                      className={
+                        styles.link + ` ${path === "/" ? " active" : ""}`
+                      }
+                    >
+                      Descobrir
+                    </span>
                   )}
                   {path === "/navegar" && (
-                    <span className={styles.link}>navegar</span>
+                    <span
+                      className={
+                        styles.link + ` ${path === "/navegar" ? " active" : ""}`
+                      }
+                    >
+                      navegar
+                    </span>
                   )}
                   {path === "/novidades" && (
-                    <span className={styles.link}>novidades</span>
+                    <span
+                      className={
+                        styles.link +
+                        ` ${path === "/novidades" ? " active" : ""}`
+                      }
+                    >
+                      novidades
+                    </span>
                   )}
                   <i className="fa-solid fa-chevron-down "></i>
                 </li>
               </button>
 
-              <NavModal setNav={setNav} nav={nav} pathNow={pathNow} />
+              <NavModal setNav={setNav} nav={nav} />
             </div>
           )}
         </div>

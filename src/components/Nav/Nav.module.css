@@ -93,7 +93,8 @@
 @media only screen and (max-width: 80em) {
   .nav {
     all: unset;
-    color: var(--type-2-light);
+    color: var(--type-4-light);
+
     padding: 10px;
     border-radius: 0.5rem;
     border: 1px solid transparent;
@@ -105,30 +106,32 @@
     font-size: 1.4rem;
     transition: all 0.3s;
   }
-
   .nav {
     position: relative;
     left: 1.5rem;
+  }
+  .nav:hover .link,
+  .nav:hover i {
+    color: var(--type-1-light);
   }
 
   .nav i {
     position: relative;
     margin-left: 0.5rem;
     top: 0.1rem;
-    color: var(--type-2-light);
+    color: var(--type-4-light);
     font-size: 1.1rem;
     transition: all 0.3s;
+  }
+  .nav span:global(.active),
+  .nav span:global(.active) + i {
+    color: var(--type-1-light);
   }
   .nav:global(.active) {
     border-color: var(--type-1-light);
     color: var(--type-1-light);
   }
-  .nav:global(.active) .link,
   .nav:global(.active) i {
-    color: var(--type-1-light);
-  }
-  .nav:hover .link,
-  .nav:hover i {
     color: var(--type-1-light);
   }
 

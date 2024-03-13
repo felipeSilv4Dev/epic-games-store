@@ -8,6 +8,8 @@ import ProfileGame from "./components/ProfileGame/Profile.Game";
 import { useState } from "react";
 import Markup from "./components/Markup/Markup";
 import Car from "./components/Car/Car";
+import Navegar from "./components/Navegar/Navegar";
+import Novidades from "./components/Novidades/Novidades";
 
 function App() {
   const [dist, setDist] = useState({ height: "" });
@@ -21,6 +23,8 @@ function App() {
           <Route path="game/:id" element={<ProfileGame dist={dist} />} />
           <Route path="markup" element={<Markup />} />
           <Route path="carrinho" element={<Car />} />
+          <Route path="navegar" element={<Navegar />} />
+          <Route path="novidades" element={<Novidades />} />
         </Routes>
       </BrowserRouter>
       <Footer />

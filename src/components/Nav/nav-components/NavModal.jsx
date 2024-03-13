@@ -1,7 +1,7 @@
 import styles from "./NavModal.module.css";
 import { NavLink } from "react-router-dom";
 
-const NavModal = ({ setNav, nav, pathNow }) => {
+const NavModal = ({ setNav, nav }) => {
   return (
     <>
       <div
@@ -10,14 +10,14 @@ const NavModal = ({ setNav, nav, pathNow }) => {
       ></div>
       <div className={styles.container + `${nav ? " active" : ""}`}>
         <div className={styles.content}>
-          <li onClick={() => pathNow()}>
+          <li>
             <NavLink to="/">Descobrir</NavLink>
           </li>
-          <li onClick={() => pathNow()}>
+          <li>
             <NavLink to="navegar">Navegar</NavLink>
           </li>
 
-          <li onClick={() => pathNow()}>
+          <li>
             <NavLink to="novidades">Novidade</NavLink>
           </li>
         </div>
