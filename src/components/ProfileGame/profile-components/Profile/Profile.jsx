@@ -6,6 +6,7 @@ import CarouselPhotos from "../CarouselPhotos/CarouselPhotos";
 import Loading from "../../../Loading/Loading";
 import MenuBuy from "../../profile-components/MenuBuy/MenuBuy";
 import useLocalStorage from "../../../../Hooks/useLocalStore";
+import Details from "../Details/Details";
 import { API_URL } from "../../../../Api/Api";
 
 const Profile = ({ dist }) => {
@@ -13,14 +14,14 @@ const Profile = ({ dist }) => {
   const { id } = params;
   const { request, data, loading } = useFetch();
   const {
-    $any: gameClick,
-    active: activeGame,
+    $any: clickGame,
+    active: game,
     initial: gameInitial,
   } = useLocalStorage({ key: "game", id: +id });
 
   const {
-    $any: carrinhoClick,
-    active: activeCarrinho,
+    $any: clickCar,
+    active: carrinho,
     initial: carrinhoInitial,
   } = useLocalStorage({ key: "carrinho", id: +id });
 
@@ -36,11 +37,11 @@ const Profile = ({ dist }) => {
   if (loading) return <Loading />;
 
   if (data) {
-    const [game] = data.filter((item) => item.id === Number(id));
+    const [dates] = data.filter((item) => item.id === Number(id));
 
     return (
       <section className={styles.container}>
-        <h1>{game.title}</h1>
+        <h1>{dates.title}</h1>
 
         <div className={styles.header + " flex"}>
           <h2>
@@ -57,16 +58,24 @@ const Profile = ({ dist }) => {
         </div>
 
         <div className={styles.content + " flex"}>
-          <CarouselPhotos {...game} />
+          <CarouselPhotos {...dates} />
           <MenuBuy
-            gameClick={gameClick}
-            activeGame={activeGame}
-            carrinhoClick={carrinhoClick}
-            activeCarrinho={activeCarrinho}
+            clickGame={clickGame}
+            game={game}
+            clickCar={clickCar}
+            carrinho={carrinho}
             dist={dist}
-            {...game}
+            {...dates}
           />
         </div>
+
+        <Details
+          dates={dates}
+          clickGame={clickGame}
+          game={game}
+          clickCar={clickCar}
+          carrinho={carrinho}
+        />
       </section>
     );
   }

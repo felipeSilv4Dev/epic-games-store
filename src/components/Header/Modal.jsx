@@ -56,7 +56,7 @@ const Modal = ({ active, setModal }) => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div>
-            <h1>Jogar</h1>
+            <h2>Jogar</h2>
             {crie.slice(0, 3).map((item, i) => (
               <div key={i}>
                 <LiModal classe={item.class} text={item.text} />
@@ -65,7 +65,7 @@ const Modal = ({ active, setModal }) => {
           </div>
 
           <div>
-            <h1>Descobrir</h1>
+            <h2>Descobrir</h2>
             {crie.slice(0, 4).map((item, i) => (
               <div key={i}>
                 <LiModal classe={item.class} text={item.text} />
@@ -75,7 +75,7 @@ const Modal = ({ active, setModal }) => {
         </div>
 
         <div>
-          <h1>Crie</h1>
+          <h2>Crie</h2>
           {crie.map((item, i) => (
             <div key={i}>
               <LiModal classe={item.class} text={item.text} />

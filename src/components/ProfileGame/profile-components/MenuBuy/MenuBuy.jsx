@@ -13,10 +13,10 @@ const MenuBuy = ({
   profile,
   img,
   dist,
-  gameClick,
-  carrinhoClick,
-  activeGame,
-  activeCarrinho,
+  clickGame,
+  clickCar,
+  game,
+  carrinho,
 }) => {
   const match = useMatch("48em");
   const container = useRef();
@@ -73,21 +73,16 @@ const MenuBuy = ({
         Comprar Agora
       </Button>
 
-      <div
-        style={{ width: "100%" }}
-        onClick={activeCarrinho ? null : carrinhoClick}
-      >
+      <div style={{ width: "100%" }} onClick={carrinho ? null : clickCar}>
         <Button btn="secondary">
-          <NavLink to={activeCarrinho ? "/carrinho" : ""}>
-            {activeCarrinho
-              ? "visualizar no carrinho"
-              : "adicionar Ao carrinho"}
+          <NavLink to={carrinho ? "/carrinho" : null}>
+            {carrinho ? "visualizar no carrinho" : "adicionar Ao carrinho"}
           </NavLink>
         </Button>
       </div>
-      <div style={{ width: "100%" }} onClick={gameClick}>
+      <div style={{ width: "100%" }} onClick={clickGame}>
         <Button btn="secondary">
-          {activeGame ? "na lista de desejos" : "para a lista de desejos"}
+          {game ? "na lista de desejos" : "para a lista de desejos"}
         </Button>
       </div>
 

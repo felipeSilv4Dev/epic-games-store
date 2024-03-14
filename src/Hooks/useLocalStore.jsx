@@ -42,7 +42,7 @@ const LocalStorage = ({ key, id }) => {
     setLocal({ id });
   };
 
-  return { $any, initial, active };
+  return { $any, initial, active, setActive };
 };
 
 export default LocalStorage;
