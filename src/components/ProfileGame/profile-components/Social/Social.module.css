@@ -1,0 +1,40 @@
+.title {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+.container {
+  background-color: var(--modal-bg);
+  width: calc(100% - (27rem + 3.4vw));
+  padding: 3.2rem 6rem;
+  border-radius: 0.4rem;
+}
+
+.icon {
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4rem;
+}
+.icon i {
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: var(--type-4-light);
+  transition: all 0.2s;
+}
+.icon i:hover {
+  color: var(--type-2-light);
+  transform: translateY(-0.2rem);
+}
+
+@media only screen and (max-width: 80em) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 17.5em) {
+  .container {
+    padding: 3rem;
+  }
+}
