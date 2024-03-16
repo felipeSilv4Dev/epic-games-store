@@ -6,7 +6,7 @@ const Score = ({ porcentage, theme, text }) => {
     <div className={styles.container + " flex"}>
       <div
         style={{
-          background: `conic-gradient(${theme} calc(${porcentage} * 3.6deg), var(--type-1-dark) 0)`,
+          background: `conic-gradient(${theme} calc(${porcentage} * 3.6deg), var(--type-2-dark) 0)`,
         }}
         className={styles.review}
       >

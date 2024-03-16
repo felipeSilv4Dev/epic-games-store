@@ -10,72 +10,57 @@ const Reviews = ({ title, profile }) => {
   const match = useMatch("89.8125em");
   const { primary, secondary, terciary } = profile.score;
 
+  const reviews = [
+    { text: "Críticos recomendam", porcentage: primary },
+    { text: "Média dos principais críticos", porcentage: secondary },
+    { text: "Média do público", porcentage: terciary },
+  ];
+
+  const reviewInfo = [
+    { author: "Adam Sessler", score: "8/10" },
+    { author: "Anita Sarkeesia", score: "10/10" },
+    { author: "Jeff Gerstmann", score: "9/10" },
+  ];
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Notas e avaliações: {title}</h2>
       <div className={styles.reviews + " flex"}>
-        <Score
-          theme={profile.theme}
-          porcentage={primary}
-          text={"Críticos recomendam"}
-        />
-        <Score
-          theme={profile.theme}
-          porcentage={secondary}
-          text={"Média dos principais críticos"}
-        />
-        <Score
-          theme={profile.theme}
-          porcentage={terciary}
-          text={"Média do público"}
-        />
+        {reviews.map(({ text, porcentage }) => (
+          <Score
+            key={porcentage}
+            theme={profile.theme}
+            porcentage={porcentage}
+            text={text}
+          />
+        ))}
       </div>
+
       {!match && (
         <div className={styles.info + " flex"}>
-          <ReviewsInfo
-            author={"Adam Sessler"}
-            score={"8/10"}
-            title={title}
-            company={profile.company}
-          />
-          <ReviewsInfo
-            author={"Anita Sarkeesia"}
-            score={"6/10"}
-            title={title}
-            company={profile.company}
-          />
-          <ReviewsInfo
-            author={"Jeff Gerstmann"}
-            score={"10/10"}
-            title={title}
-            company={profile.company}
-          />
+          {reviewInfo.map(({ author, score }) => (
+            <ReviewsInfo
+              key={score}
+              author={author}
+              score={score}
+              title={title}
+              company={profile.company}
+            />
+          ))}
         </div>
       )}
       <div className={styles.slide}>
         {match && (
           <Carousel ref={refInfo} control={true} custom={[]}>
-            <ReviewsInfo
-              author={"Adam Sessler"}
-              score={"8/10"}
-              id={1}
-              title={title}
-              company={profile.company}
-            />
-            <ReviewsInfo
-              author={"Anita Sarkeesia"}
-              score={"6/10"}
-              id={2}
-              title={title}
-              company={profile.company}
-            />
-            <ReviewsInfo
-              author={"Jeff Gerstmann"}
-              score={"10/10"}
-              id={3}
-              title={title}
-              company={profile.company}
-            />
+            {reviewInfo.map(({ author, score }) => (
+              <ReviewsInfo
+                key={score}
+                author={author}
+                score={score}
+                title={title}
+                company={profile.company}
+              />
+            ))}
           </Carousel>
         )}
       </div>

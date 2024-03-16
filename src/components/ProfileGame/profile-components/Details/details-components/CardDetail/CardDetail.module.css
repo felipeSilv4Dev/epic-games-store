@@ -6,15 +6,12 @@
   width: calc(100% - (27rem + 3.4vw));
 }
 
-.image {
-  height: 18rem;
-  background-color: var(--type-6-dark);
+.image div {
+  width: 35rem;
+  flex: 0 0 100%;
 }
-
 .image img {
-  padding: 2rem 4rem 2rem 2rem;
-  align-items: center;
-  justify-content: center;
+  border-radius: 0;
 }
 .info {
   height: 18rem;
@@ -68,21 +65,30 @@
     width: 100%;
   }
 }
-@media (max-width: 48em) {
+
+@media (max-width: 46em) {
+  .image div {
+    width: 100%;
+  }
   .priceContainer div button {
     padding: 1.3rem;
     font-size: 1.4rem;
+  }
+  .info > div h2 {
+    font-size: 1.8rem;
+  }
+  .info > div span {
+    font-size: 1.1rem;
   }
 }
 @media (max-width: 41.25em) {
   .container > div {
     flex-direction: column;
   }
-  .image {
-    height: 30rem;
-  }
+
   .info {
     padding: 2rem;
+    height: 100%;
     justify-content: center;
   }
   .info h2 {
@@ -108,14 +114,22 @@
 }
 
 @media only screen and (max-width: 17.5em) {
-  .image {
-    height: 20rem;
-  }
   .priceContainer {
     padding: 2rem;
   }
   .priceContainer div button {
     font-size: 1.3rem;
     padding: 1.6rem;
+  }
+
+  .info p {
+    font-size: 1.4rem;
+  }
+
+  .info > div h2 {
+    font-size: 1.4rem;
+  }
+  .info > div span {
+    font-size: 1rem;
   }
 }

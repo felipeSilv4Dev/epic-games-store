@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./CardDetail.module.css";
 import Button from "../../../../../Components/Button/Button";
 import Image from "../../../../../Components/Image/Image";
@@ -13,12 +13,13 @@ const CardDetail = ({
   game,
   clickCar,
   carrinho,
+  profile,
 }) => {
   return (
     <div className={styles.container}>
       <div className={" flex"}>
         <div className={styles.image + " flex"}>
-          <Image src={"../" + img.logo} alt={title} />
+          <Image src={"../" + profile.img[4]} alt={title} />
         </div>
 
         <div className={styles.info + " flex"}>

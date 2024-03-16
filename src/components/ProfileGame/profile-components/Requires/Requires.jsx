@@ -2,10 +2,10 @@ import React from "react";
 import styles from "./Requires.module.css";
 import System from "./requires-components/System/System";
 
-const Requires = () => {
+const Requires = ({ title, profile }) => {
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Requisitos de sistema de Skull and Bones</h2>
+      <h2 className={styles.title}>Requisitos de sistema de {title}</h2>
 
       <div className={styles.content}>
         <div className={styles.header}>
@@ -48,7 +48,10 @@ const Requires = () => {
           </div>
         </div>
 
-        <System title="Ubisoft" subtitle="Contas para login obrigatórias" />
+        <System
+          title={profile.company}
+          subtitle="Contas para login obrigatórias"
+        />
 
         <System
           title="ÁUDIO: inglês, inglês (adaptado), francês, alemão, espanhol (Espanha), japonês
@@ -59,9 +62,9 @@ COMENTÁRIOS: o inglês (adaptado) é destinado apenas a países asiáticos. Ser
 
         <div className={styles.footer}>
           <span>
-            © 2024 Ubisoft Entertainment. All Rights Reserved. Skull and Bones,
-            Ubisoft, and the Ubisoft logo are registered or unregistered
-            trademarks of Ubisoft Entertainment in the US and/or other
+            © 2024 {profile.company}. All Rights Reserved. {title},
+            {profile.company}, and the {profile.company} logo are registered or
+            unregistered trademarks of {profile.company} in the US and/or other
             countries.
           </span>
           <h2>Política de Privacidade</h2>

@@ -82,7 +82,7 @@ const Profile = ({ dist }) => {
 
         <Social />
         <Reviews {...dates} />
-        <Requires />
+        <Requires {...dates} />
       </section>
     );
   }
