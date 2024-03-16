@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "./CardDetail.module.css";
-import Button from "../../../MenuBuy/menuBuy-components/Button/Button";
+import Button from "../../../../../Components/Button/Button";
+import Image from "../../../../../Components/Image/Image";
 import { NavLink } from "react-router-dom";
 
 const CardDetail = ({
@@ -17,7 +18,7 @@ const CardDetail = ({
     <div className={styles.container}>
       <div className={" flex"}>
         <div className={styles.image + " flex"}>
-          <img src={"../" + img.logo} alt={title} />
+          <Image src={"../" + img.logo} alt={title} />
         </div>
 
         <div className={styles.info + " flex"}>
@@ -36,23 +37,21 @@ const CardDetail = ({
       </div>
 
       <div className={styles.priceContainer + " flex"}>
-        <div className={styles.priceContent}>
-          <p className={styles.price}>
-            {newPrice ? ` R$ ${newPrice}` : "Gratuito"}
-          </p>
+        <p className={styles.price}>
+          {newPrice ? ` R$ ${newPrice}` : "Gratuito"}
+        </p>
 
-          <div onClick={carrinho ? null : clickCar} style={{ width: "100%" }}>
-            <NavLink to={carrinho ? "/carrinho" : null}>
-              <Button btn="secondary">
-                {carrinho ? "visualizar carrinho" : " Adicionar ao carrinho"}
-              </Button>
-            </NavLink>
-          </div>
-          <div onClick={clickGame} style={{ width: "100%" }}>
+        <div onClick={carrinho ? null : clickCar} style={{ width: "100%" }}>
+          <NavLink to={carrinho ? "/carrinho" : null}>
             <Button btn="secondary">
-              {game ? "na lista de desejo" : "para a lista de desejos"}
+              {carrinho ? "visualizar carrinho" : " Adicionar ao carrinho"}
             </Button>
-          </div>
+          </NavLink>
+        </div>
+        <div onClick={clickGame} style={{ width: "100%" }}>
+          <Button btn="secondary">
+            {game ? "na lista de desejo" : "para a lista de desejos"}
+          </Button>
         </div>
       </div>
     </div>

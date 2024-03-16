@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./MenuBuy.module.css";
 import Card from "../../../Components/Card/Card";
-import Button from "./menuBuy-components/Button/Button";
+import Button from "../../../Components/Button/Button";
 import Info from "./menuBuy-components/Info/Info";
 import useMatch from "../../../../Hooks/useMatch";
 import { NavLink } from "react-router-dom";

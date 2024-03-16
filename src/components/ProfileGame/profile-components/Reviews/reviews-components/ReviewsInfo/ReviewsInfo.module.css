@@ -48,11 +48,48 @@
   text-decoration: none;
 }
 
-@media only screen and (max-width: 48em) {
+@media (max-width: 48em) {
   .container {
     flex-shrink: 0;
     margin: 3rem 0 1rem 0;
     max-width: none;
     width: 100%;
+  }
+  .subtitle {
+    font-size: 1.55rem;
+  }
+  .title,
+  .media,
+  .link,
+  .content p,
+  .icon {
+    font-size: 1.6rem;
+  }
+
+  .content p {
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 17.5em) {
+  .title,
+  .subtitle,
+  .media,
+  .link,
+  .content p,
+  .icon {
+    font-size: 1.4rem;
+  }
+
+  .link {
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
   }
 }

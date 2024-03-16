@@ -7,11 +7,11 @@ import useMatch from "../../../../Hooks/useMatch";
 
 const Reviews = ({ title, profile }) => {
   const refInfo = useRef();
-  const match = useMatch("48em");
+  const match = useMatch("89.8125em");
   const { primary, secondary, terciary } = profile.score;
 
   return (
-    <div>
+    <div className={styles.container}>
       <h2 className={styles.title}>Notas e avaliações: {title}</h2>
       <div className={styles.reviews + " flex"}>
         <Score
@@ -54,7 +54,7 @@ const Reviews = ({ title, profile }) => {
       )}
       <div className={styles.slide}>
         {match && (
-          <Carousel ref={refInfo} control={true}>
+          <Carousel ref={refInfo} control={true} custom={[]}>
             <ReviewsInfo
               author={"Adam Sessler"}
               score={"8/10"}

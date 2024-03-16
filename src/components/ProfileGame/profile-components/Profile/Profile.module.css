@@ -32,7 +32,7 @@ h1 {
   align-items: flex-start;
 }
 
-@media only screen and (max-width: 80em) {
+@media (max-width: 80em) {
   h1 {
     font-size: 3rem;
   }
@@ -42,9 +42,9 @@ h1 {
   }
 }
 
-@media only screen and (max-width: 64em) {
+@media (max-width: 64em) {
   .container {
-    padding: 0 4rem;
+    padding: 0 3rem;
   }
   h1 {
     font-size: 2.6rem;
@@ -63,8 +63,10 @@ h1 {
   }
 }
 
-@media only screen and (max-width: 48em) {
+@media (max-width: 48em) {
   .container {
+    width: 95%;
+    margin: 0 auto;
     padding: 0;
   }
   h1 {
@@ -74,13 +76,11 @@ h1 {
     font-size: 1.4rem;
   }
   .header {
-    overflow-x: scroll;
     gap: 0.8rem;
   }
-  .header h2 {
-    flex: 0 0 auto;
-    word-break: break-all;
-    font-size: 1.6rem;
+  .header h2:nth-child(2),
+  .header h2:nth-child(3) {
+    display: none;
   }
   .content {
     flex-direction: column;

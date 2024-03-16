@@ -49,38 +49,32 @@
 }
 
 .priceContainer {
-  padding: 2.5rem 3.5rem;
-  gap: 2rem;
   justify-content: flex-end;
+  width: 100%;
+  padding: 2.5rem 3.5rem;
   border-top: 1px solid var(--type-4-dark);
-}
-.priceContent {
-  display: flex;
   align-items: center;
   gap: 1.2rem;
-  width: 60%;
-}
-.price,
-.priceContent button {
-  font-size: 1.4rem;
 }
 .price {
-  flex: 0 0 auto;
+  font-size: 1.4rem;
 }
-.priceContent button {
-  font-size: 1.2rem;
+.priceContainer div {
+  max-width: fit-content;
 }
 
-@media only screen and (max-width: 80em) {
+@media (max-width: 80em) {
   .container {
     width: 100%;
   }
-  .priceContent {
-    width: 84%;
+}
+@media (max-width: 48em) {
+  .priceContainer div button {
+    padding: 1.3rem;
+    font-size: 1.4rem;
   }
 }
-
-@media only screen and (max-width: 41.25em) {
+@media (max-width: 41.25em) {
   .container > div {
     flex-direction: column;
   }
@@ -98,15 +92,18 @@
     font-size: 1.6rem;
   }
 
-  .priceContent {
+  .priceContainer {
     width: 100%;
-    right: initial;
-    flex-direction: column;
   }
-  .price,
-  .priceContent button {
+  .price {
     font-size: 1.6rem;
-    flex: 1;
+  }
+  .priceContainer div {
+    max-width: 100%;
+  }
+  .priceContainer div button {
+    font-size: 1.8rem;
+    padding: 2rem;
   }
 }
 
@@ -114,8 +111,11 @@
   .image {
     height: 20rem;
   }
-  .price,
-  .priceContent button {
-    font-size: 1.4rem;
+  .priceContainer {
+    padding: 2rem;
+  }
+  .priceContainer div button {
+    font-size: 1.3rem;
+    padding: 1.6rem;
   }
 }

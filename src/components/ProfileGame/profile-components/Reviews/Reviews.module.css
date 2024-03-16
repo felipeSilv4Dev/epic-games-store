@@ -12,23 +12,52 @@
 .info {
   gap: 2rem;
   margin-top: 3rem;
-  width: calc(100% - (27rem + 3.4vw));
+  width: calc(100% - (27rem + 4vw));
 }
 
 .info div {
   gap: 1rem;
 }
-@media only screen and (max-width: 93.75em) {
-  .info {
+@media (max-width: 89.8125em) {
+  .slide div {
+    width: 100%;
+    flex-shrink: 0;
+    margin-top: 1rem;
+    gap: 1.5rem;
+    cursor: pointer;
+  }
+  .slide div div {
+    width: 80%;
+  }
+
+  .slide {
+    width: calc(100% - (27rem + 4vw));
+  }
+}
+
+@media (max-width: 80em) {
+  .slide {
     width: 100%;
   }
 }
-@media only screen and (max-width: 48em) {
+
+@media (max-width: 48em) {
   .reviews {
     justify-content: center;
   }
+  .slide div div {
+    width: 80%;
+  }
+  .slide div div > div {
+    width: 100%;
+  }
   .slide {
-    width: calc(100vw - 4rem);
-    overflow-x: hidden;
+    width: 87vw;
+  }
+}
+
+@media (max-width: 17.5em) {
+  .slide {
+    width: 83vw;
   }
 }
