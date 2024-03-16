@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import LiModal from "./header-components/LiModal";
 import styles from "./Modal.module.css";
 
@@ -5,9 +6,12 @@ const Modal = ({ active, setModal }) => {
   const handleClick = (e) => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-
     if (e.target.classList.contains("active")) setModal(false);
   };
+
+  useEffect(() => {
+    document.body.style.overflow = active ? "hidden" : "";
+  }, [active]);
 
   const crie = [
     {
@@ -54,33 +58,35 @@ const Modal = ({ active, setModal }) => {
       className={styles.overlay + `${active ? " active" : ""}`}
     >
       <div className={styles.container}>
-        <div className={styles.content}>
-          <div>
-            <h2>Jogar</h2>
-            {crie.slice(0, 3).map((item, i) => (
-              <div key={i}>
-                <LiModal classe={item.class} text={item.text} />
-              </div>
-            ))}
-          </div>
-
-          <div>
-            <h2>Descobrir</h2>
-            {crie.slice(0, 4).map((item, i) => (
-              <div key={i}>
-                <LiModal classe={item.class} text={item.text} />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <h2>Crie</h2>
-          {crie.map((item, i) => (
-            <div key={i}>
-              <LiModal classe={item.class} text={item.text} />
+        <div className={styles.info}>
+          <div className={styles.content + " flex"}>
+            <div>
+              <h2>Jogar</h2>
+              {crie.slice(0, 3).map((item, i) => (
+                <div key={i}>
+                  <LiModal classe={item.class} text={item.text} />
+                </div>
+              ))}
             </div>
-          ))}
+
+            <div>
+              <h2>Descobrir</h2>
+              {crie.slice(0, 4).map((item, i) => (
+                <div key={i}>
+                  <LiModal classe={item.class} text={item.text} />
+                </div>
+              ))}
+            </div>
+
+            <div>
+              <h2>Crie</h2>
+              {crie.map((item, i) => (
+                <div key={i}>
+                  <LiModal classe={item.class} text={item.text} />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

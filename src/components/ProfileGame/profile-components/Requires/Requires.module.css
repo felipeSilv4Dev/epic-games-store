@@ -1,0 +1,86 @@
+.container {
+  margin-top: 4rem;
+  color: var(--type-2-light);
+  width: calc(100% - (27rem + 3.4vw));
+}
+
+.content {
+  background-color: var(--modal-bg);
+  padding: 3.5rem 6rem;
+  border-radius: 0.4rem;
+  margin-top: 2rem;
+}
+.title {
+  font-size: 1.8rem;
+}
+.header {
+  padding: 3rem 0.4rem;
+  border-bottom: 1px solid var(--type-4-dark);
+}
+
+.header h2 {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 3rem 0.4rem;
+  display: inline;
+  border-bottom: 3px solid var(--type-1-light);
+  transition: all 0.2s;
+}
+
+.header h2:hover {
+  border-color: var(--type-4-light);
+}
+.systemTitle {
+  font-size: 1.4rem;
+  color: var(--type-4-light);
+  font-weight: 500;
+  min-height: 4rem;
+}
+
+.system {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.footer {
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--type-4-dark);
+}
+.footer span {
+  font-size: 1.1rem;
+  color: var(--type-4-light);
+  font-weight: 500;
+}
+.footer h2 {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 1.4rem;
+}
+
+@media only screen and (max-width: 80em) {
+  .container {
+    width: 100%;
+  }
+  .content {
+    padding: 2rem;
+  }
+}
+
+@media only screen and (max-width: 48em) {
+  .system {
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .footer span {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 17.5em) {
+  .system {
+    grid-template-columns: 1fr;
+  }
+}

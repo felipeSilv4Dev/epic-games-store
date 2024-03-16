@@ -1,0 +1,25 @@
+.container {
+  min-height: 6rem;
+  color: var(--type-2-light);
+}
+
+.subtitle {
+  color: var(--type-4-light);
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+.title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-top: 0.2rem;
+}
+
+@media only screen and (max-width: 48em) {
+  .container {
+    min-height: 8.5rem;
+  }
+  .title,
+  .subtitle {
+    font-size: 1.6rem;
+  }
+}

@@ -9,6 +9,7 @@ import useLocalStorage from "../../../../Hooks/useLocalStore";
 import Details from "../Details/Details";
 import Social from "../Social/Social";
 import Reviews from "../Reviews/Reviews";
+import Requires from "../Requires/Requires";
 import { API_URL } from "../../../../Api/Api";
 
 const Profile = ({ dist }) => {
@@ -81,6 +82,7 @@ const Profile = ({ dist }) => {
 
         <Social />
         <Reviews {...dates} />
+        <Requires />
       </section>
     );
   }
