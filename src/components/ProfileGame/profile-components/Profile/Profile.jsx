@@ -8,6 +8,7 @@ import MenuBuy from "../../profile-components/MenuBuy/MenuBuy";
 import useLocalStorage from "../../../../Hooks/useLocalStore";
 import Details from "../Details/Details";
 import Social from "../Social/Social";
+import Reviews from "../Reviews/Reviews";
 import { API_URL } from "../../../../Api/Api";
 
 const Profile = ({ dist }) => {
@@ -79,6 +80,7 @@ const Profile = ({ dist }) => {
         />
 
         <Social />
+        <Reviews {...dates} />
       </section>
     );
   }
