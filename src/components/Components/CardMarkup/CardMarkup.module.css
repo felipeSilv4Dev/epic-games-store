@@ -1,0 +1,257 @@
+.container {
+  background-color: var(--modal-bg);
+  width: 100%;
+  padding: 2rem;
+  border-radius: 0.4rem;
+  color: var(--type-2-light);
+}
+
+.content {
+  width: 100%;
+}
+.infoImage {
+  flex: 0 0 100%;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.image {
+  align-items: start;
+  gap: 2rem;
+  flex: 2;
+}
+.image span {
+  font-size: 1rem;
+  padding: 0.4rem 0.8rem;
+  text-transform: uppercase;
+  background-color: var(--type-6-dark);
+  border-radius: 0.4rem;
+  font-weight: 500;
+}
+.image span:not(:first-child) {
+  margin-left: 0.5rem;
+}
+.image img {
+  height: 16rem;
+  border-radius: 0.5rem;
+}
+.image .imgContianer {
+  flex: 0 0 max-content;
+  position: relative;
+  cursor: pointer;
+}
+.image .imgContianer::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  z-index: 100;
+  border-radius: 0.5rem;
+  background-color: var(--type-1-light);
+  opacity: 0;
+  transition: all 0.2s;
+}
+.imgContianer:hover::before {
+  opacity: 0.1;
+}
+.title {
+  font-size: 2rem;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.review {
+  padding: 1.35rem;
+  border: 1px solid var(--type-5-dark);
+  gap: 2rem;
+  max-width: max-content;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+.review:hover {
+  background-color: var(--type-4-dark);
+}
+.review img {
+  height: 4rem;
+}
+.review p {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.price {
+  width: auto;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 1rem;
+}
+.price > div,
+.price > div div {
+  max-width: max-content;
+}
+.price p {
+  font-size: 1.3rem;
+}
+
+.porcentage {
+  margin-top: 1rem;
+}
+
+.icon {
+  font-size: 1.4rem;
+  flex: 0 0 14rem;
+  color: var(--type-5-light);
+}
+
+.porcentage p {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.btn {
+  justify-content: flex-end;
+  margin-top: 2rem;
+  gap: 2rem;
+  max-width: 100%;
+}
+
+.btn span {
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--type-4-light);
+  text-decoration: underline;
+}
+.btn span:hover {
+  text-decoration: none;
+}
+.btn button {
+  max-width: fit-content;
+}
+
+@media only screen and (max-width: 80em) {
+  .infoImage {
+    flex-direction: column;
+    align-items: start;
+  }
+  .title {
+    margin: 1.5rem 0;
+  }
+  .price {
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  .price div > div {
+    flex-direction: row;
+  }
+}
+
+@media only screen and (max-width: 64em) {
+  .infoImage {
+    flex-direction: row;
+  }
+}
+
+@media only screen and (max-width: 48em) {
+  .container {
+    padding: 2.3rem;
+  }
+  .image {
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+  }
+  .infoImage {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .infoImage span {
+    font-size: 1.2rem;
+    padding: 0.8rem 1rem;
+  }
+  .porcentage {
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    margin: 0;
+  }
+  .price {
+    gap: 1.5rem;
+  }
+
+  .price p {
+    font-size: 1.6rem;
+  }
+  .price div span {
+    font-size: 1.2rem;
+  }
+  .price div > div p {
+    font-size: 1.6rem;
+  }
+  .icon {
+    max-height: 2rem;
+    font-size: 2rem;
+  }
+  .porcentage p {
+    margin-top: 1rem;
+    font-size: 1.6rem;
+  }
+  .review {
+    gap: 1rem;
+  }
+
+  .review p {
+    font-weight: 500;
+  }
+  .btn {
+    align-items: start;
+    flex-direction: column;
+  }
+  .btn span {
+    font-size: 1.6rem;
+  }
+  .btn button {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 17.5em) {
+  .container {
+    padding: 1.5rem;
+  }
+  .image {
+    gap: 1rem;
+  }
+  .infoImage > div {
+    gap: 1rem;
+    width: 100%;
+  }
+  .infoImage span {
+    text-align: center;
+    margin: 1rem 0;
+    display: block;
+  }
+  .title {
+    margin: 1.5rem 0 0;
+  }
+  .price {
+    width: 100%;
+  }
+  .price > div {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .review {
+    padding: 0.8rem;
+  }
+  .review img {
+    height: 3rem;
+  }
+  .image span:not(:first-child) {
+    margin-left: 0;
+  }
+  .porcentage p {
+    width: 100%;
+    font-size: 1.4rem;
+  }
+}
