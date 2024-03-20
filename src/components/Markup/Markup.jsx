@@ -4,11 +4,13 @@ import CardMarkup from "../Components/CardMarkup/CardMarkup";
 import useFetch from "../../Hooks/useFetch";
 import MenuSelect from "./markup-components/MenuSelect/MenuSelect";
 import Filter from "./markup-components/Filter/Filter";
+import useMatch from "../../Hooks/useMatch";
 
 const Markup = () => {
   const { request, data } = useFetch();
   const [json, setJson] = useState([]);
   const [idOptions, setIdOptions] = useState(1);
+  const match = useMatch("64em");
 
   const getGames = useCallback(() => {
     const item = localStorage.getItem("game");
@@ -77,9 +79,18 @@ const Markup = () => {
 
         <section className={styles.content + " flex"}>
           <div className={styles.cardContainer}>
-            <h2 className="flex">
-              <span>Classsificar por : </span>
-              <MenuSelect setIdOptions={setIdOptions} />
+            <h2 className={styles.option + " flex"}>
+              <div>
+                <span>Classsificar por : </span>
+
+                <MenuSelect setIdOptions={setIdOptions} />
+              </div>
+
+              {match && (
+                <div className={styles.filter}>
+                  filtros <Filter />
+                </div>
+              )}
             </h2>
             <div className={styles.card + " flex"}>
               {game.map((g) => (
@@ -88,9 +99,11 @@ const Markup = () => {
             </div>
           </div>
 
-          <div className={styles.filter}>
-            <Filter />
-          </div>
+          {!match && (
+            <div className={styles.filter}>
+              <Filter />
+            </div>
+          )}
         </section>
       </main>
     );

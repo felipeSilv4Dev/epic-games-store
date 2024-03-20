@@ -74,3 +74,35 @@
 .option:focus {
   border-color: rgba(255, 255, 255, 0.3);
 }
+
+@media (max-width: 64em) {
+  .text span {
+    font-size: 1.1rem;
+  }
+
+  .option {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 48em) {
+  .container {
+    align-items: center;
+  }
+  .content {
+    padding: 0;
+    height: 100%;
+    margin: 0;
+  }
+  .text {
+    height: 8rem;
+    padding: 2.25rem 1.6rem;
+    align-items: center;
+    border-bottom: 1px solid rgb(245, 245, 245, 0.1);
+  }
+  .text span {
+    font-size: 1.3rem;
+  }
+  .option {
+    font-size: 1.6rem;
+  }
+}

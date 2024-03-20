@@ -60,8 +60,7 @@
 }
 
 .filter {
-  /* background-color: red; */
-  flex: 1.1;
+  flex: 0 0 23rem;
 }
 
 @media only screen and (max-width: 64em) {
@@ -79,12 +78,16 @@
     padding-bottom: 3rem;
     border-bottom: 1px solid var(--type-6-dark);
   }
+  .option {
+    justify-content: space-between;
+  }
+  .filter {
+    flex: 0 0 auto;
+  }
   .container {
     width: 95%;
   }
-  .filter {
-    display: none;
-  }
+
   .cardContainer {
     flex: 0 0 100%;
   }

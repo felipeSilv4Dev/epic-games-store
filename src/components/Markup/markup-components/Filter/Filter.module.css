@@ -3,3 +3,74 @@
   align-items: start;
   flex: 1;
 }
+.container > div {
+  width: 100%;
+}
+
+@media (max-width: 64em) {
+  .container {
+    position: fixed;
+    height: 100vh;
+    width: 38rem;
+    background-color: var(--modal-3-bg);
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    cursor: initial;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .content {
+    padding: 1.6rem 1.6rem 12.8rem;
+  }
+  .btn {
+    padding: 1.5rem 2.5rem;
+    background-color: var(--modal-bg);
+    gap: 0.5rem;
+  }
+  .btn button:first-child {
+    padding: 1.5rem;
+    border: none;
+  }
+  .container > div {
+    margin-top: 1rem;
+  }
+  .overlay {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(32, 32, 32, 0.6);
+    cursor: pointer;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+  }
+}
+
+@media (max-width: 48em) {
+  .overlay {
+    background-color: transparent;
+  }
+  .container {
+    width: 100%;
+    background-color: var(--body-bg);
+    opacity: 1;
+  }
+  .btn {
+    justify-content: space-between;
+    padding: 2rem 2.8rem;
+  }
+  .btn button {
+    width: fit-content;
+    font-size: 1.4rem;
+  }
+  .btn button:first-child {
+    padding: 2rem 5.5rem;
+  }
+  .btn button:nth-child(2) {
+    padding: 2rem 5.5rem;
+  }
+}

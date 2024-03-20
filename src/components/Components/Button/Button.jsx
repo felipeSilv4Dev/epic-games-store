@@ -3,7 +3,7 @@ import styles from "./Button.module.css";
 
 const Button = ({ btn, children, theme }) => {
   const style = {
-    backgroundColor: theme ? theme : "var(--btn-4)",
+    backgroundColor: theme ? theme : "var(--btn-3)",
   };
 
   return (
