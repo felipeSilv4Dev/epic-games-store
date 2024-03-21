@@ -61,23 +61,24 @@ const Modal = ({ active, setModal }) => {
         <div className={styles.info}>
           <div className={styles.content + " flex"}>
             <div>
-              <h2>Jogar</h2>
-              {crie.slice(0, 3).map((item, i) => (
-                <div key={i}>
-                  <LiModal classe={item.class} text={item.text} />
-                </div>
-              ))}
-            </div>
+              <div>
+                <h2>Jogar</h2>
+                {crie.slice(0, 3).map((item, i) => (
+                  <div key={i}>
+                    <LiModal classe={item.class} text={item.text} />
+                  </div>
+                ))}
+              </div>
 
-            <div>
-              <h2>Descobrir</h2>
-              {crie.slice(0, 4).map((item, i) => (
-                <div key={i}>
-                  <LiModal classe={item.class} text={item.text} />
-                </div>
-              ))}
+              <div>
+                <h2>Descobrir</h2>
+                {crie.slice(0, 4).map((item, i) => (
+                  <div key={i}>
+                    <LiModal classe={item.class} text={item.text} />
+                  </div>
+                ))}
+              </div>
             </div>
-
             <div>
               <h2>Crie</h2>
               {crie.map((item, i) => (

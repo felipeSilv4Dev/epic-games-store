@@ -4,10 +4,14 @@ import Option from "./filter-components/Option";
 import Button from "../../../Components/Button/Button";
 import useMatch from "../../../../Hooks/useMatch";
 
-const Filter = () => {
+const Filter = ({ setOpen }) => {
   const match = useMatch("64em");
   return (
-    <div className={styles.overlay}>
+    <div
+      id="overlay"
+      onClick={({ target }) => target.id === "overlay" && setOpen(false)}
+      className={styles.overlay}
+    >
       <div className={styles.container + " flex"}>
         <div className={styles.content}>
           <Option title="filtros" />
@@ -18,7 +22,16 @@ const Filter = () => {
         </div>
         {match && (
           <div className={styles.btn + " flex"}>
-            <Button btn="secondary">Limpar</Button>
+            <div
+              id="limpar"
+              style={{ width: "100%" }}
+              onClick={({ currentTarget }) =>
+                currentTarget.id === "limpar" && setOpen(false)
+              }
+            >
+              <Button btn="secondary">Limpar</Button>
+            </div>
+
             <Button btn="primary">aplicar</Button>
           </div>
         )}

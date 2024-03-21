@@ -81,6 +81,13 @@
   .option {
     justify-content: space-between;
   }
+  .filterButton {
+    font-size: 1.4rem;
+    cursor: pointer;
+    gap: 0.6rem;
+    justify-content: center;
+    height: 3rem;
+  }
   .filter {
     flex: 0 0 auto;
   }

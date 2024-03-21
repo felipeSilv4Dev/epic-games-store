@@ -10,6 +10,7 @@ const Markup = () => {
   const { request, data } = useFetch();
   const [json, setJson] = useState([]);
   const [idOptions, setIdOptions] = useState(1);
+  const [open, setOpen] = useState(false);
   const match = useMatch("64em");
 
   const getGames = useCallback(() => {
@@ -88,7 +89,14 @@ const Markup = () => {
 
               {match && (
                 <div className={styles.filter}>
-                  filtros <Filter />
+                  <p
+                    className={styles.filterButton + " flex"}
+                    onClick={() => setOpen(true)}
+                  >
+                    filtro
+                    <i className="fa-solid fa-sort-down"></i>
+                  </p>
+                  {open && <Filter setOpen={setOpen} />}
                 </div>
               )}
             </h2>

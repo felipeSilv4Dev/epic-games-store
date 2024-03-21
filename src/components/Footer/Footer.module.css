@@ -38,7 +38,7 @@
   border: 2px solid currentColor;
   transform: rotate(180deg);
   font-size: 2rem;
-  color: var(--type-2-light);
+  color: var(--type-4-light);
   border-radius: 0.2rem;
   padding: 1.4rem;
   cursor: pointer;

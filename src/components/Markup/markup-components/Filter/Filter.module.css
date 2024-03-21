@@ -67,10 +67,24 @@
     width: fit-content;
     font-size: 1.4rem;
   }
+
   .btn button:first-child {
     padding: 2rem 5.5rem;
   }
+
   .btn button:nth-child(2) {
     padding: 2rem 5.5rem;
+  }
+}
+@media (max-width: 17.5em) {
+  .btn button {
+    font-size: 1.2rem;
+  }
+  .btn button:first-child {
+    padding: 1.5rem 3.5rem;
+  }
+
+  .btn button:nth-child(2) {
+    padding: 1.5rem 3.5rem;
   }
 }
