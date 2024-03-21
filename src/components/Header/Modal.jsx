@@ -58,35 +58,34 @@ const Modal = ({ active, setModal }) => {
       className={styles.overlay + `${active ? " active" : ""}`}
     >
       <div className={styles.container}>
-        <div className={styles.info}>
-          <div className={styles.content + " flex"}>
+        <div className={styles.content}>
+          <div className={styles.primary + " flex"}>
             <div>
-              <div>
-                <h2>Jogar</h2>
-                {crie.slice(0, 3).map((item, i) => (
-                  <div key={i}>
-                    <LiModal classe={item.class} text={item.text} />
-                  </div>
-                ))}
-              </div>
-
-              <div>
-                <h2>Descobrir</h2>
-                {crie.slice(0, 4).map((item, i) => (
-                  <div key={i}>
-                    <LiModal classe={item.class} text={item.text} />
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h2>Crie</h2>
-              {crie.map((item, i) => (
+              <h2>Jogar</h2>
+              {crie.slice(0, 3).map((item, i) => (
                 <div key={i}>
                   <LiModal classe={item.class} text={item.text} />
                 </div>
               ))}
             </div>
+
+            <div>
+              <h2>Descobrir</h2>
+              {crie.slice(0, 4).map((item, i) => (
+                <div key={i}>
+                  <LiModal classe={item.class} text={item.text} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h2>Crie</h2>
+            {crie.map((item, i) => (
+              <div key={i}>
+                <LiModal classe={item.class} text={item.text} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
