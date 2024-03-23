@@ -28,7 +28,7 @@ const Reviews = ({ title, profile }) => {
       <div className={styles.reviews + " flex"}>
         {reviews.map(({ text, porcentage }) => (
           <Score
-            key={porcentage}
+            key={Math.random()}
             theme={profile.theme}
             porcentage={porcentage}
             text={text}
@@ -40,7 +40,7 @@ const Reviews = ({ title, profile }) => {
         <div className={styles.info + " flex"}>
           {reviewInfo.map(({ author, score }) => (
             <ReviewsInfo
-              key={score}
+              key={Math.random()}
               author={author}
               score={score}
               title={title}
@@ -54,7 +54,7 @@ const Reviews = ({ title, profile }) => {
           <Carousel ref={refInfo} control={true} custom={[]}>
             {reviewInfo.map(({ author, score }) => (
               <ReviewsInfo
-                key={score}
+                key={Math.random()}
                 author={author}
                 score={score}
                 title={title}

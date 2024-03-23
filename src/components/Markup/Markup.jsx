@@ -2,9 +2,11 @@ import { useCallback, useEffect, useState } from "react";
 import styles from "./Markup.module.css";
 import CardMarkup from "../Components/CardMarkup/CardMarkup";
 import useFetch from "../../Hooks/useFetch";
+import email from "../../../public/img/assets/email.png";
 import MenuSelect from "./markup-components/MenuSelect/MenuSelect";
 import Filter from "./markup-components/Filter/Filter";
 import useMatch from "../../Hooks/useMatch";
+import Image from "../Components/Image/Image";
 
 const Markup = () => {
   const { request, data } = useFetch();
@@ -15,6 +17,7 @@ const Markup = () => {
 
   const getGames = useCallback(() => {
     const item = localStorage.getItem("game");
+
     if (!item) return;
     const jsonData = JSON.parse(item);
     setJson(jsonData);
@@ -25,11 +28,12 @@ const Markup = () => {
       await request("../../games-api.json");
     }
     fetchGame();
-  }, [request]);
+    getGames();
+  }, [request, getGames]);
 
   useEffect(() => {
-    getGames();
-  }, [getGames]);
+    document.body.style.overflow = open ? "hidden" : "";
+  }, [open]);
 
   if (data && json.length) {
     let game;
@@ -77,6 +81,14 @@ const Markup = () => {
             <span>R$ 00,00</span>
           </div>
         </header>
+        <div className={styles.email + " flex"}>
+          <div className={styles.emailInfo + " flex"}>
+            <Image src={email} alt="email" />
+            <p className="flex">
+              Receber notificações da minha lista de desejos por e-mail.
+            </p>
+          </div>
+        </div>
 
         <section className={styles.content + " flex"}>
           <div className={styles.cardContainer}>
@@ -90,8 +102,11 @@ const Markup = () => {
               {match && (
                 <div className={styles.filter}>
                   <p
+                    id="filter"
                     className={styles.filterButton + " flex"}
-                    onClick={() => setOpen(true)}
+                    onClick={({ target }) =>
+                      target.id === "filter" && setOpen(true)
+                    }
                   >
                     filtro
                     <i className="fa-solid fa-sort-down"></i>

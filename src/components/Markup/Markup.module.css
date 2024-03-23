@@ -13,6 +13,32 @@
   text-transform: initial;
 }
 
+.email {
+  margin: 3rem 0;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background-color: var(--type-4-dark);
+  border-radius: 0.4rem;
+}
+
+.email p {
+  font-size: 1.4rem;
+  color: var(--type-4-light);
+  min-height: 4rem;
+  font-weight: 500;
+  text-align: center;
+
+  align-items: center;
+}
+.emailInfo {
+  gap: 2.2rem;
+}
+.emailInfo div {
+  flex: 0 0 auto;
+}
+.emailInfo img {
+  height: 2.8rem;
+}
 .money p {
   font-size: 1.4rem;
   color: var(--type-4-light);
@@ -63,7 +89,7 @@
   flex: 0 0 23rem;
 }
 
-@media only screen and (max-width: 64em) {
+@media (max-width: 64em) {
   .header {
     flex-direction: column;
     align-items: start;
@@ -72,14 +98,26 @@
   .header h1 {
     font-size: 3rem;
   }
+
+  .emailInfo p {
+    font-size: 1.5rem;
+  }
   .money {
     order: -1;
     width: 100%;
     padding-bottom: 3rem;
     border-bottom: 1px solid var(--type-6-dark);
+    justify-content: space-between;
+  }
+  .money p {
+    font-size: 1.6rem;
   }
   .option {
     justify-content: space-between;
+  }
+  .option span,
+  .option button {
+    font-size: 1.6rem;
   }
   .filterButton {
     font-size: 1.4rem;
@@ -91,11 +129,37 @@
   .filter {
     flex: 0 0 auto;
   }
+  .filter p {
+    font-size: 1.6rem;
+  }
   .container {
     width: 95%;
   }
 
   .cardContainer {
     flex: 0 0 100%;
+  }
+}
+@media only screen and (max-width: 48em) {
+  .emailInfo {
+    gap: 2rem;
+  }
+  .emailInfo div {
+    display: none;
+  }
+  .emailInfo p {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (max-width: 17.5em) {
+  .header h1 {
+    font-size: 2.3rem;
+  }
+  .money {
+    flex-direction: column;
+    align-items: start;
+  }
+  .money span {
+    order: -1;
   }
 }

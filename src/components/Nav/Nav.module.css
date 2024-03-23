@@ -194,3 +194,15 @@
     transform: translate(-50%, 0);
   }
 }
+@media (max-width: 48em) {
+  .carrinho {
+    gap: 1rem;
+    margin-left: 1rem;
+  }
+  .carrinho a {
+    padding: 0.5rem;
+  }
+  .input + div button {
+    left: 0;
+  }
+}

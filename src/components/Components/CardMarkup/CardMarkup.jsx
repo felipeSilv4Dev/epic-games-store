@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./CardMarkup.module.css";
 import Price from "../Price/Price";
 import review from "../../../../public/img/assets/review.png";
-// import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import Image from "../Image/Image";
 import Button from "../Button/Button";
 
 const CardMarkup = ({
@@ -19,11 +19,11 @@ const CardMarkup = ({
   };
 
   return (
-    <div id={id} className={styles.container}>
+    <section id={id} className={styles.container}>
       <div>
         <div className={styles.image + " flex"}>
           <div onClick={handleClick} className={styles.imgContianer + " flex"}>
-            <img src={img.src1} alt={title} />
+            <Image src={img.src1} alt={title} />
           </div>
           <div className={styles.content}>
             <div className={styles.infoImage + " flex"}>
@@ -43,7 +43,8 @@ const CardMarkup = ({
               </div>
             </div>
             <div className={styles.review + " flex"}>
-              <img src={review} alt="livre" />
+              <Image src={review} alt="livre" />
+
               <p>Livre</p>
             </div>
           </div>
@@ -62,7 +63,7 @@ const CardMarkup = ({
         <span>remover</span>
         <Button btn="secondary">Adicionar ao carrinho</Button>
       </div>
-    </div>
+    </section>
   );
 };
 

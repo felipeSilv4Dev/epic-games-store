@@ -71,6 +71,9 @@
 .review:hover {
   background-color: var(--type-4-dark);
 }
+.review div {
+  flex: 0 0 auto;
+}
 .review img {
   height: 4rem;
 }
