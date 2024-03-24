@@ -9,6 +9,7 @@ import ModalHover from "./ModalHover";
 import Icon from "./header-components/Icon";
 import LiMenu from "./header-components/LiMenu";
 import { NavLink } from "react-router-dom";
+import useTop from "../../Hooks/useTop";
 
 const Header = () => {
   const [mobile, setMobile] = React.useState(false);
@@ -17,15 +18,14 @@ const Header = () => {
   const [login, setLogin] = React.useState(false);
   const [right, setRight] = React.useState(0);
   const match = useMatch("80em");
+  const top = useTop();
 
   const handleClick = () => {
     setMobile(!mobile);
     setIdioma(false);
     setLogin(false);
     setModal(false);
-
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    top();
     document.body.style.overflowY = mobile ? "initial" : "hidden";
     window.removeEventListener("scroll", handleClick);
   };

@@ -8,6 +8,7 @@ import useFetch from "../../Hooks/useFetch";
 import { useNavigate } from "react-router-dom";
 import Loading from "./home-components/LoadingHome/Loading";
 import { API_URL } from "../../Api/Api";
+import useTop from "../../Hooks/useTop";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -18,11 +19,12 @@ const Home = () => {
   const [count, setCount] = useState(0);
   const [time, setTime] = useState(true);
   const homeRef = useRef();
+  const top = useTop();
 
   useEffect(() => {
     (async () => await request(API_URL))();
   }, [request]);
-
+  useEffect(top, [top]);
   const arrayBanner = useCallback(() => {
     if (!banner.current) return;
     return Array.from(banner.current.children);

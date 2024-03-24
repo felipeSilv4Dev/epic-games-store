@@ -1,11 +1,14 @@
 import { useEffect } from "react";
 import LiModal from "./header-components/LiModal";
 import styles from "./Modal.module.css";
+import useTop from "../../Hooks/useTop";
 
 const Modal = ({ active, setModal }) => {
+  const top = useTop();
+
+  useEffect(top, [top]);
   const handleClick = (e) => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    top();
     if (e.target.classList.contains("active")) setModal(false);
   };
 

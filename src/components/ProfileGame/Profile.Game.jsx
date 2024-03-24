@@ -1,15 +1,14 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Profile from "./profile-components/Profile/Profile";
+import useTop from "../../Hooks/useTop";
 
 const ProfileGame = ({ dist }) => {
+  const top = useTop();
+  useEffect(top, [top]);
+
   const params = useParams();
   const { id } = params;
-
-  useEffect(() => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  }, []);
 
   return (
     <main className="max appMain">

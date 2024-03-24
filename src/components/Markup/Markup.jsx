@@ -8,6 +8,7 @@ import Filter from "./markup-components/Filter/Filter";
 import useMatch from "../../Hooks/useMatch";
 import Image from "../Components/Image/Image";
 import { NavLink } from "react-router-dom";
+import useTop from "../../Hooks/useTop";
 
 const Markup = () => {
   const { request, data } = useFetch();
@@ -15,7 +16,9 @@ const Markup = () => {
   const [idOptions, setIdOptions] = useState(1);
   const [open, setOpen] = useState(false);
   const match = useMatch("64em");
+  const top = useTop();
 
+  useEffect(top, [top]);
   const getGames = useCallback(() => {
     const item = localStorage.getItem("game");
 
@@ -31,10 +34,6 @@ const Markup = () => {
     fetchGame();
     getGames();
   }, [request, getGames]);
-
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-  }, [open]);
 
   let game;
   if (data && json.length) {
