@@ -73,12 +73,12 @@ const MenuBuy = ({
         Comprar Agora
       </Button>
 
-      <div style={{ width: "100%" }} onClick={carrinho ? null : clickCar}>
-        <Button btn="secondary">
-          <NavLink to={carrinho ? "/carrinho" : null}>
+      <div style={{ width: "100%" }} onClick={!carrinho ? clickCar : null}>
+        <NavLink to={carrinho && "/carrinho"}>
+          <Button btn="secondary">
             {carrinho ? "visualizar no carrinho" : "adicionar Ao carrinho"}
-          </NavLink>
-        </Button>
+          </Button>
+        </NavLink>
       </div>
       <div style={{ width: "100%" }} onClick={clickGame}>
         <Button btn="secondary">

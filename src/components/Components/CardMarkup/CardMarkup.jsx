@@ -1,9 +1,11 @@
-import React from "react";
+import { useEffect } from "react";
 import styles from "./CardMarkup.module.css";
 import Price from "../Price/Price";
 import review from "../../../../public/img/assets/review.png";
 import Image from "../Image/Image";
 import Button from "../Button/Button";
+import useLocalStorage from "../../../Hooks/useLocalStore";
+import { NavLink } from "react-router-dom";
 
 const CardMarkup = ({
   img,
@@ -17,6 +19,16 @@ const CardMarkup = ({
   const handleClick = () => {
     window.location.pathname = `game/${id}`;
   };
+
+  const {
+    $any: addCar,
+    initial: init,
+    active,
+  } = useLocalStorage({ key: "carrinho", id });
+
+  useEffect(() => {
+    init();
+  }, [init]);
 
   return (
     <section id={id} className={styles.container}>
@@ -61,7 +73,11 @@ const CardMarkup = ({
 
       <div className={styles.btn + " flex"}>
         <span>remover</span>
-        <Button btn="secondary">Adicionar ao carrinho</Button>
+        <NavLink to={active && "/carrinho"} onClick={!active ? addCar : null}>
+          <Button btn="secondary">
+            {active ? "visualizar carrinho" : "Adicionar ao carrinho"}
+          </Button>
+        </NavLink>
       </div>
     </section>
   );
