@@ -8,6 +8,7 @@ import Filter from "./markup-components/Filter/Filter";
 import useMatch from "../../Hooks/useMatch";
 import Image from "../Components/Image/Image";
 import { NavLink } from "react-router-dom";
+import Head from "../../Helpers/Head";
 import useTop from "../../Hooks/useTop";
 
 const Markup = () => {
@@ -37,37 +38,56 @@ const Markup = () => {
 
   let game;
   if (data && json.length) {
-    if (idOptions === 2) {
+    if (idOptions === 2)
       game = json.flatMap((j) => data.filter((d) => d.id === j)).reverse();
-    } else {
+
+    if (idOptions === 1)
+      game = json
+        .flatMap((j) => data.filter((d) => d.id === j))
+        .sort((a, b) => b.porcentage - a.porcentage);
+
+    if (idOptions === 3) {
       game = json
         .flatMap((j) => data.filter((d) => d.id === j))
         .sort((a, b) => {
-          if (idOptions === 1) {
-            return b.porcentage - a.porcentage;
-          } else if (idOptions === 3) {
-            if (a.title > b.title) {
-              return 1;
-            } else if (a.title < b.title) {
-              return -1;
-            } else {
-              return 0;
-            }
-          } else if (idOptions === 4) {
-            const priceA = +a.newPrice.replace(",", ".");
-            const priceB = +b.newPrice.replace(",", ".");
-            return priceA - priceB;
-          } else if (idOptions === 5) {
-            const priceA = +a.newPrice.replace(",", ".");
-            const priceB = +b.newPrice.replace(",", ".");
-            return priceB - priceA;
+          if (a.title.toLowerCase() > b.title.toLowerCase()) {
+            return 1;
+          } else if (a.title < b.title) {
+            return -1;
+          } else {
+            return 0;
           }
+        });
+    }
+    if (idOptions === 4) {
+      game = json
+        .flatMap((j) => data.filter((d) => d.id === j))
+        .sort((a, b) => {
+          const priceA = +a.newPrice.replaceAll(".", "").replace(",", ".");
+          const priceB = +b.newPrice.replaceAll(".", "").replace(",", ".");
+
+          return priceA - priceB;
+        });
+    }
+
+    if (idOptions === 5) {
+      game = json
+        .flatMap((j) => data.filter((d) => d.id === j))
+        .sort((a, b) => {
+          const priceA = +a.newPrice.replaceAll(".", "").replace(",", ".");
+          const priceB = +b.newPrice.replaceAll(".", "").replace(",", ".");
+
+          return priceB - priceA;
         });
     }
   }
 
   return (
     <main className={styles.container + " max appMain"}>
+      <Head
+        title="Lista dos desejos"
+        description="compre os jogos mais em conta do mercado"
+      />
       <header className={styles.header + " flex"}>
         <h1>Lista de desejos</h1>
         <div className={styles.money + " flex"}>
@@ -162,8 +182,8 @@ const Markup = () => {
         </div>
 
         {!match && game && (
-          <div className={styles.filter}>
-            <Filter />
+          <div>
+            <Filter option={setIdOptions} />
           </div>
         )}
       </section>

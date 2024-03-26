@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Loading from "./home-components/LoadingHome/Loading";
 import { API_URL } from "../../Api/Api";
 import useTop from "../../Hooks/useTop";
+import Head from "../../Helpers/Head";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -128,6 +129,10 @@ const Home = () => {
 
     return (
       <section className="max flex">
+        {/* <Head
+          title="Epic Games store | Baixe e jogue"
+          description="compre os jogos mais em conta do mercado"
+        /> */}
         {!match && (
           <div ref={banner} className={styles.banner}>
             {home.map((item) => (
@@ -135,7 +140,6 @@ const Home = () => {
             ))}
           </div>
         )}
-
         {match && (
           <Carousel ref={homeRef} control={true}>
             {home.map((item) => (
@@ -143,7 +147,6 @@ const Home = () => {
             ))}
           </Carousel>
         )}
-
         {!match && (
           <div ref={game} className={styles.content}>
             {home.map((item) => (

@@ -11,6 +11,7 @@ import Social from "../Social/Social";
 import Reviews from "../Reviews/Reviews";
 import Requires from "../Requires/Requires";
 import { API_URL } from "../../../../Api/Api";
+import Head from "../../../../Helpers/Head";
 
 const Profile = ({ dist }) => {
   const params = useParams();
@@ -44,6 +45,10 @@ const Profile = ({ dist }) => {
 
     return (
       <section className={styles.container}>
+        <Head
+          title={"Epic Games store | " + dates.title}
+          description="compre os jogos mais em conta do mercado"
+        />
         <h1>{dates.title}</h1>
 
         <div className={styles.header + " flex"}>

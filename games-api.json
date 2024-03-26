@@ -41,7 +41,7 @@
   {
     "id": 2,
     "subtitle": "jogo base",
-    "title": "red dead redemption 2",
+    "title": "Red dead redemption 2",
     "porcentage": 50,
     "img": {
       "src2": "img/ofertas/red-game.jpg",
@@ -166,8 +166,8 @@
       "logo": "img/logo/cyber-logo.png",
       "src3": "img/banner/cyber-banner.jpg"
     },
-    "oldPrice": "2,000",
-    "newPrice": "1,000",
+    "oldPrice": "2.000",
+    "newPrice": "1.000",
     "desconto": true,
     "home": {
       "span": "Disponível próxima semana",
@@ -205,8 +205,8 @@
       "logo": "img/logo/last-logo.png",
       "src3": "img/banner/last-banner.jpg"
     },
-    "oldPrice": "4,500",
-    "newPrice": "3,375",
+    "oldPrice": "4.500",
+    "newPrice": "3.375",
     "home": {
       "span": "Já Disponível",
       "text": "Mergulhe em Uma jornada emocionante em um mundo pós-apocalíptico.",
@@ -242,8 +242,8 @@
       "src1": "img/games/alan-game.jpg",
       "logo": "img/logo/alan-logo.png"
     },
-    "oldPrice": "4,500",
-    "newPrice": "2,250",
+    "oldPrice": "4.500",
+    "newPrice": "2.250",
     "oferta": true,
     "popular": true,
     "profile": {
@@ -269,14 +269,14 @@
   {
     "id": 8,
     "subtitle": "jogo base",
-    "title": "fifa 24",
+    "title": "Fifa 24",
     "porcentage": 10,
     "img": {
       "src2": "img/ofertas/fifa-game.jpg",
       "src1": "img/games/fifa-game.jpg",
       "logo": "img/logo/fifa-logo.png"
     },
-    "oldPrice": "1,000",
+    "oldPrice": "1.000",
     "newPrice": "990,0",
     "oferta": true,
     "popular": true,
@@ -337,7 +337,7 @@
   {
     "id": 10,
     "subtitle": "jogo base",
-    "title": "god of war ragnarok",
+    "title": "God of war ragnarok",
     "porcentage": 50,
     "img": {
       "src2": "img/ofertas/god-game.jpg",
