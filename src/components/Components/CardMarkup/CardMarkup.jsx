@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import styles from "./CardMarkup.module.css";
 import Price from "../Price/Price";
 import review from "../../../../public/img/assets/review.png";
