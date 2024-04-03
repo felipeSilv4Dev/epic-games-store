@@ -15,6 +15,7 @@ const CardMarkup = ({
   oldPrice,
   newPrice,
   id,
+  onDelete,
 }) => {
   const handleClick = () => {
     window.location.pathname = `game/${id}`;
@@ -72,7 +73,7 @@ const CardMarkup = ({
       </div>
 
       <div className={styles.btn + " flex"}>
-        <span>remover</span>
+        <span onClick={onDelete}>remover</span>
         <NavLink to={active && "/carrinho"} onClick={!active ? addCar : null}>
           <Button btn="secondary">
             {active ? "visualizar carrinho" : "Adicionar ao carrinho"}

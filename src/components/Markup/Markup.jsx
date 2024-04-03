@@ -36,6 +36,15 @@ const Markup = () => {
     getGames();
   }, [request, getGames]);
 
+  const handleClick = ({ currentTarget }) => {
+    const id = +currentTarget.closest("section").id;
+    const game = JSON.parse(localStorage.getItem("game"));
+    const filterGame = game.filter((g) => g !== id);
+
+    localStorage.setItem("game", JSON.stringify(filterGame));
+    setJson(filterGame);
+  };
+
   let game;
   if (data && json.length) {
     if (idOptions === 2)
@@ -137,7 +146,10 @@ const Markup = () => {
             )}
           </h2>
           <div className={styles.card + " flex"}>
-            {game && game.map((g) => <CardMarkup key={g.id} {...g} />)}
+            {game &&
+              game.map((g) => (
+                <CardMarkup key={g.id} {...g} onDelete={handleClick} />
+              ))}
           </div>
 
           {!game && (

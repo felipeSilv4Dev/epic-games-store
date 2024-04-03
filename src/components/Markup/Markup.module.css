@@ -112,9 +112,6 @@
   color: var(--type-2-light);
   border-color: var(--type-2-light);
 }
-.filter {
-  flex: 0 0 23rem;
-}
 
 @media (max-width: 64em) {
   .header {
