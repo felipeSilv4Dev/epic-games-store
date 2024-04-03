@@ -1,1 +1,1 @@
-export const API_URL = "../../games-api.json";
+export const API_URL = "../../gamesApi.json";
