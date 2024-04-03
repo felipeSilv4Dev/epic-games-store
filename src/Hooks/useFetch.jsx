@@ -13,8 +13,9 @@ const useFetch = () => {
       setLoading(true);
       response = await fetch(url);
       if (!response.ok) throw new Error("Erro nas buscas 💥");
-      json = await response.json();
+      const { game } = await response.json();
 
+      json = game;
       setData(json);
     } catch (err) {
       json = null;

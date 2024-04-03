@@ -129,10 +129,10 @@ const Home = () => {
 
     return (
       <section className="max flex">
-        {/* <Head
+        <Head
           title="Epic Games store | Baixe e jogue"
           description="compre os jogos mais em conta do mercado"
-        /> */}
+        />
         {!match && (
           <div ref={banner} className={styles.banner}>
             {home.map((item) => (
