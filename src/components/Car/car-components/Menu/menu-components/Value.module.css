@@ -1,0 +1,22 @@
+.value {
+  justify-content: space-between;
+}
+.value > * {
+  min-height: 3rem;
+}
+
+.value p {
+  font-size: 1.4rem;
+}
+
+@media (max-width: 64em) {
+  .value > * {
+    min-height: 4rem;
+  }
+}
+
+@media (max-width: 48em) {
+  .value p {
+    font-size: 1.6rem;
+  }
+}

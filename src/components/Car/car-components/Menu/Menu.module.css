@@ -1,0 +1,29 @@
+.menu {
+  flex: 0 0 28.1rem;
+  margin-left: 3rem;
+}
+.menu h2 {
+  font-size: 3.15rem;
+  margin-bottom: 2rem;
+}
+
+.total {
+  border-top: 1px solid var(--type-4-dark);
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
+.total p {
+  font-weight: bold;
+}
+
+.imposto p:last-child {
+  color: var(--type-4-light);
+}
+
+@media (max-width: 64em) {
+  .menu {
+    width: 100%;
+    margin-top: 3rem;
+    margin-left: 0;
+  }
+}

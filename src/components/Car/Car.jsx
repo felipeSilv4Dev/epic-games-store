@@ -6,7 +6,9 @@ import useFetch from "../../Hooks/useFetch";
 import { API_URL } from "../../Api/Api";
 import CardMarkup from "../Components/CardMarkup/CardMarkup";
 import { v4 as uuidv4 } from "uuid";
-import Button from "../Components/Button/Button";
+import Menu from "./car-components/Menu/Menu";
+import HeaderMarkup from "../Components/HeaderMarkup/HeaderMarkup";
+import Message from "../Components/Message/Message";
 
 const Car = () => {
   const { request, data: json } = useFetch();
@@ -41,7 +43,7 @@ const Car = () => {
     setData(filterGame);
   };
 
-  if (json) {
+  if (json && data.length) {
     games = data.flatMap((d) => json.filter((j) => j.id === d));
   }
 
@@ -61,21 +63,8 @@ const Car = () => {
         title="Carrinho"
         description="compre os jogos mais em conta do mercado"
       />
-      <header className={styles.header + " flex"}>
-        <h1 className={styles.title}>Meu Carrinho</h1>
-        <div className={styles.money + " flex"}>
-          <p>
-            Recompensas Epic
-            <i
-              className={
-                styles.icon + " fa-solid fa-arrow-up-right-from-square"
-              }
-            ></i>
-          </p>
-          <span>R$ 00,00</span>
-        </div>
-      </header>
 
+      <HeaderMarkup title="Meu carrinho" />
       <div className={styles.content + " flex"}>
         <div className={styles.card + " flex"}>
           {games &&
@@ -91,31 +80,11 @@ const Car = () => {
             ))}
         </div>
 
-        <div className={styles.menu}>
-          <h2>Resumo de jogos e aplicativos</h2>
-          <div className={styles.value + " flex"}>
-            <p>preço</p>
-            <p>R$ 288,94</p>
-          </div>
-          <div className={styles.value + " flex"}>
-            <p>Desconto</p>
-            <p>-R$ 3,90</p>
-          </div>
-          <div className={styles.value + " flex"}>
-            <p>Imposto</p>
-            <p className={styles.imposto}>calculado ao finaliza</p>
-          </div>
-
-          <div className={styles.total}>
-            <div className={styles.value + " flex"}>
-              <p>Subtotal</p>
-              <p>R$ 285,04</p>
-            </div>
-
-            <Button btn="primary">Finalizar compra</Button>
-          </div>
-        </div>
+        {games && <Menu />}
       </div>
+      {!games && (
+        <Message message="Seu carrinho está vazio" fill="var(--type-6-dark)" />
+      )}
     </main>
   );
 };
