@@ -80,7 +80,7 @@ const Car = () => {
             ))}
         </div>
 
-        {games && <Menu />}
+        {games && <Menu data={games} />}
       </div>
       {!games && (
         <Message message="Seu carrinho está vazio" fill="var(--type-6-dark)" />
