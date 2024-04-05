@@ -7,30 +7,22 @@ const Menu = ({ data }) => {
   const [total, setTotal] = useState(0);
   const [price, setPrice] = useState(0);
   const [discount, setDiscount] = useState(0);
-  const handleTotal = useCallback(() => {
-    if (data) {
-      const totalData = data.map((d) =>
-        d.newPrice ? +d.newPrice.replaceAll(".", "").replace(",", ".") : 0
-      );
-      const totalReal = totalData
-        .reduce((acc, p) => acc + p)
-        .toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-      setTotal(totalReal);
-    }
-  }, [data]);
 
-  const handlePrice = useCallback(() => {
-    if (data) {
-      const priceData = data.map(
-        (d) => +d.oldPrice.replaceAll(".", "").replace(",", ".")
-      );
+  const handleCalc = useCallback(
+    (key) => {
+      if (data) {
+        const totalData = data.map((d) =>
+          d[key] ? +d[key].replaceAll(".", "").replace(",", ".") : 0
+        );
+        const totalReal = totalData
+          .reduce((acc, p) => acc + p)
+          .toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
-      const priceReal = priceData
-        .reduce((acc, p) => acc + p)
-        .toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-      setPrice(priceReal);
-    }
-  }, [data]);
+        return totalReal;
+      }
+    },
+    [data]
+  );
 
   const handleDiscount = useCallback(() => {
     if (data) {
@@ -39,7 +31,7 @@ const Menu = ({ data }) => {
         const priceOld = +d.oldPrice.replaceAll(".", "").replace(",", ".");
         const discount = (porcentage / 100) * priceOld;
 
-        return priceOld - discount;
+        return -discount;
       });
 
       const discountReal = discountData
@@ -50,10 +42,10 @@ const Menu = ({ data }) => {
   }, [data]);
 
   useEffect(() => {
-    handlePrice();
     handleDiscount();
-    handleTotal();
-  }, [handleTotal, handlePrice, handleDiscount]);
+    setTotal(handleCalc("newPrice"));
+    setPrice(handleCalc("oldPrice"));
+  }, [handleCalc, handleDiscount]);
   return (
     <div className={styles.menu}>
       <h2>Resumo de jogos e aplicativos</h2>
