@@ -45,6 +45,16 @@ const Car = () => {
     games = data.flatMap((d) => json.filter((j) => j.id === d));
   }
 
+  const handleMoveList = ({ currentTarget }) => {
+    const id = +currentTarget.closest("section").id;
+
+    const game = JSON.parse(localStorage.getItem("game"));
+    const gameFilter = game.filter((g) => g !== id);
+    localStorage.setItem("game", JSON.stringify([...gameFilter, id]));
+
+    handleClick({ currentTarget });
+  };
+
   return (
     <main className={styles.container + " max appMain"}>
       <Head
@@ -70,7 +80,14 @@ const Car = () => {
         <div className={styles.card + " flex"}>
           {games &&
             games.map((g) => (
-              <CardMarkup key={uuidv4()} {...g} onDelete={handleClick} />
+              <CardMarkup
+                key={uuidv4()}
+                {...g}
+                onDelete={handleClick}
+                test={<p>sdsd</p>}
+                onMoveList={handleMoveList}
+                car={true}
+              />
             ))}
         </div>
 

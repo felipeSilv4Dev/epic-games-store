@@ -149,7 +149,12 @@ const Markup = () => {
           <div className={styles.card + " flex"}>
             {game &&
               game.map((g) => (
-                <CardMarkup key={g.id} {...g} onDelete={handleClick} />
+                <CardMarkup
+                  key={g.id}
+                  {...g}
+                  onDelete={handleClick}
+                  markup={true}
+                />
               ))}
           </div>
 
