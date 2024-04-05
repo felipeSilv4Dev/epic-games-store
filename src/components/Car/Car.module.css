@@ -1,0 +1,92 @@
+.container {
+  color: var(--type-2-light);
+}
+.title {
+  text-transform: capitalize;
+}
+
+.header {
+  justify-content: space-between;
+}
+
+.money {
+  gap: 2rem;
+  cursor: pointer;
+}
+.header h1 {
+  text-transform: initial;
+}
+
+.money p {
+  font-size: 1.4rem;
+  color: var(--type-4-light);
+  transition: all 0.2s;
+}
+.money:hover p {
+  color: var(--type-2-light);
+}
+.money .icon {
+  font-size: 1.1rem;
+  margin-left: 1rem;
+}
+
+.money span {
+  font-size: 1.6rem;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--type-4-dark);
+  border: 2px solid var(--type-4-light);
+  border-radius: 1.6rem;
+  transition: all 0.2s;
+}
+.money:hover span {
+  border-color: var(--type-2-light);
+}
+
+.content {
+  margin-top: 4rem;
+  align-items: start;
+}
+.card {
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 0 0 75%;
+}
+
+.menu {
+  flex: 0 0 28.1rem;
+  margin-left: 3rem;
+}
+.menu h2 {
+  font-size: 3.15rem;
+  margin-bottom: 2rem;
+}
+
+.value {
+  justify-content: space-between;
+}
+.value > * {
+  min-height: 3rem;
+}
+
+.value p {
+  font-size: 1.4rem;
+}
+.imposto {
+  color: var(--type-4-light);
+}
+.total {
+  border-top: 1px solid var(--type-4-dark);
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
+@media (max-width: 64em) {
+  .title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 17.5em) {
+  .title {
+    font-size: 2.5rem;
+  }
+}

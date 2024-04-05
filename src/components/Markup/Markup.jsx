@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./Markup.module.css";
 import CardMarkup from "../Components/CardMarkup/CardMarkup";
 import useFetch from "../../Hooks/useFetch";
@@ -10,6 +10,7 @@ import Image from "../Components/Image/Image";
 import { NavLink } from "react-router-dom";
 import Head from "../../Helpers/Head";
 import useTop from "../../Hooks/useTop";
+import { API_URL } from "../../Api/Api";
 
 const Markup = () => {
   const { request, data } = useFetch();
@@ -30,7 +31,7 @@ const Markup = () => {
 
   useEffect(() => {
     async function fetchGame() {
-      await request("../../games-api.json");
+      await request(API_URL);
     }
     fetchGame();
     getGames();
