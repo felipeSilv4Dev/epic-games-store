@@ -14,13 +14,13 @@
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
 
 .primary {
   position: relative;
 }
 .secondary {
+  position: relative;
   border: 1px solid var(--type-5-light);
   padding: 1.1rem;
   overflow: hidden;

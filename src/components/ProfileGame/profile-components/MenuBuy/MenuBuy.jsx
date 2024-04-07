@@ -5,6 +5,7 @@ import Button from "../../../Components/Button/Button";
 import Info from "./menuBuy-components/Info/Info";
 import useMatch from "../../../../Hooks/useMatch";
 import { NavLink } from "react-router-dom";
+import LoadingButton from "../../../LoadingButton/LoadingButton";
 const MenuBuy = ({
   oldPrice,
   newPrice,
@@ -20,6 +21,8 @@ const MenuBuy = ({
 }) => {
   const match = useMatch("48em");
   const container = useRef();
+  const [loading, setLoading] = useState(false);
+  const [list, setList] = useState(false);
 
   const handleScroll = useCallback(async () => {
     if (!container.current) return;
@@ -43,6 +46,16 @@ const MenuBuy = ({
     container.current.classList.remove("active");
     window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
+
+  const handleAddCar = (e) => {
+    if (!carrinho) {
+      setLoading(true);
+      setTimeout(() => {
+        clickCar(e);
+        setLoading(false);
+      }, 300);
+    }
+  };
 
   if (match) {
     removeClass();
@@ -73,16 +86,42 @@ const MenuBuy = ({
         Comprar Agora
       </Button>
 
-      <div style={{ width: "100%" }} onClick={!carrinho ? clickCar : null}>
+      <div style={{ width: "100%" }} onClick={handleAddCar}>
         <NavLink to={carrinho && "/carrinho"}>
           <Button btn="secondary">
-            {carrinho ? "visualizar no carrinho" : "adicionar Ao carrinho"}
+            {carrinho ? (
+              "visualizar no carrinho"
+            ) : loading ? (
+              <LoadingButton width={match ? "20.5rem" : "15.1rem"} />
+            ) : (
+              "adicionar Ao carrinho"
+            )}
           </Button>
         </NavLink>
       </div>
-      <div style={{ width: "100%" }} onClick={clickGame}>
+
+      <div
+        style={{ width: "100%" }}
+        onClick={(e) => {
+          setList(true);
+          setTimeout(() => {
+            clickGame(e);
+            setList(false);
+          }, 300);
+        }}
+      >
         <Button btn="secondary">
-          {game ? "na lista de desejos" : "para a lista de desejos"}
+          {game ? (
+            list ? (
+              <LoadingButton width={match ? "20.5rem" : "15.1rem"} />
+            ) : (
+              "na lista de desejos"
+            )
+          ) : list ? (
+            <LoadingButton width={match ? "20.5rem" : "15.1rem"} />
+          ) : (
+            "para a lista de desejos"
+          )}
         </Button>
       </div>
 

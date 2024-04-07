@@ -1,0 +1,45 @@
+.container {
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.review {
+  display: block;
+  height: 1.3rem;
+  width: 1.3rem;
+  border-radius: 50%;
+  position: relative;
+  background: conic-gradient(
+    var(--type-5-light) calc(80 * 3.6deg),
+    transparent 0
+  );
+  animation: rotateInfinite 0.8s linear infinite;
+}
+
+@keyframes rotateInfinite {
+  0% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+.review::before {
+  content: "";
+  display: block;
+  height: 1rem;
+  width: 1rem;
+  position: absolute;
+  background-color: var(--modal-bg);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 48em) {
+  .container {
+    padding: 0.22rem 0;
+  }
+}

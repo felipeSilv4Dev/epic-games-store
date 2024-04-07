@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./CardMarkup.module.css";
 import Price from "../Price/Price";
 import review from "../../../../public/img/assets/review.png";
@@ -6,6 +6,8 @@ import Image from "../Image/Image";
 import Button from "../Button/Button";
 import useLocalStorage from "../../../Hooks/useLocalStore";
 import { NavLink } from "react-router-dom";
+import LoadingButton from "../../LoadingButton/LoadingButton";
+import useMatch from "../../../Hooks/useMatch";
 
 const CardMarkup = ({
   img,
@@ -20,6 +22,10 @@ const CardMarkup = ({
   car,
   markup,
 }) => {
+  const [loading, setLoading] = useState(false);
+  const [remove, setRemove] = useState(false);
+
+  const match = useMatch("48em");
   const handleClick = () => {
     window.location.pathname = `game/${id}`;
   };
@@ -33,6 +39,16 @@ const CardMarkup = ({
   useEffect(() => {
     init();
   }, [init]);
+
+  const handleAddCar = (e) => {
+    if (!active) {
+      setLoading(true);
+      setTimeout(() => {
+        addCar(e);
+        setLoading(false);
+      }, 300);
+    }
+  };
 
   return (
     <section id={id} className={styles.container}>
@@ -76,18 +92,43 @@ const CardMarkup = ({
       </div>
 
       <div className={styles.btn + " flex"}>
-        <span onClick={onDelete}>remover</span>
+        <span
+          onClick={(e) => {
+            setRemove(true);
+            onDelete(e);
+          }}
+        >
+          {remove ? <LoadingButton width={"6.8rem"} /> : "remover"}
+        </span>
+
         {markup && (
-          <NavLink to={active && "/carrinho"} onClick={!active ? addCar : null}>
+          <NavLink to={active && "/carrinho"} onClick={handleAddCar}>
             <Button btn="secondary">
-              {active ? "visualizar carrinho" : "Adicionar ao carrinho"}
+              {active ? (
+                "visualizar carrinho"
+              ) : loading ? (
+                <LoadingButton width={match ? "20.5rem" : "15.1rem"} />
+              ) : (
+                "Adicionar ao carrinho"
+              )}
             </Button>
           </NavLink>
         )}
 
         {car && (
-          <div onClick={onMoveList}>
-            <Button btn="secondary">Mover para lista de desejos</Button>
+          <div
+            onClick={(e) => {
+              setLoading(true);
+              onMoveList(e);
+            }}
+          >
+            <Button btn="secondary">
+              {loading ? (
+                <LoadingButton width={match ? "25.7rem" : "19.4rem"} />
+              ) : (
+                "Mover para lista de desejos"
+              )}
+            </Button>
           </div>
         )}
       </div>

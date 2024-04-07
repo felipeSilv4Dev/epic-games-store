@@ -13,6 +13,7 @@ import Message from "../Components/Message/Message";
 const Car = () => {
   const { request, data: json } = useFetch();
   const [data, setData] = useState([]);
+
   const top = useTop();
   let games;
 
@@ -35,12 +36,14 @@ const Car = () => {
   }, [request]);
 
   const handleClick = ({ currentTarget }) => {
-    const id = +currentTarget.closest("section").id;
-    const game = JSON.parse(localStorage.getItem("carrinho"));
-    const filterGame = game.filter((g) => g !== id);
+    setTimeout(() => {
+      const id = +currentTarget.closest("section").id;
+      const game = JSON.parse(localStorage.getItem("carrinho"));
+      const filterGame = game.filter((g) => g !== id);
 
-    localStorage.setItem("carrinho", JSON.stringify(filterGame));
-    setData(filterGame);
+      localStorage.setItem("carrinho", JSON.stringify(filterGame));
+      setData(filterGame);
+    }, 300);
   };
 
   if (json && data.length) {
@@ -48,13 +51,13 @@ const Car = () => {
   }
 
   const handleMoveList = ({ currentTarget }) => {
-    const id = +currentTarget.closest("section").id;
-
-    const game = JSON.parse(localStorage.getItem("game"));
-    const gameFilter = game.filter((g) => g !== id);
-    localStorage.setItem("game", JSON.stringify([...gameFilter, id]));
-
-    handleClick({ currentTarget });
+    setTimeout(() => {
+      const id = +currentTarget.closest("section").id;
+      const game = JSON.parse(localStorage.getItem("game"));
+      const gameFilter = game.filter((g) => g !== id);
+      localStorage.setItem("game", JSON.stringify([...gameFilter, id]));
+      handleClick({ currentTarget });
+    }, 300);
   };
 
   return (

@@ -128,7 +128,7 @@
   text-decoration: none;
 }
 .btn button {
-  max-width: fit-content;
+  max-width: max-content;
 }
 
 @media only screen and (max-width: 80em) {

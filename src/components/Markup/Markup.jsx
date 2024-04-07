@@ -39,12 +39,14 @@ const Markup = () => {
   }, [request, getGames]);
 
   const handleClick = ({ currentTarget }) => {
-    const id = +currentTarget.closest("section").id;
-    const game = JSON.parse(localStorage.getItem("game"));
-    const filterGame = game.filter((g) => g !== id);
+    setTimeout(() => {
+      const id = +currentTarget.closest("section").id;
+      const game = JSON.parse(localStorage.getItem("game"));
+      const filterGame = game.filter((g) => g !== id);
 
-    localStorage.setItem("game", JSON.stringify(filterGame));
-    setJson(filterGame);
+      localStorage.setItem("game", JSON.stringify(filterGame));
+      setJson(filterGame);
+    }, 300);
   };
 
   let game;
