@@ -22,21 +22,21 @@ const Markup = () => {
   const top = useTop();
 
   useEffect(top, [top]);
+
+  const fetchGame = useCallback(async () => await request(API_URL), [request]);
   const getGames = useCallback(() => {
     const item = localStorage.getItem("game");
 
     if (!item) return;
-    const jsonData = JSON.parse(item);
-    setJson(jsonData);
-  }, []);
 
-  useEffect(() => {
-    async function fetchGame() {
-      await request(API_URL);
+    const jsonData = JSON.parse(item);
+    if (jsonData.length > 0) {
+      fetchGame();
+      setJson(jsonData);
     }
-    fetchGame();
-    getGames();
-  }, [request, getGames]);
+  }, [fetchGame]);
+
+  useEffect(getGames, [getGames]);
 
   const handleClick = ({ currentTarget }) => {
     setTimeout(() => {

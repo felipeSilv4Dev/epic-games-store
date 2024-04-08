@@ -1,18 +1,9 @@
-import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./List.module.css";
 import Card from "../Card/Card";
-import useFetch from "../../../../Hooks/useFetch";
-import { API_URL } from "../../../../Api/Api";
 import Loading from "../LoadingList/Loading";
 
-const List = ({ title, btn, initial, final, nav }) => {
-  const { request, data, loading } = useFetch();
-
-  useEffect(() => {
-    (async () => await request(API_URL))();
-  }, [request]);
-
+const List = ({ data, loading, title, btn, initial, final, nav }) => {
   if (loading) return <Loading />;
 
   if (data) {

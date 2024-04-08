@@ -1,21 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./Ofertas.module.css";
-import useFetch from "../../Hooks/useFetch";
+
 import Card from "../Components/Card/Card";
 import useMatch from "../../Hooks/useMatch";
 import { Carousel } from "../Components/Carousel/Carousel";
 import { NavLink } from "react-router-dom";
 import LoadingOfertas from "./ofertas-components/LoadingOfertas/LoadingOfertas";
-import { API_URL } from "../../Api/Api";
 
-const Ofertas = () => {
+const Ofertas = ({ data, loading }) => {
   const match = useMatch("48em");
-  const { loading, data, request } = useFetch();
   const refOfertas = useRef();
-
-  useEffect(() => {
-    (async () => await request(API_URL))();
-  }, [request]);
 
   if (loading) return <LoadingOfertas />;
 

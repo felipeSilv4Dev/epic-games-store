@@ -4,7 +4,7 @@ import List from "./list-components/List/List";
 import useMatch from "../../Hooks/useMatch";
 import { Carousel } from "../Components/Carousel/Carousel";
 
-const ListGame = () => {
+const ListGame = ({ data, loading }) => {
   const match = useMatch("48em");
   const refList = useRef();
   const list = [
@@ -38,6 +38,8 @@ const ListGame = () => {
           return (
             <div key={id} id={id} className={style.content}>
               <List
+                data={data}
+                loading={loading}
                 initial={initial}
                 final={final}
                 title={title}

@@ -1,20 +1,15 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import styles from "./Galery.module.css";
 import { NavLink } from "react-router-dom";
 import Card from "../Components/Card/Card";
 import { Carousel } from "../Components/Carousel/Carousel";
-import useFetch from "../../Hooks/useFetch";
+
 import useMatch from "../../Hooks/useMatch";
 import LoadingOfertas from "../Ofertas/ofertas-components/LoadingOfertas/LoadingOfertas";
 
-const Galery = () => {
-  const { loading, data, request } = useFetch();
+const Galery = ({ data, loading }) => {
   const match = useMatch("48em");
   const galeryRef = useRef();
-
-  useEffect(() => {
-    (async () => await request("../../games-api.json"))();
-  }, [request]);
 
   if (loading) return <LoadingOfertas />;
 
