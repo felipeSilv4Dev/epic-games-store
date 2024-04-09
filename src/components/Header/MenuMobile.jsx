@@ -30,9 +30,8 @@ const MenuMobile = (active) => {
 
           <div>
             <ul className={styles.nav + " flex"}>
-              <LiMenu text="Distribuição" />
               <LiMenu text="Suporte" />
-              <LiMenu text="Unreal Engine" />
+              <LiMenu text="Distribuição" />
             </ul>
           </div>
         </div>

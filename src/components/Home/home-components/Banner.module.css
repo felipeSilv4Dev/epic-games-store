@@ -92,12 +92,12 @@
   left: -1.8vw;
   height: 4vw;
   transform: translateX(10rem);
-  opacity: 0;
-  transition: transform 0.3s 0.3s, opacity 0.3s 0.2s;
+  visibility: hidden;
+  transition: transform 0.4s 0.3s, visibility 0.3s 0.3s;
 }
 
 .container:global(.active) .logo img {
-  opacity: 1;
+  visibility: visible;
   transform: translateX(0);
 }
 
@@ -149,6 +149,8 @@
   font-size: 1.05rem;
   font-weight: 500;
   color: var(--type-2-light);
+  opacity: 0;
+  transition: 0.9s 0.2s ease;
 }
 
 .info p {
@@ -157,13 +159,11 @@
   max-width: 32rem;
   font-weight: 500;
   line-height: 1.5;
+
+  opacity: 0;
+  transition: 0.9s 0.2s ease;
 }
 
-.info span,
-.info p {
-  opacity: 0;
-  transition: all 0.3s 0.3s;
-}
 .container:global(.active) .info span,
 .container:global(.active) .info p {
   opacity: 1;

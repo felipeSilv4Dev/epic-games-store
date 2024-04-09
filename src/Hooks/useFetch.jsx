@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 
 const useFetch = () => {
   const [data, setData] = useState(null);

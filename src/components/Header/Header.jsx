@@ -79,9 +79,8 @@ const Header = () => {
 
         <div className={styles.nav}>
           <ul className="flex">
-            <li className="link">Distribuição</li>
             <li className="link">Suporte</li>
-            <li className="link">Unreal engine</li>
+            <li className="link">Distribuição</li>
           </ul>
         </div>
 
