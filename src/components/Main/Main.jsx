@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Home from "../Home/Home";
 import Games from "../Games/Games";
 import Ofertas from "../Ofertas/Ofertas";
@@ -13,7 +13,12 @@ const Main = () => {
   const top = useTop();
 
   useEffect(() => {
-    (async () => await request(API_URL))();
+    const controler = new AbortController();
+    (async () => await request(API_URL, controler.signal))();
+
+    return () => {
+      controler.abort();
+    };
   }, [request]);
 
   useEffect(top, [top]);

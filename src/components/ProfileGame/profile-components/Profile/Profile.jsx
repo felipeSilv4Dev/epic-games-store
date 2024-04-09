@@ -35,7 +35,12 @@ const Profile = ({ dist }) => {
   }, [carrinhoInitial, gameInitial]);
 
   useEffect(() => {
-    (async () => await request(API_URL))();
+    const controler = new AbortController();
+    (async () => await request(API_URL, controler.signal))();
+
+    return () => {
+      controler.abort();
+    };
   }, [request]);
 
   if (loading) return <Loading />;

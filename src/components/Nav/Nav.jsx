@@ -46,7 +46,12 @@ const Nav = ({ setDist }) => {
   }, [setDist]);
 
   useEffect(() => {
-    (async () => await request(API_URL))();
+    const controler = new AbortController();
+    (async () => await request(API_URL, controler.signal))();
+
+    return () => {
+      controler.abort();
+    };
   }, [request]);
 
   useEffect(() => {

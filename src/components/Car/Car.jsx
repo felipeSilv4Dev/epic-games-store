@@ -18,21 +18,29 @@ const Car = () => {
   let games;
 
   useEffect(top, [top]);
-  const fetchGame = useCallback(async () => await request(API_URL), [request]);
 
   const getGames = useCallback(() => {
     const item = localStorage.getItem("carrinho");
 
     if (!item) return;
     const jsonData = JSON.parse(item);
+    setData(jsonData);
 
-    if (jsonData.length > 0) {
-      fetchGame();
-      setData(jsonData);
+    return jsonData;
+  }, []);
+
+  useEffect(() => {
+    const controler = new AbortController();
+    const jsonData = getGames();
+
+    if (jsonData.length) {
+      (async () => await request(API_URL, controler.signal))();
     }
-  }, [fetchGame]);
 
-  useEffect(getGames, [getGames]);
+    return () => {
+      controler.abort();
+    };
+  }, [request, getGames]);
 
   const handleClick = ({ currentTarget }) => {
     setTimeout(() => {
