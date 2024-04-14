@@ -6,6 +6,7 @@ import Info from "./menuBuy-components/Info/Info";
 import useMatch from "../../../../Hooks/useMatch";
 import { NavLink } from "react-router-dom";
 import LoadingButton from "../../../LoadingButton/LoadingButton";
+import Box from "../Box/Box";
 const MenuBuy = ({
   oldPrice,
   newPrice,
@@ -18,6 +19,7 @@ const MenuBuy = ({
   clickCar,
   game,
   carrinho,
+  setOpen,
 }) => {
   const match = useMatch("48em");
   const container = useRef();
@@ -135,13 +137,23 @@ const MenuBuy = ({
           <i className={styles.icon + " fa-brands fa-windows"}></i>
         }
       />
-      <Button btn="secondary">
-        <i
-          style={{ marginRight: ".8rem" }}
-          className=" fa-solid fa-share-nodes"
-        ></i>
-        Compartilhar
-      </Button>
+
+      <div
+        style={{ width: "100%" }}
+        onClick={() => {
+          document.body.style.overflowY = "hidden";
+          setOpen(true);
+        }}
+      >
+        <Button btn="secondary">
+          <i
+            style={{ marginRight: ".8rem" }}
+            className=" fa-solid fa-share-nodes"
+          ></i>
+          Compartilhar
+        </Button>
+      </div>
+
       <Button btn="secondary">
         <i style={{ marginRight: ".8rem" }} className=" fa-solid fa-flag"></i>
         denunciar

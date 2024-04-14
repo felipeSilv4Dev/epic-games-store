@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Profile.module.css";
 import { useParams } from "react-router";
 import useFetch from "../../../../Hooks/useFetch";
@@ -12,11 +12,15 @@ import Reviews from "../Reviews/Reviews";
 import Requires from "../Requires/Requires";
 import { API_URL } from "../../../../Api/Api";
 import Head from "../../../../Helpers/Head";
+import Box from "../Box/Box";
+import Share from "../Share/Share";
 
 const Profile = ({ dist }) => {
   const params = useParams();
   const { id } = params;
   const { request, data, loading } = useFetch();
+  const [open, setOpen] = useState(false);
+
   const {
     $any: clickGame,
     active: game,
@@ -79,7 +83,13 @@ const Profile = ({ dist }) => {
             carrinho={carrinho}
             dist={dist}
             {...dates}
+            setOpen={setOpen}
           />
+          {open && (
+            <Box setClick={setOpen}>
+              <Share />
+            </Box>
+          )}
         </div>
 
         <Details

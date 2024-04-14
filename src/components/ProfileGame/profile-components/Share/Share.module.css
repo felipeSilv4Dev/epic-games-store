@@ -1,0 +1,76 @@
+.container {
+  padding: 2.7rem;
+  background-color: var(--modal-bg);
+  border-radius: 0.4rem;
+  position: relative;
+}
+
+.content {
+  padding: 5.3rem 3.5rem 0;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.content h1 {
+  font-size: 3.2rem;
+  text-transform: capitalize;
+}
+
+.content p {
+  font-size: 1.4rem;
+  color: var(--type-4-light);
+}
+.icon {
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.icon i {
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--type-4-light);
+  transition: all 0.2s;
+}
+.icon i:hover {
+  color: var(--type-2-light);
+  transform: translateY(-0.2rem);
+}
+
+.close {
+  color: var(--type-4-light);
+  position: absolute;
+  font-size: 2rem;
+  top: 2.7rem;
+  right: 2.7rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.close:hover {
+  color: var(--type-2-light);
+}
+
+.url {
+  gap: 2rem;
+  width: 100%;
+  border: 1px solid var(--type-4-light);
+  padding: 0.8rem 1.8rem;
+  border-radius: 0.4rem;
+  margin-bottom: 6rem;
+}
+
+.url i {
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+}
+
+.url span {
+  font-size: 1.22rem;
+  flex: 1;
+}
+.url i:hover {
+  background-color: var(--type-4-dark);
+}
