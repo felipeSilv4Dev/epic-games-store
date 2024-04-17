@@ -87,7 +87,7 @@ const Profile = ({ dist }) => {
           />
           {open && (
             <Box setClick={setOpen}>
-              <Share />
+              <Share setClick={setOpen} />
             </Box>
           )}
         </div>

@@ -3,6 +3,7 @@
   background-color: var(--modal-bg);
   border-radius: 0.4rem;
   position: relative;
+  width: 45rem;
 }
 
 .content {
@@ -14,6 +15,7 @@
 .content h1 {
   font-size: 3.2rem;
   text-transform: capitalize;
+  margin-bottom: 1rem;
 }
 
 .content p {
@@ -24,10 +26,11 @@
   width: 100%;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 2rem;
+  margin: 2rem 0;
+  gap: 3rem;
 }
 .icon i {
-  font-size: 2rem;
+  font-size: 2.3rem;
   cursor: pointer;
   color: var(--type-4-light);
   transition: all 0.2s;
@@ -59,6 +62,9 @@
   margin-bottom: 6rem;
 }
 
+.url:hover {
+  border-color: var(--type-2-light);
+}
 .url i {
   font-size: 2rem;
   cursor: pointer;
@@ -73,4 +79,27 @@
 }
 .url i:hover {
   background-color: var(--type-4-dark);
+}
+
+@media (max-width: 48em) {
+  .container {
+    width: 94vw;
+    height: 97vh;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content h1 {
+    font-size: 4rem;
+  }
+  .content p {
+    font-size: 1.6rem;
+  }
+  .icon i {
+    font-size: 3rem;
+  }
+  .url span {
+    font-size: 1.6rem;
+  }
 }

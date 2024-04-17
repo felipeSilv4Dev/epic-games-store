@@ -1,7 +1,15 @@
 import React from "react";
 import styles from "./Share.module.css";
+import Button from "../../../Components/Button/Button";
+import UseMatch from "../../../../Hooks/useMatch";
 
-const Share = () => {
+const Share = ({ setClick }) => {
+  const match = UseMatch("48em");
+  const handleClose = () => {
+    document.body.style.overflowY = "initial";
+    setClick(false);
+  };
+
   return (
     <section className={styles.container}>
       <div className={styles.content + " flex"}>
@@ -14,13 +22,20 @@ const Share = () => {
         </div>
 
         <div className={styles.url + " flex"}>
-          <span>{window.location.href}...</span>
+          <span>{window.location.href}</span>
           <i className="fa-regular fa-clone"></i>
         </div>
-        <span className={styles.close}>
+        <span onClick={handleClose} className={styles.close}>
           <i className="fa-solid fa-x"></i>
         </span>
       </div>
+      {match && (
+        <span className={styles.button} onClick={handleClose}>
+          <Button btn="primary" theme="transparent">
+            cancelar
+          </Button>
+        </span>
+      )}
     </section>
   );
 };
