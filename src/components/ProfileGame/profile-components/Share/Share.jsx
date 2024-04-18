@@ -25,12 +25,14 @@ const Share = ({ setClick }) => {
           <span>{window.location.href}</span>
           <i className="fa-regular fa-clone"></i>
         </div>
-        <span onClick={handleClose} className={styles.close}>
-          <i className="fa-solid fa-x"></i>
-        </span>
+        {!match && (
+          <span onClick={handleClose} className={styles.close}>
+            <i className="fa-solid fa-x"></i>
+          </span>
+        )}
       </div>
       {match && (
-        <span className={styles.button} onClick={handleClose}>
+        <span className={styles.boxButton} onClick={handleClose}>
           <Button btn="primary" theme="transparent">
             cancelar
           </Button>

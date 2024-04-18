@@ -1,5 +1,4 @@
 .container {
-  padding: 2.7rem;
   background-color: var(--modal-bg);
   border-radius: 0.4rem;
   position: relative;
@@ -7,7 +6,7 @@
 }
 
 .content {
-  padding: 5.3rem 3.5rem 0;
+  padding: 8rem 6.2rem 0;
   flex-direction: column;
   gap: 2rem;
 }
@@ -90,6 +89,13 @@
     flex-direction: column;
   }
 
+  .boxButton {
+    padding: 2.3rem;
+    background-color: var(--type-4-dark);
+  }
+  .content {
+    padding: 3.4rem;
+  }
   .content h1 {
     font-size: 4rem;
   }
