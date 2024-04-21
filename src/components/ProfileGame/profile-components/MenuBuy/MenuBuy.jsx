@@ -6,7 +6,7 @@ import Info from "./menuBuy-components/Info/Info";
 import useMatch from "../../../../Hooks/useMatch";
 import { NavLink } from "react-router-dom";
 import LoadingButton from "../../../LoadingButton/LoadingButton";
-import Box from "../Box/Box";
+
 const MenuBuy = ({
   oldPrice,
   newPrice,
@@ -20,6 +20,7 @@ const MenuBuy = ({
   game,
   carrinho,
   setOpen,
+  setReport,
 }) => {
   const match = useMatch("48em");
   const container = useRef();
@@ -154,10 +155,18 @@ const MenuBuy = ({
         </Button>
       </div>
 
-      <Button btn="secondary">
-        <i style={{ marginRight: ".8rem" }} className=" fa-solid fa-flag"></i>
-        denunciar
-      </Button>
+      <div
+        style={{ width: "100%" }}
+        onClick={() => {
+          document.body.style.overflowY = "hidden";
+          setReport(true);
+        }}
+      >
+        <Button btn="secondary">
+          <i style={{ marginRight: ".8rem" }} className=" fa-solid fa-flag"></i>
+          denunciar
+        </Button>
+      </div>
     </div>
   );
 };

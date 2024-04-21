@@ -14,12 +14,14 @@ import { API_URL } from "../../../../Api/Api";
 import Head from "../../../../Helpers/Head";
 import Box from "../Box/Box";
 import Share from "../Share/Share";
+import Report from "../Report/Report";
 
 const Profile = ({ dist }) => {
   const params = useParams();
   const { id } = params;
   const { request, data, loading } = useFetch();
   const [open, setOpen] = useState(false);
+  const [report, setReport] = useState(false);
 
   const {
     $any: clickGame,
@@ -84,10 +86,17 @@ const Profile = ({ dist }) => {
             dist={dist}
             {...dates}
             setOpen={setOpen}
+            setReport={setReport}
           />
           {open && (
             <Box setClick={setOpen}>
               <Share setClick={setOpen} />
+            </Box>
+          )}
+
+          {report && (
+            <Box setClick={setOpen}>
+              <Report theme={dates.profile.theme} setClick={setReport} />
             </Box>
           )}
         </div>
