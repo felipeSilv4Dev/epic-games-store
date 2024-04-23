@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Report.module.css";
 import UseMatch from "../../../../Hooks/useMatch";
 import Button from "../../../Components/Button/Button";
+import { Link } from "react-router-dom";
 
 const Report = ({ setClick, theme }) => {
   const match = UseMatch("48em");
@@ -18,7 +19,7 @@ const Report = ({ setClick, theme }) => {
         <p>
           Se você acredita que esse jogo viola seus direitos de propriedade
           intelectual, envie um relatório de violação de propriedade
-          intelectual. <span style={{ color: theme }}>Saiba mais</span>
+          intelectual. <Link style={{ color: theme }}>Saiba mais</Link>
         </p>
 
         {!match && (

@@ -55,7 +55,14 @@ const ListGame = ({ data, loading }) => {
           {list.map(({ id, initial, final, title, btn }) => {
             return (
               <div key={id} id={id} className={style.content}>
-                <List initial={initial} final={final} title={title} btn={btn} />
+                <List
+                  data={data}
+                  initial={initial}
+                  loading={loading}
+                  final={final}
+                  title={title}
+                  btn={btn}
+                />
               </div>
             );
           })}

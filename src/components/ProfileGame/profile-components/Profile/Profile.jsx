@@ -95,7 +95,7 @@ const Profile = ({ dist }) => {
           )}
 
           {report && (
-            <Box setClick={setOpen}>
+            <Box setClick={setReport}>
               <Report theme={dates.profile.theme} setClick={setReport} />
             </Box>
           )}
