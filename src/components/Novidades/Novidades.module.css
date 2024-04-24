@@ -2,3 +2,22 @@
   margin-top: 0.8rem;
   gap: 1.7rem;
 }
+
+@media (max-width: 64em) {
+  .container h2 {
+    font-size: 1.8rem;
+  }
+  .container {
+    width: 93%;
+  }
+}
+
+@media (max-width: 48em) {
+  .container h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .card {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,38 @@
+.container {
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.link {
+  font-size: 1.4rem;
+  color: var(--type-2-light);
+  border-bottom: 1px solid var(--type-5-dark);
+  transition: all 0.2s;
+}
+
+.link:hover {
+  border-color: var(--type--light);
+}
+
+p {
+  font-size: 1.4rem;
+  color: var(--type-4-light);
+}
+.text {
+  color: var(--type-2-light);
+  font-weight: bold;
+}
+@media (max-width: 64em) {
+  p,
+  .link {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 48em) {
+  p,
+  .link {
+    font-size: 1.6rem;
+  }
+}

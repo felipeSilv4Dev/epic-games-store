@@ -97,7 +97,7 @@
   width: 100%;
   position: absolute;
   text-align: center;
-  background-color: var(--body-bg);
+  color: var(--type-2-light);
   padding: 0.5rem 0;
   font-size: 1.2rem;
   bottom: 0;

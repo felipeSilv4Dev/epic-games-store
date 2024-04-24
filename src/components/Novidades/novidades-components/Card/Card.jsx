@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Card.module.css";
 import Image from "../../../Components/Image/Image";
-import { Link } from "react-router-dom";
+import Text from "../Text/Text";
 
 const Card = ({ id, home, profile }) => {
   const handleClick = () => {
@@ -15,10 +15,7 @@ const Card = ({ id, home, profile }) => {
       </div>
 
       <span>11h atrás</span>
-      <p className={styles.text}>{home.text}</p>
-      <p>Forje um novo caminho</p>
-
-      <Link className={styles.link}>leia mais</Link>
+      <Text p1={home.text} p2="Forje um novo caminho" />
     </div>
   );
 };
