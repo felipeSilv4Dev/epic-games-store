@@ -125,7 +125,7 @@ const Nav = ({ setDist }) => {
                 Navegar
               </NavLink>
               <NavLink className="link" to="novidades">
-                Novidade
+                Novidades
               </NavLink>
             </div>
           )}

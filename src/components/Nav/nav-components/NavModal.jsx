@@ -18,7 +18,7 @@ const NavModal = ({ setNav, nav }) => {
           </li>
 
           <li>
-            <NavLink to="novidades">Novidade</NavLink>
+            <NavLink to="novidades">Novidades</NavLink>
           </li>
         </div>
       </div>
