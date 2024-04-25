@@ -4,6 +4,7 @@ import useTop from "../../Hooks/useTop";
 import useFetch from "../../Hooks/useFetch";
 import { API_URL } from "../../Api/Api";
 import Card from "./novidades-components/Card/Card";
+import Game from "./novidades-components/Game/Game";
 
 const Novidades = () => {
   const { data, request, loading } = useFetch();
@@ -29,6 +30,16 @@ const Novidades = () => {
           {card.map(({ id, profile, home }) => (
             <Card key={id} id={id} home={home} profile={profile} />
           ))}
+        </div>
+
+        <div>
+          <ul>
+            <li>
+              {card.map((c) => (
+                <Game key={c.id} {...c} />
+              ))}
+            </li>
+          </ul>
         </div>
       </section>
     );

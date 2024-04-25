@@ -1,6 +1,7 @@
 .card {
   margin-top: 0.8rem;
   gap: 1.7rem;
+  margin-bottom: 5rem;
 }
 
 @media (max-width: 64em) {
