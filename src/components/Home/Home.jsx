@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./Home.module.css";
-import Banner from "./home-components/Banner";
-import Game from "./home-components/Game";
+import Banner from "./home-components/Banner/Banner";
+import Game from "./home-components/Game/Game";
 import useMatch from "../../Hooks/useMatch";
 import { Carousel } from "../Components/Carousel/Carousel";
 import { useNavigate } from "react-router-dom";

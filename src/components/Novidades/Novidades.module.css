@@ -12,7 +12,6 @@
     width: 93%;
   }
 }
-
 @media (max-width: 48em) {
   .container h2 {
     font-size: 2rem;
@@ -20,5 +19,8 @@
   }
   .card {
     flex-direction: column;
+  }
+  .card {
+    margin-bottom: 8rem;
   }
 }

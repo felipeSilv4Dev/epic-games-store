@@ -2,7 +2,6 @@
   display: flex;
   margin-top: 10rem;
   background-color: var(--modal-bg);
-  color: var(--type-2-light);
 }
 
 .content {

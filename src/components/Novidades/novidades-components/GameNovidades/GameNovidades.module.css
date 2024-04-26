@@ -5,13 +5,13 @@
   border-top: 1px solid var(--type-5-dark);
 }
 
-figure {
-  width: 18rem;
+.picture {
+  width: 20rem;
   position: relative;
   cursor: pointer;
 }
 
-figure::before {
+.picture::before {
   content: "";
   width: 100%;
   height: 100%;
@@ -24,7 +24,7 @@ figure::before {
   transition: all 0.2s;
 }
 
-figure:hover::before {
+.picture:hover::before {
   opacity: 0.1;
 }
 
@@ -39,4 +39,27 @@ figure:hover::before {
   top: -0.3rem;
   margin-right: 0.8rem;
   font-size: 1.1rem;
+}
+
+@media (max-width: 80em) {
+  .picture {
+    width: 25rem;
+  }
+}
+
+@media (max-width: 57em) {
+  .picture {
+    width: 35rem;
+  }
+}
+
+@media (max-width: 36em) {
+  .container {
+    flex-direction: column;
+    padding: 3rem 0;
+    margin-top: 2rem;
+  }
+  .picture {
+    width: 100%;
+  }
 }

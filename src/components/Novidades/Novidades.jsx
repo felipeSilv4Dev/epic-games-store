@@ -4,7 +4,7 @@ import useTop from "../../Hooks/useTop";
 import useFetch from "../../Hooks/useFetch";
 import { API_URL } from "../../Api/Api";
 import Card from "./novidades-components/Card/Card";
-import Game from "./novidades-components/Game/Game";
+import GameNovidades from "./novidades-components/GameNovidades/GameNovidades";
 
 const Novidades = () => {
   const { data, request, loading } = useFetch();
@@ -20,6 +20,10 @@ const Novidades = () => {
   }, [request]);
   useEffect(top, [top]);
 
+  const handleClick = (id) => {
+    window.location.pathname = `game/${id}`;
+  };
+
   if (data) {
     const card = data.slice(1, 3);
 
@@ -27,16 +31,16 @@ const Novidades = () => {
       <section className={styles.container + " max"}>
         <h2>Notícias da Epic Games</h2>
         <div className={styles.card + " flex"}>
-          {card.map(({ id, profile, home }) => (
-            <Card key={id} id={id} home={home} profile={profile} />
+          {card.map((c) => (
+            <Card key={c.id} {...c} onNavigate={handleClick} />
           ))}
         </div>
 
         <div>
           <ul>
             <li>
-              {card.map((c) => (
-                <Game key={c.id} {...c} />
+              {data.map((c) => (
+                <GameNovidades key={c.id} {...c} onNavigate={handleClick} />
               ))}
             </li>
           </ul>

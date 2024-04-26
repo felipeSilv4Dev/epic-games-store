@@ -16,6 +16,7 @@
   text-transform: uppercase;
   font-size: 1.2rem;
   text-align: center;
+  color: var(--type-2-light);
 }
 
 .btn:hover {

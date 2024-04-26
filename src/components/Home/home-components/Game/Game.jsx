@@ -1,5 +1,5 @@
 import styles from "./Game.module.css";
-import Image from "../../Components/Image/Image";
+import Image from "../../../Components/Image/Image";
 
 const Game = ({ id, title, img, setClick }) => {
   return (

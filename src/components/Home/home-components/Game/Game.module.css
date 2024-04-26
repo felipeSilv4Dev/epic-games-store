@@ -59,6 +59,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: var(--type-2-light);
 }
 
 @media only screen and (max-width: 90em) {

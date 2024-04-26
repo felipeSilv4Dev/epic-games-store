@@ -1,6 +1,6 @@
-import useMatch from "../../../Hooks/useMatch";
+import useMatch from "../../../../Hooks/useMatch";
 import styles from "./Banner.module.css";
-import Image from "../../Components/Image/Image";
+import Image from "../../../Components/Image/Image";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 

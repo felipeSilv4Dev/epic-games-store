@@ -3,6 +3,7 @@
   margin-bottom: 1rem;
   cursor: pointer;
   transition: all 0.3s;
+  color: var(--type-2-light);
 }
 .paragraph:hover {
   color: var(--btn-3);

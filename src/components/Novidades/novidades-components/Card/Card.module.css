@@ -34,6 +34,10 @@
 }
 
 @media (max-width: 48em) {
+  .container:not(:first-child) {
+    margin-top: 2rem;
+  }
+
   .container span {
     font-size: 1.4rem;
   }
