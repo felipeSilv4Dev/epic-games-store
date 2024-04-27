@@ -79,8 +79,17 @@ const Header = () => {
 
         <div className={styles.nav}>
           <ul className="flex">
-            <li className="link">Suporte</li>
-            <li className="link">Distribuição</li>
+            <li>
+              <NavLink className="link" to="suporte">
+                Suporte
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink className="link" to="distribuir">
+                Distribuição
+              </NavLink>
+            </li>
           </ul>
         </div>
 

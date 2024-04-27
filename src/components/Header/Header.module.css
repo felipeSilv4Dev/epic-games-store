@@ -44,6 +44,10 @@
 .nav {
   margin-right: auto;
 }
+.nav li a:global(.active) {
+  color: var(--type-3-light);
+  background-color: var(--type-5-dark);
+}
 
 .store img {
   height: 1.8rem;
