@@ -1,0 +1,44 @@
+.container {
+  width: 100%;
+  position: relative;
+}
+
+.container > div img {
+  width: 100%;
+  background-image: linear-gradient(red, blue);
+}
+
+.overlay {
+  display: block;
+  position: absolute;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.7));
+}
+.content {
+  max-width: 54rem;
+  position: absolute;
+  top: 25%;
+  right: 4rem;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  justify-content: end;
+  text-align: center;
+  z-index: 11;
+}
+
+.content h2 {
+  font-size: 4.4rem;
+  font-weight: bold;
+}
+.content p {
+  font-size: 1.4rem;
+  color: var(--type-2-light);
+}
+.btn button {
+  color: var(--type-2-dark);
+  letter-spacing: 0.5;
+  font-weight: bold;
+}

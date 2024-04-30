@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./Distribte.module.css";
+import BannerDist from "./BannerDist/BannerDist";
 
 const Distribte = () => {
   return (
-    <div className="main">
-      <h1>Distribuir</h1>
-      Distribte asdsd
+    <div className="max appMain">
+      <BannerDist />
     </div>
   );
 };
