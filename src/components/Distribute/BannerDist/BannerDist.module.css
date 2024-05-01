@@ -47,6 +47,12 @@
   font-weight: bold;
 }
 
+@media (min-width: 112.5em) {
+  .logo {
+    width: 5rem;
+  }
+}
+
 @media (max-width: 93.75em) {
   .content h2 {
     font-size: 3rem;
@@ -55,17 +61,17 @@
 
 @media (max-width: 80em) {
   .container {
-    width: 95%;
     margin: 0 auto;
-  }
-  .content * {
-    font-size: 1.6rem;
   }
   .content p {
     font-size: 1.6rem;
   }
 }
-
+@media (max-width: 64em) {
+  .container {
+    width: 95%;
+  }
+}
 @media (max-width: 48em) {
   .picture {
     display: none;
