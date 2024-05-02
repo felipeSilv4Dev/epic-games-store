@@ -2,14 +2,13 @@
   padding: 3.5rem;
   border-radius: 1rem;
   border: 1px solid var(--type-3-dark);
+  flex-direction: column;
   text-align: center;
+  gap: 2rem;
 }
 
-.icon {
-  padding: 1rem;
-  display: block;
-  font-size: 10rem;
-  margin-bottom: 2rem;
+.picture img {
+  max-width: 10rem;
 }
 
 .title {
@@ -23,9 +22,6 @@
 }
 
 @media (max-width: 80em) {
-  .icon {
-    font-size: 8.5rem;
-  }
   .title {
     font-size: 2.4rem;
   }
@@ -36,13 +32,22 @@
 
 @media (max-width: 64em) {
   .container {
-    display: flex;
+    flex-direction: row;
     text-align: start;
-    align-items: center;
+    gap: 2rem;
+  }
+  .picture img {
+    max-width: 9rem;
   }
 }
 
 @media (max-width: 48em) {
+  .container {
+    gap: 2.5rem;
+  }
+  .picture img {
+    max-width: 11rem;
+  }
   .container {
     flex-direction: column;
     text-align: center;
@@ -51,6 +56,7 @@
 
   .title {
     font-size: 2.9rem;
+    margin-bottom: 2.5rem;
   }
   .description {
     font-size: 2rem;
