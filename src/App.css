@@ -15,6 +15,7 @@
   --type-3-light: #e6e6ea;
   --type-4-light: #aaaaaa;
   --type-5-light: #a09ea0;
+  --type-6-light: #808080;
 
   /* dark */
   --type-1-dark: #000;
@@ -29,6 +30,9 @@
   --btn-2: #61cdff;
   --btn-3: #0074e4;
   --bg-4: #202024;
+
+  /* color */
+  --col-1: #ffa640;
 }
 
 *,

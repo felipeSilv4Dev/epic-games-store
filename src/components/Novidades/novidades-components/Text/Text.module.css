@@ -15,24 +15,27 @@
   border-color: var(--type--light);
 }
 
-p {
+.paragraph {
   font-size: 1.4rem;
   color: var(--type-4-light);
   line-height: 1.5;
 }
 .text {
+  font-size: 1.4rem;
   color: var(--type-2-light);
   font-weight: bold;
 }
 @media (max-width: 57em) {
-  p,
+  .paragraph,
+  .text,
   .link {
     font-size: 1.6rem;
   }
 }
 
 @media (max-width: 48em) {
-  p,
+  .paragraph,
+  .text,
   .link {
     font-size: 1.6rem;
   }

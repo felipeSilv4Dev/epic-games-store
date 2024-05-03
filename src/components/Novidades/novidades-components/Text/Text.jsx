@@ -6,7 +6,7 @@ const Text = ({ p1, p2, id, onNavigate }) => {
   return (
     <div className={styles.container + " flex"}>
       <p className={styles.text}>{p1}</p>
-      <p>{p2}</p>
+      <p className={styles.paragraph}>{p2}</p>
       <Link onClick={() => onNavigate(id)} className={styles.link}>
         leia mais
       </Link>

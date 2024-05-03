@@ -11,6 +11,7 @@ import Car from "./components/Car/Car";
 import Navegar from "./components/Navegar/Navegar";
 import Novidades from "./components/Novidades/Novidades";
 import Distribte from "./components/Distribute/Distribte";
+import Suport from "./components/Suport/Suport";
 
 function App() {
   const [dist, setDist] = useState({ height: "" });
@@ -26,6 +27,7 @@ function App() {
           <Route path="carrinho" element={<Car />} />
           <Route path="navegar" element={<Navegar />} />
           <Route path="novidades" element={<Novidades />} />
+          <Route path="suporte" element={<Suport />} />
           <Route path="distribuir" element={<Distribte />} />
         </Routes>
       </BrowserRouter>
