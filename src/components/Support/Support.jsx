@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "./Support.module.css";
 import { Link } from "react-router-dom";
-import Cartegories from "./support-components/Categories/Cartegories";
+import Categories from "./support-components/Categories/Categories";
 import { API_URL } from "../../Api/Api";
 import useFetch from "../../Hooks/useFetch";
 import useTop from "../../Hooks/useTop";
@@ -44,7 +44,7 @@ const Suport = () => {
           data
             .slice(0, 3)
             .map(({ id, img }) => (
-              <Cartegories key={id} img={img.src3} id={id} />
+              <Categories key={id} img={img.src3} id={id} />
             ))}
       </div>
     </section>
