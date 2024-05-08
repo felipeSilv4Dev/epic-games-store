@@ -65,6 +65,10 @@
   width: 1rem;
 }
 
+.categories {
+  gap: 2rem;
+}
+
 @media (max-width: 82em) {
   .container {
     width: 90%;

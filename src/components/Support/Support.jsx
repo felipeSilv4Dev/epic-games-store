@@ -1,6 +1,7 @@
 import React from "react";
-import styles from "./Suport.module.css";
+import styles from "./Support.module.css";
 import { Link } from "react-router-dom";
+import Cartegories from "./support-components/Categories/Cartegories";
 
 const Suport = () => {
   return (
@@ -19,6 +20,12 @@ const Suport = () => {
           type="text"
           placeholder="Pesquisa na central de Ajuda..."
         />
+      </div>
+
+      <div className={styles.categories + " flex"}>
+        <Cartegories title={"Jogos"} icon={"fa-solid fa-gamepad"} />
+        <Cartegories title={"contas"} icon={"fa-solid fa-user"} />
+        <Cartegories title={"Negócios"} icon={"fa-solid fa-building"} />
       </div>
     </section>
   );
