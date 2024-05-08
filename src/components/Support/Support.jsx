@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Support.module.css";
 import { Link } from "react-router-dom";
 import Cartegories from "./support-components/Categories/Cartegories";
+import { API_URL } from "../../Api/Api";
+import useFetch from "../../Hooks/useFetch";
+import useTop from "../../Hooks/useTop";
 
 const Suport = () => {
+  const { data, request, loading } = useFetch();
+  const top = useTop();
+
+  useEffect(() => {
+    const controler = new AbortController();
+    (async () => await request(API_URL, controler.signal))();
+
+    return () => {
+      controler.abort();
+    };
+  }, [request]);
+
+  useEffect(top, [top]);
+
   return (
     <section className={styles.container + " max appMain"}>
       <h2 className={styles.title}>
@@ -23,9 +40,12 @@ const Suport = () => {
       </div>
 
       <div className={styles.categories + " flex"}>
-        <Cartegories title={"Jogos"} icon={"fa-solid fa-gamepad"} />
-        <Cartegories title={"contas"} icon={"fa-solid fa-user"} />
-        <Cartegories title={"Negócios"} icon={"fa-solid fa-building"} />
+        {data &&
+          data
+            .slice(0, 3)
+            .map(({ id, img }) => (
+              <Cartegories key={id} img={img.src3} id={id} />
+            ))}
       </div>
     </section>
   );

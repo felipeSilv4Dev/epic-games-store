@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import styles from "./Games.module.css";
 import Card from "../Components/Card/Card";
-
 import useMatch from "../../Hooks/useMatch";
 import { Carousel } from "../Components/Carousel/Carousel";
 import { NavLink } from "react-router-dom";

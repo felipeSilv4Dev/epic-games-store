@@ -67,6 +67,7 @@
 
 .categories {
   gap: 2rem;
+  margin-top: 3rem;
 }
 
 @media (max-width: 82em) {
@@ -135,6 +136,10 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
+  }
+
+  .categories {
+    flex-direction: column;
   }
 }
 
