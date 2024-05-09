@@ -70,6 +70,25 @@
   margin-top: 3rem;
 }
 
+.game {
+  margin-top: 8rem;
+}
+.game h2 {
+  font-size: 2.2rem;
+  padding-bottom: 2.5rem;
+}
+.gameContent {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3rem;
+  row-gap: 3rem;
+}
+
+.gameContent div:first-child {
+  grid-column: 1/4;
+  width: 100%;
+}
+
 @media (max-width: 82em) {
   .container {
     width: 90%;
@@ -140,6 +159,16 @@
 
   .categories {
     flex-direction: column;
+  }
+
+  .gameContent {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    row-gap: 3rem;
+  }
+
+  .gameContent div:first-child {
+    grid-column: 1/-1;
   }
 }
 

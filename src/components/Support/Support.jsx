@@ -5,6 +5,8 @@ import Categories from "./support-components/Categories/Categories";
 import { API_URL } from "../../Api/Api";
 import useFetch from "../../Hooks/useFetch";
 import useTop from "../../Hooks/useTop";
+import Head from "../../Helpers/Head";
+import Game from "./support-components/Game/Game";
 
 const Suport = () => {
   const { data, request, loading } = useFetch();
@@ -23,6 +25,10 @@ const Suport = () => {
 
   return (
     <section className={styles.container + " max appMain"}>
+      <Head
+        title={"Epic Games store | Suporte"}
+        description="compre os jogos mais em conta do mercado"
+      />
       <h2 className={styles.title}>
         Bem-vindo ao Suporte ao Jogador da Epic Games
       </h2>
@@ -47,6 +53,14 @@ const Suport = () => {
               <Categories key={id} img={img.src3} id={id} />
             ))}
       </div>
+
+      <section className={styles.game}>
+        <h2>Jogos</h2>
+
+        <div className={styles.gameContent}>
+          {data && data.map((game) => <Game key={game.id} {...game} />)}
+        </div>
+      </section>
     </section>
   );
 };

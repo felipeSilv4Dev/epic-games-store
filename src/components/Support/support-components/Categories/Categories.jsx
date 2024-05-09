@@ -13,7 +13,7 @@ const links = [
   },
   {
     title: "Negócios",
-    icon: '"fa-solid fa-building"',
+    icon: "fa-solid fa-building",
   },
 ];
 
