@@ -5,10 +5,12 @@ import useFetch from "../../Hooks/useFetch";
 import { API_URL } from "../../Api/Api";
 import Card from "./novidades-components/Card/Card";
 import GameNovidades from "./novidades-components/GameNovidades/GameNovidades";
+import { useNavigate } from "react-router";
 
 const Novidades = () => {
-  const { data, request, loading } = useFetch();
+  const { data, request } = useFetch();
   const top = useTop();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const controler = new AbortController();
@@ -21,7 +23,7 @@ const Novidades = () => {
   useEffect(top, [top]);
 
   const handleClick = (id) => {
-    window.location.pathname = `game/${id}`;
+    navigate(`/game/${id}`);
   };
 
   if (data) {

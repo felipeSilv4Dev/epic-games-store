@@ -5,7 +5,7 @@ import review from "../../../../public/img/assets/review.png";
 import Image from "../Image/Image";
 import Button from "../Button/Button";
 import useLocalStorage from "../../../Hooks/useLocalStore";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import LoadingButton from "../../LoadingButton/LoadingButton";
 import useMatch from "../../../Hooks/useMatch";
 
@@ -24,10 +24,11 @@ const CardMarkup = ({
 }) => {
   const [loading, setLoading] = useState(false);
   const [remove, setRemove] = useState(false);
-
   const match = useMatch("48em");
+  const navigate = useNavigate();
+
   const handleClick = () => {
-    window.location.pathname = `game/${id}`;
+    navigate(`/game/${id}`);
   };
 
   const {

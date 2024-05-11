@@ -9,6 +9,7 @@
   color: var(--type-2-light);
   border-bottom: 1px solid var(--type-5-dark);
   transition: all 0.2s;
+  cursor: pointer;
 }
 
 .link:hover {
