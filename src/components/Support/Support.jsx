@@ -55,7 +55,7 @@ const Suport = () => {
             ))}
       </div>
 
-      <section className={styles.game}>
+      <section className={styles.game} id="jogos">
         <h2>Jogos</h2>
 
         <div className={styles.gameContent}>
@@ -63,7 +63,7 @@ const Suport = () => {
         </div>
       </section>
 
-      <section className={styles.account}>
+      <section className={styles.account} id="contas">
         <h2>Contas</h2>
         <div className={styles.accountContent + " flex"}>
           {data &&

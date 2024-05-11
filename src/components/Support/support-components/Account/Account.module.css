@@ -12,7 +12,6 @@
   background-color: var(--type-1-dark);
 }
 .picture div {
-  opacity: 0.8;
   height: 100%;
 }
 .picture img {

@@ -1,3 +1,6 @@
+.link {
+  width: 100%;
+}
 .container {
   gap: 1rem;
   background-color: var(--type-3-dark);
@@ -6,7 +9,7 @@
   cursor: pointer;
   box-shadow: 0 0 2rem 0.2rem rgb(0, 0, 0, 0.4);
   transition: all 0.6s;
-  width: 33%;
+
   height: 8rem;
 }
 .container:hover {
