@@ -70,13 +70,14 @@
   margin-top: 3rem;
 }
 
-.game {
+.subtitle {
+  display: block;
   margin-top: 8rem;
-}
-.game h2 {
   font-size: 2.2rem;
   padding-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
 }
+
 .gameContent {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -88,12 +89,9 @@
   grid-column: 1/4;
   width: 100%;
 }
-.account {
+.account,
+.business {
   margin-top: 8rem;
-}
-.account h2 {
-  font-size: 2.2rem;
-  padding-bottom: 2.5rem;
 }
 
 .accountContent {
@@ -101,6 +99,11 @@
   gap: 3rem;
   display: grid;
 }
+
+.business div:first-child {
+  grid-column: 1/-1;
+}
+
 @media (max-width: 82em) {
   .container {
     width: 90%;

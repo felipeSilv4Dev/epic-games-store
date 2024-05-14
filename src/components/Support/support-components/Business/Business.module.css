@@ -1,0 +1,41 @@
+.container {
+  height: 20rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.container::after {
+  content: "";
+  display: block;
+  height: 5rem;
+  width: 5rem;
+  position: absolute;
+  background: url("../../../../../public/img/assets/arrow.png") no-repeat center
+    center;
+  background-size: cover;
+  clip-path: polygon(0 0, 0 0, 30vh 0, 100% 100%);
+  top: 0;
+  right: 0;
+  z-index: 100;
+}
+.bg {
+  height: 100%;
+  transition: all 0.3s ease-out;
+}
+.container:hover .bg {
+  transform: scale(1.1);
+}
+
+.container div {
+  height: 100%;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.container img {
+  height: 9rem;
+}

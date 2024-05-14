@@ -8,6 +8,7 @@ import useTop from "../../Hooks/useTop";
 import Head from "../../Helpers/Head";
 import Game from "./support-components/Game/Game";
 import Account from "./support-components/Account/Account";
+import Business from "./support-components/Business/Business";
 
 const Suport = () => {
   const { data, request, loading } = useFetch();
@@ -56,7 +57,7 @@ const Suport = () => {
       </div>
 
       <section className={styles.game} id="jogos">
-        <h2>Jogos</h2>
+        <h2 className={styles.subtitle}>Jogos</h2>
 
         <div className={styles.gameContent}>
           {data && data.map((game) => <Game key={game.id} {...game} />)}
@@ -64,12 +65,22 @@ const Suport = () => {
       </section>
 
       <section className={styles.account} id="contas">
-        <h2>Contas</h2>
+        <h2 className={styles.subtitle}>Contas</h2>
         <div className={styles.accountContent + " flex"}>
           {data &&
             data
               .slice(6, 10)
               .map((account) => <Account key={account.id} {...account} />)}
+        </div>
+      </section>
+
+      <section className={styles.business} id="negócios">
+        <h2 className={styles.subtitle}>Negócios</h2>
+        <div className={styles.accountContent + " flex"}>
+          {data &&
+            data
+              .slice(2, 9)
+              .map((account) => <Business key={account.id} {...account} />)}
         </div>
       </section>
     </section>

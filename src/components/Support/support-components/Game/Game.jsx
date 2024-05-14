@@ -7,7 +7,7 @@ const Game = ({ id, profile, img, title }) => {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.container} onClick={() => navigate(`/game/${id}`)}>
+    <div onClick={() => navigate(`/game/${id}`)} className={styles.container}>
       <Image src={id === 1 ? profile.img[0] : img.src1} alt={title} />
       <h3 className={styles.title}>{title}</h3>
     </div>

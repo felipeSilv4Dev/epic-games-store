@@ -6,18 +6,17 @@ const links = [
   {
     title: "jogos",
     icon: "fa-solid fa-gamepad",
-    offset: -120,
     duration: 500,
   },
   {
     title: "Contas",
     icon: "fa-solid fa-user",
-    offset: -120,
     duration: 1000,
   },
   {
     title: "Negócios",
     icon: "fa-solid fa-building",
+    duration: 1000,
   },
 ];
 
@@ -30,7 +29,7 @@ const Cartegories = ({ img, id }) => {
       className={styles.link}
       spy={true}
       smooth={true}
-      offset={offset}
+      offset={-120}
       duration={duration}
     >
       <div className={styles.container + " flex"}>
