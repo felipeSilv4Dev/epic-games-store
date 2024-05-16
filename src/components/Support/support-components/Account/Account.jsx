@@ -1,10 +1,16 @@
 import React from "react";
 import styles from "./Account.module.css";
 import Image from "../../../Components/Image/Image";
+import { useNavigate } from "react-router";
 
-const Account = ({ title, img, profile }) => {
+const Account = ({ title, img, profile, id }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className={styles.container + " flex"}>
+    <div
+      onClick={() => navigate(`/game/${id}`)}
+      className={styles.container + " flex"}
+    >
       <div className={styles.picture}>
         <Image src={profile.img[0]} alt={title} />
       </div>
