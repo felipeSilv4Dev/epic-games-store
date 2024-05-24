@@ -3,7 +3,7 @@ import styles from "./Markup.module.css";
 import CardMarkup from "../Components/CardMarkup/CardMarkup";
 import useFetch from "../../Hooks/useFetch";
 import email from "../../../public/img/assets/email.png";
-import MenuSelect from "./markup-components/MenuSelect/MenuSelect";
+import MenuSelect from "../Components/MenuSelect/MenuSelect";
 import Filter from "./markup-components/Filter/Filter";
 import useMatch from "../../Hooks/useMatch";
 import Image from "../Components/Image/Image";
@@ -126,7 +126,7 @@ const Markup = () => {
             <div>
               <span>Classsificar por : </span>
 
-              <MenuSelect setIdOptions={setIdOptions} />
+              <MenuSelect setValue={setIdOptions} />
             </div>
 
             {match && game && (

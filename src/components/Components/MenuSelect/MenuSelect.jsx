@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./MenuSelect.module.css";
 
-const MenuSelect = ({ setIdOptions }) => {
+const MenuSelect = ({ setValue }) => {
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState("Em promoção");
 
@@ -34,7 +34,7 @@ const MenuSelect = ({ setIdOptions }) => {
       {open && (
         <div
           onClick={({ target }) => {
-            setIdOptions(Number(target.id));
+            setValue(Number(target.id));
             setCurrent(target.textContent);
           }}
           className={styles.options}

@@ -1,0 +1,11 @@
+.menu {
+  font-size: 1.4rem;
+  color: var(--type-4-light);
+}
+
+.games {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
