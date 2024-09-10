@@ -9,7 +9,7 @@ import useFetch from "../../Hooks/useFetch";
 import useTop from "../../Hooks/useTop";
 
 const Main = () => {
-  const { data, request, loading } = useFetch();
+  const { data, request, loading, error } = useFetch();
   const top = useTop();
 
   useEffect(() => {

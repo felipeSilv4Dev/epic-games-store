@@ -52,7 +52,7 @@ const Profile = ({ dist }) => {
   if (loading) return <Loading />;
 
   if (data) {
-    const [dates] = data.filter((item) => item.id === Number(id));
+    const [dates] = data.filter((item) => item.id === id);
 
     return (
       <section className={styles.container}>

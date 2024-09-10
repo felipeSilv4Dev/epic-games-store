@@ -6,6 +6,13 @@
   position: relative;
   overflow: hidden;
 }
+.container:hover,
+.container:global(.active) {
+  background-color: var(--type-4-dark);
+}
+.container:not(:first-child) {
+  margin-top: 3px;
+}
 
 .timeBg {
   position: absolute;
@@ -16,17 +23,7 @@
   opacity: 0.2;
   width: 0;
 }
-.container:global(.active) .timeBg {
-  transition: width 6s linear;
-  width: 100%;
-}
-.container:hover,
-.container:global(.active) {
-  background-color: var(--type-4-dark);
-}
-.container:not(:first-child) {
-  margin-top: 3px;
-}
+
 .photo {
   flex: 0 0 auto;
 }

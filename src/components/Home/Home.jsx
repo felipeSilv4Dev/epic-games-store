@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./Home.module.css";
-import Banner from "./home-components/Banner/Banner";
+import Banners from "./home-components/Banners/Banners";
 import Game from "./home-components/Game/Game";
 import useMatch from "../../Hooks/useMatch";
 import { Carousel } from "../Components/Carousel/Carousel";
@@ -12,107 +12,30 @@ import Head from "../../Helpers/Head";
 const Home = ({ data, loading }) => {
   const navigate = useNavigate();
   const match = useMatch("48em");
-  const game = useRef();
-  const banner = useRef();
-  const [count, setCount] = useState(0);
-  const [time, setTime] = useState(true);
+  const [count, setCount] = useState(null);
+  const interval = 6;
   const homeRef = useRef();
 
-  const arrayBanner = useCallback(() => {
-    if (!banner.current) return;
-    return Array.from(banner.current.children);
-  }, []);
-
-  const arrayGame = useCallback(() => {
-    if (!game.current) return;
-
-    return Array.from(game.current.children);
-  }, []);
-
-  const translateBanner = useCallback(
-    (offsetLeft) => {
-      const bannerArray = arrayBanner();
-      bannerArray.map((item) => {
-        const position = item.offsetLeft - offsetLeft;
-
-        item.style.transform = `translateX(-${position}px)`;
-      });
-    },
-    [arrayBanner]
-  );
-
-  const changeGame = useCallback(
-    (index) => {
-      if (!banner.current || !game.current) return;
-      const bannerArr = arrayBanner();
-      const gameArr = arrayGame();
-
-      bannerArr.map((item) => item.classList.remove("active"));
-      gameArr.map((item) => item.classList.remove("active"));
-      bannerArr[index].classList.add("active");
-      gameArr[index].classList.add("active");
-      translateBanner(banner.current.offsetLeft);
-    },
-    [arrayBanner, arrayGame, translateBanner]
-  );
-
-  const handleClick = useCallback(
-    ({ currentTarget }) => {
-      const idClick = currentTarget.id - 1;
-
-      if (idClick === count) {
-        navigate(`game/${currentTarget.id}`);
-      }
-
-      setCount(idClick);
-    },
-    [count, navigate]
-  );
+  const handleMoveGame = (index, id) => {
+    if (index === count) {
+      navigate(`game/${id}`);
+    }
+    setCount(index);
+  };
 
   useEffect(() => {
     if (data) {
-      if (!game.current) return;
+      setCount((count) => count + 0);
+      const home = data.filter((item) => item.home);
 
-      const gameArr = arrayGame();
+      if (count === home.length) setCount(0);
+      const countClear = setInterval(() => {
+        setCount((count) => count + 1);
+      }, interval * 1000);
 
-      let timeCount = 6000;
-      const TimeGame = setInterval(() => {
-        setCount(count + 1);
-        if (count >= gameArr.length - 1) {
-          setCount(0);
-        }
-      }, timeCount);
-
-      setTimeout(() => {
-        setTime(false);
-      }, 300);
-
-      if (!time) {
-        changeGame(count);
-      }
-
-      window.addEventListener("resize", () => {
-        if (!match) {
-          if (!banner.current) return;
-          gameArr[count].classList.remove("active");
-          translateBanner(banner.current.offsetLeft);
-          setCount(0);
-          changeGame(0);
-        }
-      });
-
-      return () => clearInterval(TimeGame);
+      return () => clearInterval(countClear);
     }
-  }, [
-    data,
-    count,
-    changeGame,
-    arrayGame,
-    time,
-    arrayBanner,
-    match,
-    translateBanner,
-  ]);
+  }, [count, data]);
 
   if (loading) return <Loading loading={loading} />;
 
@@ -120,31 +43,46 @@ const Home = ({ data, loading }) => {
     const home = data.filter((item) => item.home);
 
     return (
-      <section className="max flex">
+      <section ref={homeRef} className="max flex">
         <Head
           title="Epic Games store | Baixe e jogue"
           description="compre os jogos mais em conta do mercado"
         />
         {!match && (
-          <div ref={banner} className={styles.banner}>
-            {home.map((item) => (
-              <Banner time={time} key={item.id} {...item} />
+          <div className={styles.banner}>
+            {home.map((banner, index) => (
+              <Banners
+                key={banner.id}
+                index={index}
+                count={count}
+                banner={banner}
+                homeRef={homeRef}
+              />
             ))}
           </div>
         )}
+
+        {!match && (
+          <div className={styles.content}>
+            {home.map((game, index) => (
+              <Game
+                key={game.id}
+                game={game}
+                index={index}
+                count={count}
+                interval={interval}
+                onMoveGame={handleMoveGame}
+              />
+            ))}
+          </div>
+        )}
+
         {match && (
           <Carousel ref={homeRef} control={true}>
-            {home.map((item) => (
-              <Banner key={item.id} {...item} />
+            {home.map((banner) => (
+              <Banners key={banner.id} banner={banner} homeRef={homeRef} />
             ))}
           </Carousel>
-        )}
-        {!match && (
-          <div ref={game} className={styles.content}>
-            {home.map((item) => (
-              <Game key={item.id} setClick={handleClick} {...item} />
-            ))}
-          </div>
         )}
       </section>
     );
