@@ -12,10 +12,12 @@ const useFetch = () => {
       setError(null);
 
       const response = await fetch(url, { signal });
+      if (!response.ok) {
+        throw new Error(`Error:falhas nas buscas ${response.status}💥`);
+      }
+      const json = await response.json();
 
-      if (!response.ok) throw new Error(`Error: ${response.status}💥`);
-      const game = await response.json();
-      setData(game.data);
+      setData(json.data);
       setLoading(false);
     } catch (err) {
       setError(err.message);

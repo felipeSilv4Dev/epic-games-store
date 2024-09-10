@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./Home.module.css";
 import Banners from "./home-components/Banners/Banners";
 import Game from "./home-components/Game/Game";
@@ -8,13 +8,19 @@ import { useNavigate } from "react-router-dom";
 import Loading from "./home-components/LoadingHome/Loading";
 
 import Head from "../../Helpers/Head";
+import Error from "../../Helpers/Error";
 
-const Home = ({ data, loading }) => {
+const Home = ({ data, loading, error }) => {
   const navigate = useNavigate();
   const match = useMatch("48em");
   const [count, setCount] = useState(null);
   const interval = 6;
   const homeRef = useRef();
+
+  let homeGames;
+  if (data) {
+    homeGames = data.filter((item) => item.home);
+  }
 
   const handleMoveGame = (index, id) => {
     if (index === count) {
@@ -24,24 +30,23 @@ const Home = ({ data, loading }) => {
   };
 
   useEffect(() => {
-    if (data) {
+    if (homeGames) {
       setCount((count) => count + 0);
-      const home = data.filter((item) => item.home);
 
-      if (count === home.length) setCount(0);
+      if (count === homeGames.length) setCount(0);
+
       const countClear = setInterval(() => {
         setCount((count) => count + 1);
       }, interval * 1000);
 
       return () => clearInterval(countClear);
     }
-  }, [count, data]);
+  }, [count, homeGames]);
 
   if (loading) return <Loading loading={loading} />;
+  // if (error) return <Error message={error} />;
 
-  if (data) {
-    const home = data.filter((item) => item.home);
-
+  if (homeGames) {
     return (
       <section ref={homeRef} className="max flex">
         <Head
@@ -50,7 +55,7 @@ const Home = ({ data, loading }) => {
         />
         {!match && (
           <div className={styles.banner}>
-            {home.map((banner, index) => (
+            {homeGames.map((banner, index) => (
               <Banners
                 key={banner.id}
                 index={index}
@@ -64,7 +69,7 @@ const Home = ({ data, loading }) => {
 
         {!match && (
           <div className={styles.content}>
-            {home.map((game, index) => (
+            {homeGames.map((game, index) => (
               <Game
                 key={game.id}
                 game={game}
@@ -79,7 +84,7 @@ const Home = ({ data, loading }) => {
 
         {match && (
           <Carousel ref={homeRef} control={true}>
-            {home.map((banner) => (
+            {homeGames.map((banner) => (
               <Banners key={banner.id} banner={banner} homeRef={homeRef} />
             ))}
           </Carousel>

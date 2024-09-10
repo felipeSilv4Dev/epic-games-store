@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Home from "../Home/Home";
 import Games from "../Games/Games";
 import Ofertas from "../Ofertas/Ofertas";
@@ -25,7 +25,7 @@ const Main = () => {
 
   return (
     <main className="appMain">
-      <Home data={data} loading={loading} />
+      <Home data={data} loading={loading} error={error} />
       <Games
         data={data}
         loading={loading}

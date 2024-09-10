@@ -1,7 +1,7 @@
 import useMatch from "../../../../Hooks/useMatch";
 import styles from "./Banners.module.css";
 import Image from "../../../Components/Image/Image";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
 
 const Banner = ({ banner, index, count, homeRef }) => {

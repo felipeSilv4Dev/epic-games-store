@@ -12,6 +12,7 @@ import Novidades from "./components/Novidades/Novidades";
 import Distribte from "./components/Distribute/Distribte";
 import Support from "./components/Support/Support";
 import Browse from "./components/Browse/Browse";
+import Error from "./Helpers/Error";
 
 function App() {
   const [dist, setDist] = useState({ height: "" });
