@@ -6,108 +6,91 @@ import useMatch from "../../../Hooks/useMatch";
 import useLocalStorage from "../../../Hooks/useLocalStore";
 
 const CardGame = ({
-  width,
-  title,
-  img,
-  subtitle,
-  oldPrice,
-  newPrice,
-  porcentage,
-  descriptionText,
-  id,
-  footerImg,
-  icon,
-  theme,
+  game,
+  footer = false,
+  description = false,
+  price = true,
 }) => {
   const match = useMatch("48em");
   const [open, setOpen] = useState(false);
-  const {
-    $any: setItem,
-    initial,
-    active,
-  } = useLocalStorage({ key: "game", id });
+  const isOpen = open ? "active" : "";
+  //   // const {
+  //   //   $any: setItem,
+  //   //   initial,
+  //   //   active,
+  //   // } = useLocalStorage({ key: "game", id: game.id });
 
-  const handleOver = () => {
-    setOpen(true);
-  };
-  const handleOut = () => {
-    setOpen(false);
+  //   const handleOver = () => {
+  //     setOpen(true);
+  //   };
+  const handleAddGame = (e) => {
+    e.preventDefault();
+
+    setOpen(!open);
   };
 
-  useEffect(() => {
-    initial();
-  }, [initial]);
+  //   // useEffect(() => {
+  //   //   initial();
+  //   // }, [initial]);
+
+  const footerBg = {
+    backgroundColor: game.newPrice ? "var(--body-bg)" : "var(--btn-3)",
+  };
 
   return (
     <section
-      id={id}
-      style={{ width: `${match && width}%` }}
+      id={game.id}
+      // style={{ width: `${match && width}%` }}
       className={styles.container + " flex"}
     >
-      <div id={id} className={styles.image}>
+      <div id={game.id} className={styles.image}>
         <div>
           <figure>
-            <Image src={img} alt={title} />
+            <Image src={game.img.src1} alt={game.title} />
           </figure>
 
-          {icon && (
-            <div
-              onMouseOut={handleOut}
-              onMouseOver={handleOver}
-              onClick={setItem}
-              className={styles.iconContainer}
+          <span onClick={handleAddGame} className={`${styles.icon} ${isOpen}`}>
+            <svg
+              className={`${styles.checked} ${isOpen} svg css-uwwqev`}
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="-10 -10 468.8 468.8"
             >
-              <i
-                style={{
-                  opacity: !active ? 1 : 0,
-                  transform: active ? "rotate(0deg)" : "",
-                }}
-                className={styles.icon + " fa-solid  fa-plus"}
-              ></i>
-
-              <i
-                style={{
-                  opacity: active ? 1 : 0,
-                  transform: !active ? "rotate(0deg)" : "",
-                }}
-                className={styles.icon + " fa-solid  fa-check"}
-              ></i>
-            </div>
-          )}
+              <path
+                fill="currentColor"
+                strokeWidth="10"
+                stroke="currentColor"
+                d="M142.8 323.85L35.7 216.75 0 252.45l142.8 142.8 306-306-35.7-35.7z"
+              ></path>
+            </svg>
+          </span>
         </div>
 
-        {footerImg && (
-          <p
-            style={{
-              backgroundColor: newPrice ? "var(--body-bg)" : "var(--btn-3)",
-            }}
-            className={styles.footer}
-          >
-            {newPrice ? "Em breve" : "gratuito"}
+        {footer && (
+          <p style={footerBg} className={styles.footer}>
+            {game.newPrice ? "Em breve" : "gratuito"}
           </p>
         )}
 
-        {icon && !match && open && (
+        {!match && open && (
           <span className={styles.popUp}>
-            {!active
-              ? "Para a lista de desejos"
-              : "Remover da lista de desejos"}
+            {open ? "Para a lista de desejos" : "Remover da lista de desejos"}
           </span>
         )}
       </div>
 
-      {subtitle && <span className={styles.subtitle}>{subtitle}</span>}
-      <h2 className={styles.title}>{title}</h2>
-      {descriptionText && (
-        <p className={styles.description}>{descriptionText}</p>
+      {<span className={styles.subtitle}>{game.subtitle}</span>}
+
+      <h2 className={styles.title}>{game.title}</h2>
+      {description && (
+        <p className={styles.description}>{game.descriptionText}</p>
       )}
 
-      {porcentage && (
+      {price && (
         <Price
-          porcentage={porcentage}
-          oldPrice={oldPrice}
-          newPrice={newPrice}
-          theme={theme}
+          porcentage={game.porcentage}
+          oldPrice={game.oldPrice}
+          newPrice={game.newPrice}
+          theme={game.theme}
         />
       )}
     </section>

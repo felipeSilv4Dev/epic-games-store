@@ -6,33 +6,93 @@
   cursor: pointer;
 }
 
-.iconContainer {
-  display: grid;
+.icon {
+  display: flex;
   position: absolute;
+  -webkit-box-align: center;
   top: 1vw;
   right: 1vw;
-  z-index: 100;
-  background-color: var(--body-bg);
-  padding: 0.4rem;
-  transition: opacity 0.1s ease;
-  justify-content: center;
-  align-items: center;
-  height: auto;
-  width: auto;
+  height: 2rem;
+  width: 2rem;
+  padding: 1rem;
   border-radius: 50%;
-  box-shadow: 0 0 0 2px var(--type-2-light), 0 0 15px rgba(0, 0, 0, 0.7);
-  opacity: 0;
+  background-color: var(--body-bg);
+  border: 2px solid var(--type-2-light);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-pack: center;
 }
 
-.icon {
-  display: grid;
-  align-items: center;
-  justify-content: center;
+.icon::after {
+  content: "";
+  position: absolute;
+  height: 0.2rem;
+  width: 1rem;
+  border-radius: 1rem;
+  background-color: var(--type-4-light);
+  opacity: 0;
+  animation: onEnd 0s 0.5s forwards;
+}
+.icon::before {
+  content: "";
+  position: absolute;
+  width: 0.2rem;
+  height: 1rem;
+  border-radius: 1rem;
+  background-color: var(--type-4-light);
+  opacity: 0;
+  animation: onEnd 0s 0.5s forwards;
+}
+
+.icon:global(.active) {
+  animation: onStart 0.5s forwards;
+}
+
+.icon:global(.active)::before,
+.icon:global(.active)::after {
+  opacity: 1;
+  animation: onOpacity 0s 0.5s forwards;
+}
+.checked {
+  z-index: 101;
+  position: absolute;
+  height: 1.1rem;
   color: var(--type-2-light);
-  font-size: 1rem;
+  opacity: 0;
   transform: rotate(360deg);
-  grid-area: 1/1;
-  transition: transform 0.4s linear, opacity 0.1s 0.4s linear;
+  transition: opacity 0s 0.5s, transform 0.5s;
+}
+.checked:global(.active) {
+  opacity: 1;
+  transform: rotate(180deg);
+  transition: opacity 0s 0.5s, transform 0.1s;
+}
+
+@keyframes onOpacity {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes onEnd {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes onStart {
+  from {
+    transform: 0;
+  }
+  to {
+    transform: rotate(-180deg);
+  }
 }
 
 .popUp {
@@ -69,7 +129,7 @@
 .image:hover::before {
   opacity: 0.1;
 }
-.image:hover .iconContainer {
+.image:hover .icon {
   opacity: 1;
 }
 
@@ -125,29 +185,6 @@
     margin-right: 0;
   }
 
-  /* .iconContainer {
-		height: 4vw;
-    width: 4vw;
-    opacity: 1;
-    box-shadow: 0 0 0 1.5px var(--type-2-light);
-  }
-	
-  .icon {
-		height: 4re;
-    width: 4vw;
-    font-size: 2vw;
-    border-radius: 50%;
-  } */
-  .iconContainer {
-    top: 4vw;
-    right: 4vw;
-    opacity: 1;
-    box-shadow: 0 0 0 1.2px var(--type-2-light);
-    padding: 0.5rem;
-  }
-  .icon {
-    font-size: 1.02rem;
-  }
   .title {
     all: unset;
     font-size: 1.6rem;
@@ -160,9 +197,5 @@
   }
   .iconContainer {
     padding: 0.5rem 0.5rem;
-  }
-
-  .icon {
-    font-size: 0.8rem;
   }
 }

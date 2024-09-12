@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./Ofertas.module.css";
 
-import Card from "../Components/Card/Card";
+// import Card from "../Components/Card/Card";
 import useMatch from "../../Hooks/useMatch";
 import { Carousel } from "../Components/Carousel/Carousel";
 import { NavLink } from "react-router-dom";
@@ -21,17 +21,17 @@ const Ofertas = ({ data, loading }) => {
           ofertas.map((props) => {
             return (
               <NavLink key={props.id} to={`game/${props.id}`}>
-                <Card
+                {/* <Card
                   key={props.id}
                   width={85}
                   price={true}
                   {...props}
                   img={props.img.src2}
-                />
+                /> */}
               </NavLink>
             );
           })}
-
+        {/* 
         {match && (
           <Carousel ref={refOfertas} control={true}>
             {ofertas.map((item) => {
@@ -46,7 +46,7 @@ const Ofertas = ({ data, loading }) => {
               );
             })}
           </Carousel>
-        )}
+        )} */}
       </section>
     );
   }

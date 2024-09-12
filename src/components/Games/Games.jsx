@@ -6,7 +6,13 @@ import { Carousel } from "../Components/Carousel/Carousel";
 import { NavLink } from "react-router-dom";
 import LoadingGame from "./Loading/LoadingGame";
 
-const Games = ({ data, loading, header, textButton, keyApi }) => {
+const Games = ({
+  data,
+  loading,
+  header,
+  textButton = "ver todos os jogos",
+  keyApi,
+}) => {
   const match = useMatch("64em");
   const mobile = useMatch("48em");
   const refGame = useRef();
@@ -14,8 +20,11 @@ const Games = ({ data, loading, header, textButton, keyApi }) => {
   if (loading) return <LoadingGame />;
 
   if (data) {
-    const card = data.filter((item) => item[keyApi]).slice(0, match ? 4 : 6);
-    const mob = data.filter((item) => item[keyApi]).slice(0, 6);
+    const cardGame = data
+      .filter((game) => game[keyApi])
+      .slice(0, match ? 4 : 6);
+
+    const mob = data.filter((game) => game[keyApi]).slice(0, 6);
 
     return (
       <section className={styles.container + " max"}>
@@ -26,20 +35,20 @@ const Games = ({ data, loading, header, textButton, keyApi }) => {
 
         <div className={styles.card + " flex"}>
           {!mobile &&
-            card.map((item) => (
-              <NavLink key={item.id} to={`game/${item.id}`}>
+            cardGame.map((game) => (
+              <NavLink key={game.id} to={`game/${game.id}`}>
                 <Card
-                  {...item}
+                  game={game}
                   subtitleOpen={true}
                   descriptionText={""}
                   radius={0.4}
-                  img={item.img.src1}
+                  img={game.img.src1}
                   icon={true}
                 />
               </NavLink>
             ))}
 
-          {mobile && (
+          {/* {mobile && (
             <Carousel ref={refGame} control={false}>
               {mob.map((item) => (
                 <Card
@@ -54,7 +63,7 @@ const Games = ({ data, loading, header, textButton, keyApi }) => {
                 />
               ))}
             </Carousel>
-          )}
+          )} */}
         </div>
       </section>
     );
