@@ -12,6 +12,8 @@ const Games = ({
   header,
   textButton = "ver todos os jogos",
   keyApi,
+  onSaveLocal,
+  storage,
 }) => {
   const match = useMatch("64em");
   const mobile = useMatch("48em");
@@ -37,14 +39,26 @@ const Games = ({
           {!mobile &&
             cardGame.map((game) => (
               <NavLink key={game.id} to={`game/${game.id}`}>
-                <Card game={game} img={game.img.src1} subtitle={true} />
+                <Card
+                  game={game}
+                  img={game.img.src1}
+                  subtitle={true}
+                  onSaveLocal={onSaveLocal}
+                  storage={storage}
+                />
               </NavLink>
             ))}
 
           {mobile && (
             <Carousel ref={refGame} control={false}>
               {mob.map((game) => (
-                <Card game={game} img={game.img.src1} subtitle={true} />
+                <Card
+                  game={game}
+                  img={game.img.src1}
+                  subtitle={true}
+                  storage={storage}
+                  onSaveLocal={onSaveLocal}
+                />
               ))}
             </Carousel>
           )}

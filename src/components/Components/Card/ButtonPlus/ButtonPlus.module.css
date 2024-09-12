@@ -61,7 +61,21 @@
   transform: rotate(180deg);
   transition: opacity 0s 0.5s, transform 0.1s;
 }
-
+.popUp {
+  position: absolute;
+  padding: 1rem 1.5rem;
+  background-color: var(--modal-bg);
+  top: -4.5rem;
+  right: 0;
+  z-index: 1000;
+  width: max-content;
+  font-size: 1.2rem;
+  border-radius: 0.4rem;
+  opacity: 0;
+}
+.icon:hover ~ .popUp {
+  opacity: 1;
+}
 @keyframes onOpacity {
   from {
     opacity: 1;

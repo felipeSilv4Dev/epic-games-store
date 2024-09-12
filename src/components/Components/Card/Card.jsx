@@ -1,9 +1,7 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Card.module.css";
 import Price from "../Price/Price";
 import Image from "../Image/Image";
-import useMatch from "../../../Hooks/useMatch";
-import useLocalStorage from "../../../Hooks/useLocalStore";
 import ButtonPlus from "./ButtonPlus/ButtonPlus";
 
 const CardGame = ({
@@ -14,45 +12,41 @@ const CardGame = ({
   subtitle = false,
   src = "src1",
   icon = true,
+  onSaveLocal = false,
+  storage,
 }) => {
-  const match = useMatch("48em");
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleAddGame = (e) => {
-    e.preventDefault();
-
-    setOpen(!open);
-  };
+  useEffect(() => {
+    if (storage && storage.games.includes(game.id)) {
+      setIsOpen(true);
+    }
+  }, [storage, game.id]);
 
   const footerBg = {
     backgroundColor: game.newPrice ? "var(--body-bg)" : "var(--btn-3)",
   };
 
+  const handleAddGame = (e) => {
+    setIsOpen((open) => !open);
+    onSaveLocal("games", game.id, e);
+  };
+
   return (
-    <section
-      id={game.id}
-      // style={{ width: `${match && width}%` }}
-      className={styles.container + " flex"}
-    >
+    <section id={game.id} className={styles.container + " flex"}>
       <div id={game.id} className={styles.image}>
         <div>
           <figure>
             <Image src={game.img[src]} alt={game.title} />
           </figure>
 
-          {icon && <ButtonPlus onAddGame={handleAddGame} open={open} />}
+          {icon && <ButtonPlus onAddGame={handleAddGame} isOpen={isOpen} />}
         </div>
 
         {footer && (
           <p style={footerBg} className={styles.footer}>
             {game.newPrice ? "Em breve" : "gratuito"}
           </p>
-        )}
-
-        {!match && open && (
-          <span className={styles.popUp}>
-            {open ? "Para a lista de desejos" : "Remover da lista de desejos"}
-          </span>
         )}
       </div>
 
