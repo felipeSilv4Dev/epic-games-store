@@ -37,33 +37,17 @@ const Games = ({
           {!mobile &&
             cardGame.map((game) => (
               <NavLink key={game.id} to={`game/${game.id}`}>
-                <Card
-                  game={game}
-                  subtitleOpen={true}
-                  descriptionText={""}
-                  radius={0.4}
-                  img={game.img.src1}
-                  icon={true}
-                />
+                <Card game={game} img={game.img.src1} subtitle={true} />
               </NavLink>
             ))}
 
-          {/* {mobile && (
+          {mobile && (
             <Carousel ref={refGame} control={false}>
-              {mob.map((item) => (
-                <Card
-                  key={item.id}
-                  {...item}
-                  radius={0.4}
-                  width={70}
-                  subtitleOpen={true}
-                  descriptionText={""}
-                  img={item.img.src1}
-                  icon={true}
-                />
+              {mob.map((game) => (
+                <Card game={game} img={game.img.src1} subtitle={true} />
               ))}
             </Carousel>
-          )} */}
+          )}
         </div>
       </section>
     );

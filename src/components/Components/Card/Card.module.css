@@ -6,95 +6,6 @@
   cursor: pointer;
 }
 
-.icon {
-  display: flex;
-  position: absolute;
-  -webkit-box-align: center;
-  top: 1vw;
-  right: 1vw;
-  height: 2rem;
-  width: 2rem;
-  padding: 1rem;
-  border-radius: 50%;
-  background-color: var(--body-bg);
-  border: 2px solid var(--type-2-light);
-  z-index: 100;
-  align-items: center;
-  justify-content: center;
-  -webkit-box-pack: center;
-}
-
-.icon::after {
-  content: "";
-  position: absolute;
-  height: 0.2rem;
-  width: 1rem;
-  border-radius: 1rem;
-  background-color: var(--type-4-light);
-  opacity: 0;
-  animation: onEnd 0s 0.5s forwards;
-}
-.icon::before {
-  content: "";
-  position: absolute;
-  width: 0.2rem;
-  height: 1rem;
-  border-radius: 1rem;
-  background-color: var(--type-4-light);
-  opacity: 0;
-  animation: onEnd 0s 0.5s forwards;
-}
-
-.icon:global(.active) {
-  animation: onStart 0.5s forwards;
-}
-
-.icon:global(.active)::before,
-.icon:global(.active)::after {
-  opacity: 1;
-  animation: onOpacity 0s 0.5s forwards;
-}
-.checked {
-  z-index: 101;
-  position: absolute;
-  height: 1.1rem;
-  color: var(--type-2-light);
-  opacity: 0;
-  transform: rotate(360deg);
-  transition: opacity 0s 0.5s, transform 0.5s;
-}
-.checked:global(.active) {
-  opacity: 1;
-  transform: rotate(180deg);
-  transition: opacity 0s 0.5s, transform 0.1s;
-}
-
-@keyframes onOpacity {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-@keyframes onEnd {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes onStart {
-  from {
-    transform: 0;
-  }
-  to {
-    transform: rotate(-180deg);
-  }
-}
-
 .popUp {
   position: absolute;
   padding: 1rem 1.5rem;
@@ -129,8 +40,11 @@
 .image:hover::before {
   opacity: 0.1;
 }
-.image:hover .icon {
+.image:hover {
   opacity: 1;
+}
+.image:hover * {
+  visibility: visible;
 }
 
 .subtitle {

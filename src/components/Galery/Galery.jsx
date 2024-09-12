@@ -26,18 +26,20 @@ const Galery = ({ data, loading }) => {
 
             <h2 className={styles.btn}>Ver Mais</h2>
           </div>
+
           <div className={styles.content + " flex"}>
             {!match &&
-              gratis.map((props) => {
+              gratis.map((game) => {
                 return (
-                  <NavLink key={props.id} to={`game/${props.id}`}>
+                  <NavLink key={game.id} to={`game/${game.id}`}>
                     <Card
-                      key={props.id}
-                      {...props}
-                      width={85}
-                      img={props.img.src2}
-                      footerImg={true}
-                      porcentage={""}
+                      key={game.id}
+                      game={game}
+                      src={"src2"}
+                      footer={true}
+                      price={false}
+                      description={true}
+                      icon={false}
                     />
                   </NavLink>
                 );
@@ -45,15 +47,16 @@ const Galery = ({ data, loading }) => {
 
             {match && (
               <Carousel ref={galeryRef} control={false}>
-                {gratis.map((props) => {
+                {gratis.map((game) => {
                   return (
                     <Card
-                      key={props.id}
-                      {...props}
-                      width={85}
-                      img={props.img.src2}
-                      footerImg={true}
-                      porcentage={""}
+                      key={game.id}
+                      game={game}
+                      src={"src2"}
+                      footer={true}
+                      price={false}
+                      description={true}
+                      icon={false}
                     />
                   );
                 })}

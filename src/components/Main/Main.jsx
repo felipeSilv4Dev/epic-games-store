@@ -33,16 +33,17 @@ const Main = () => {
         textButton="ver todas as ofertas"
         keyApi="desconto"
       />
-      {/* <Ofertas data={data} loading={loading} /> */}
-      {/* <Galery data={data} loading={loading} /> */}
+      <Ofertas data={data} loading={loading} />
+      <Galery data={data} loading={loading} />
       <ListGame data={data} loading={loading} />
 
-      {/* <Games
+      <Games
         data={data}
         loading={loading}
         header="Jogos em populares"
         keyApi="popular"
-      /> */}
+      />
+
       <ListGame data={data} loading={loading} />
     </main>
   );
