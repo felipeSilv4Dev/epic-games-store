@@ -4,65 +4,51 @@ import List from "./list-components/List/List";
 import useMatch from "../../Hooks/useMatch";
 import { Carousel } from "../Components/Carousel/Carousel";
 
+const list = [
+  {
+    id: 0,
+    title: "mais vendido",
+    btn: "ver mais",
+    initial: 0,
+    final: 5,
+  },
+  {
+    id: 1,
+    title: "mais jogados",
+    btn: "ver mais",
+    initial: 4,
+    final: 9,
+  },
+  {
+    id: 2,
+    title: "mais aguardados",
+    btn: "ver mais",
+    initial: 3,
+    final: 8,
+  },
+];
+
 const ListGame = ({ data, loading }) => {
   const match = useMatch("48em");
   const refList = useRef();
-  const list = [
-    {
-      id: 0,
-      title: "mais vendido",
-      btn: "ver mais",
-      initial: 0,
-      final: 5,
-    },
-    {
-      id: 1,
-      title: "mais jogados",
-      btn: "ver mais",
-      initial: 4,
-      final: 9,
-    },
-    {
-      id: 2,
-      title: "mais aguardados",
-      btn: "ver mais",
-      initial: 3,
-      final: 8,
-    },
-  ];
 
   return (
     <section className={style.container + " max"}>
       {!match &&
-        list.map(({ id, initial, final, title, btn }) => {
+        list.map((props) => {
           return (
-            <div key={id} id={id} className={style.content}>
-              <List
-                data={data}
-                loading={loading}
-                initial={initial}
-                final={final}
-                title={title}
-                btn={btn}
-                nav={true}
-              />
+            <div key={props.id} id={props.id} className={style.content}>
+              <List props={props} data={data} loading={loading} />
             </div>
           );
         })}
 
       {match && (
         <Carousel ref={refList} control={true}>
-          {list.map(({ id, initial, final, title, btn }) => {
+          {list.map((props) => {
             return (
-              <div key={id} id={id} className={style.content}>
-                <List
-                  data={data}
-                  initial={initial}
-                  loading={loading}
-                  final={final}
-                  title={title}
-                  btn={btn}
-                />
+              <div key={props.id} id={props.id} className={style.content}>
+                <List props={props} data={data} loading={loading} />
               </div>
             );
           })}

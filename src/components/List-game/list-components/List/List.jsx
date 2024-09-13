@@ -1,27 +1,27 @@
 import { NavLink } from "react-router-dom";
 import styles from "./List.module.css";
-import Card from "../Card/Card";
+import CardList from "../CardList/CardList";
 import Loading from "../LoadingList/Loading";
 
-const List = ({ data, loading, title, btn, initial, final, nav }) => {
+const List = ({ props, nav = true, data, loading }) => {
   if (loading) return <Loading />;
 
   if (data) {
     return (
       <div className={styles.container}>
         <div className={styles.header + " flex"}>
-          <h2 className={styles.title}>{title}</h2>
-          <p className={styles.btn}>{btn}</p>
+          <h2 className={styles.title}>{props.title}</h2>
+          <p className={styles.btn}>{props.btn}</p>
         </div>
 
         <div>
-          {data.slice(initial, final).map((item) => {
+          {data.slice(props.initial, props.final).map((game) => {
             return nav ? (
-              <NavLink key={item.id} to={`game/${item.id}`}>
-                <Card {...item} img={item.img.src1} />
+              <NavLink key={game.id} to={`game/${game.id}`}>
+                <CardList game={game} src={"src1"} />
               </NavLink>
             ) : (
-              <Card key={item.id} {...item} img={item.img.src1} />
+              <CardList key={game.id} game={game} src={"src1"} />
             );
           })}
         </div>
