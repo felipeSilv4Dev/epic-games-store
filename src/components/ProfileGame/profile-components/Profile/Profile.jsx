@@ -22,45 +22,44 @@ const Profile = ({ dist }) => {
   const { request, data, loading } = useFetch();
   const [open, setOpen] = useState(false);
   const [report, setReport] = useState(false);
+  const { saveItemLocal: saveCarLocal, storage: storageCar } = useLocalStorage({
+    key: "car",
+  });
 
-  const {
-    $any: clickGame,
-    active: game,
-    initial: gameInitial,
-  } = useLocalStorage({ key: "game", id: +id });
+  const { saveItemLocal: saveListLocal, storage: storageList } =
+    useLocalStorage({
+      key: "games",
+    });
 
-  const {
-    $any: clickCar,
-    active: carrinho,
-    initial: carrinhoInitial,
-  } = useLocalStorage({ key: "carrinho", id: +id });
+  const [isSaveCar, setIsSaveCar] = useState(false);
+  const [isSaveList, setIsSaveList] = useState(false);
 
-  useEffect(() => {
-    gameInitial();
-    carrinhoInitial();
-  }, [carrinhoInitial, gameInitial]);
+  const handleSaveCarLocal = (key, id) => {
+    saveCarLocal(key, id);
+  };
+  const handleSaveLitLocal = (key, id) => {
+    saveListLocal(key, id);
+  };
 
   useEffect(() => {
     const controler = new AbortController();
-    (async () => await request(API_URL, controler.signal))();
+    (async () => await request(`${API_URL}/${id}`, controler.signal))();
 
     return () => {
       controler.abort();
     };
-  }, [request]);
+  }, [request, id]);
 
   if (loading) return <Loading />;
 
   if (data) {
-    const [dates] = data.filter((item) => item.id === id);
-
     return (
       <section className={styles.container}>
         <Head
-          title={"Epic Games store | " + dates.title}
+          title={"Epic Games store | " + data.title}
           description="compre os jogos mais em conta do mercado"
         />
-        <h1>{dates.title}</h1>
+        <h1>{data.title}</h1>
 
         <div className={styles.header + " flex"}>
           <h2>
@@ -77,17 +76,22 @@ const Profile = ({ dist }) => {
         </div>
 
         <div className={styles.content + " flex"}>
-          <CarouselPhotos {...dates} />
+          <CarouselPhotos game={data} />
           <MenuBuy
-            clickGame={clickGame}
-            game={game}
-            clickCar={clickCar}
-            carrinho={carrinho}
+            game={data}
             dist={dist}
-            {...dates}
             setOpen={setOpen}
             setReport={setReport}
+            onSaveCarLocal={handleSaveCarLocal}
+            onSaveListLocal={handleSaveLitLocal}
+            setIsSaveCar={setIsSaveCar}
+            setIsSaveList={setIsSaveList}
+            isSaveCar={isSaveCar}
+            isSaveList={isSaveList}
+            storageCar={storageCar}
+            storageList={storageList}
           />
+
           {open && (
             <Box setClick={setOpen}>
               <Share setClick={setOpen} />
@@ -96,22 +100,22 @@ const Profile = ({ dist }) => {
 
           {report && (
             <Box setClick={setReport}>
-              <Report theme={dates.profile.theme} setClick={setReport} />
+              <Report theme={data.profile.theme} setClick={setReport} />
             </Box>
           )}
         </div>
+        {/* 
+        { <Details
+        dates={dates}
+        clickGame={clickGame}
+        game={game}
+        clickCar={clickCar}
+        carrinho={carrinho}
+        /> } */}
 
-        <Details
-          dates={dates}
-          clickGame={clickGame}
-          game={game}
-          clickCar={clickCar}
-          carrinho={carrinho}
-        />
-
-        <Social />
-        <Reviews {...dates} />
-        <Requires {...dates} />
+        {/* <Social /> */}
+        {/* <Reviews {...dates} /> */}
+        {/* <Requires {...dates} /> */}
       </section>
     );
   }

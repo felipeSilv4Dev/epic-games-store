@@ -7,7 +7,7 @@ import { Carousel } from "../Components/Carousel/Carousel";
 import { NavLink } from "react-router-dom";
 import LoadingOfertas from "./ofertas-components/LoadingOfertas/LoadingOfertas";
 
-const Ofertas = ({ data, loading, storage }) => {
+const Ofertas = ({ data, loading }) => {
   const match = useMatch("48em");
   const refOfertas = useRef();
 
@@ -22,7 +22,13 @@ const Ofertas = ({ data, loading, storage }) => {
           ofertas.map((game) => {
             return (
               <NavLink key={game.id} to={`game/${game.id}`}>
-                <Card key={game.id} price={true} game={game} src={"src2"} />
+                <Card
+                  key={game.id}
+                  price={true}
+                  icon={true}
+                  game={game}
+                  src={"src2"}
+                />
               </NavLink>
             );
           })}
@@ -30,7 +36,13 @@ const Ofertas = ({ data, loading, storage }) => {
         {match && (
           <Carousel ref={refOfertas} control={true}>
             {ofertas.map((game) => (
-              <Card key={game.id} price={true} game={game} src={"src2"} />
+              <Card
+                key={game.id}
+                price={true}
+                icon={true}
+                game={game}
+                src={"src2"}
+              />
             ))}
           </Carousel>
         )}

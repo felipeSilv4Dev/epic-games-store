@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 const LocalStorage = ({ key }) => {
-  const [storage, setStorage] = useState({ games: [] });
+  const [storage, setStorage] = useState({ games: [], car: [] });
 
   const setLocal = (key, options) => {
     localStorage.setItem(key, JSON.stringify(options));

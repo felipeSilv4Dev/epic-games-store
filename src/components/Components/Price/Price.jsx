@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./Price.module.css";
 
-const Price = ({ porcentage, oldPrice, newPrice, theme }) => {
+const Price = ({ porcentage, oldPrice, newPrice, theme = "var(--btn-3)" }) => {
   const style = {
-    backgroundColor: theme ? theme : "var(--btn-3)",
+    backgroundColor: theme,
   };
 
   return (

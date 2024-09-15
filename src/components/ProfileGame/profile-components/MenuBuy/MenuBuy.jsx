@@ -8,24 +8,23 @@ import { NavLink } from "react-router-dom";
 import LoadingButton from "../../../LoadingButton/LoadingButton";
 
 const MenuBuy = ({
-  oldPrice,
-  newPrice,
-  porcentage,
-  subtitle,
-  profile,
-  img,
-  dist,
-  clickGame,
-  clickCar,
   game,
-  carrinho,
+  dist,
   setOpen,
   setReport,
+  onSaveCarLocal,
+  storageCar,
+  setIsSaveCar,
+  isSaveCar,
+  isSaveList,
+  onSaveListLocal,
+  setIsSaveList,
+  storageList,
 }) => {
   const match = useMatch("48em");
   const container = useRef();
-  const [loading, setLoading] = useState(false);
-  const [list, setList] = useState(false);
+  const [loadingCar, setLoadingCar] = useState(false);
+  const [loadingList, setLoadingList] = useState(false);
 
   const handleScroll = useCallback(async () => {
     if (!container.current) return;
@@ -50,16 +49,6 @@ const MenuBuy = ({
     window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  const handleAddCar = (e) => {
-    if (!carrinho) {
-      setLoading(true);
-      setTimeout(() => {
-        clickCar(e);
-        setLoading(false);
-      }, 300);
-    }
-  };
-
   if (match) {
     removeClass();
   }
@@ -70,83 +59,100 @@ const MenuBuy = ({
     }
   }, [handleScroll, match]);
 
+  useEffect(() => {
+    if (storageCar?.car?.includes(game.id)) {
+      setLoadingCar(true);
+      setTimeout(() => {
+        setLoadingCar(false);
+        setIsSaveCar(true);
+      }, 200);
+    } else {
+      setIsSaveCar(false);
+    }
+  }, [storageCar, game, setIsSaveCar]);
+
+  useEffect(() => {
+    if (storageList?.games?.includes(game.id)) {
+      setLoadingList(true);
+      setTimeout(() => {
+        setLoadingList(false);
+        setIsSaveList(true);
+      }, 200);
+    } else {
+      setLoadingList(true);
+      setTimeout(() => {
+        setLoadingList(false);
+        setIsSaveList(false);
+      }, 200);
+    }
+  }, [storageList, game, setIsSaveList]);
+
   return (
     <div ref={container} className={styles.container + " flex"}>
       <div className={styles.logo + " flex"}>
         <Card
-          img={`../${img.logo}`}
-          newPrice={newPrice}
-          oldPrice={oldPrice}
-          theme={profile.theme}
-          subtitle={subtitle}
-          porcentage={porcentage}
+          game={game}
+          src={"logo"}
+          path={"../"}
+          price={true}
+          priceNow={true}
+          subtitle={true}
+          icon={false}
         />
       </div>
 
       <p className={styles.date}>A promoção termina 29/02/2024 às 13:00</p>
 
-      <Button btn="primary" theme={profile.theme}>
+      <Button btn="primary" theme={game.profile.theme}>
         Comprar Agora
       </Button>
 
-      <div style={{ width: "100%" }} onClick={handleAddCar}>
-        <NavLink to={carrinho && "/carrinho"}>
-          <Button btn="secondary">
-            {carrinho ? (
-              "visualizar no carrinho"
-            ) : loading ? (
-              <LoadingButton width={match ? "20.5rem" : "15.1rem"} />
-            ) : (
-              "adicionar Ao carrinho"
-            )}
+      <div style={{ width: "100%" }}>
+        <NavLink to={isSaveCar && "/carrinho"}>
+          <Button
+            btn="secondary"
+            onClick={() => onSaveCarLocal("car", game.id)}
+          >
+            {loadingCar && <LoadingButton />}
+            {!loadingCar &&
+              (isSaveCar ? "visualizar no carrinho" : "adicionar ao carrinho")}
           </Button>
         </NavLink>
       </div>
 
-      <div
-        style={{ width: "100%" }}
-        onClick={(e) => {
-          setList(true);
-          setTimeout(() => {
-            clickGame(e);
-            setList(false);
-          }, 300);
-        }}
-      >
-        <Button btn="secondary">
-          {game ? (
-            list ? (
-              <LoadingButton width={match ? "20.5rem" : "15.1rem"} />
-            ) : (
-              "na lista de desejos"
-            )
-          ) : list ? (
-            <LoadingButton width={match ? "20.5rem" : "15.1rem"} />
-          ) : (
-            "para a lista de desejos"
-          )}
+      <div style={{ width: "100%" }}>
+        <Button
+          btn="secondary"
+          onClick={() => onSaveListLocal("games", game.id)}
+        >
+          {loadingList && <LoadingButton />}
+          {!loadingList &&
+            (isSaveList ? "na lista de desejos" : "para a lista de desejos")}
         </Button>
       </div>
 
-      <Info textPrimary="Recompensas Epic" texteSecondary="ganhe 5% de volta" />
-      <Info textPrimary="Desenvolvedor" texteSecondary={profile.company} />
-      <Info textPrimary="Editora" texteSecondary={profile.company} />
-      <Info textPrimary="Data de lançamento" texteSecondary={profile.date} />
+      <Info textPrimary="Recompensas Epic" textSecondary="ganhe 5% de volta" />
+      <Info textPrimary="Desenvolvedor" textSecondary={game.profile.company} />
+      <Info textPrimary="Editora" textSecondary={game.profile.company} />
+      <Info
+        textPrimary="Data de lançamento"
+        textSecondary={game.profile.date}
+      />
       <Info
         textPrimary="Plataforma"
-        texteSecondary={
+        textSecondary={
           <i className={styles.icon + " fa-brands fa-windows"}></i>
         }
       />
 
-      <div
-        style={{ width: "100%" }}
-        onClick={() => {
-          document.body.style.overflowY = "hidden";
-          setOpen(true);
-        }}
-      >
-        <Button btn="secondary">
+      <div style={{ width: "100%" }}>
+        <Button
+          btn="secondary"
+          onClick={() => {
+            document.body.style.overflowY = "hidden";
+            setOpen(true);
+          }}
+        >
           <i
             style={{ marginRight: ".8rem" }}
             className=" fa-solid fa-share-nodes"
@@ -155,14 +161,14 @@ const MenuBuy = ({
         </Button>
       </div>
 
-      <div
-        style={{ width: "100%" }}
-        onClick={() => {
-          document.body.style.overflowY = "hidden";
-          setReport(true);
-        }}
-      >
-        <Button btn="secondary">
+      <div style={{ width: "100%" }}>
+        <Button
+          btn="secondary"
+          onClick={() => {
+            document.body.style.overflowY = "hidden";
+            setReport(true);
+          }}
+        >
           <i style={{ marginRight: ".8rem" }} className=" fa-solid fa-flag"></i>
           denunciar
         </Button>

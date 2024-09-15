@@ -13,13 +13,16 @@ const CardGame = ({
   src = "src1",
   icon = true,
   onSaveLocal = false,
+  path = false,
   storage,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (storage && storage.games.includes(game.id)) {
+    if (storage?.games?.includes(game.id)) {
       setIsOpen(true);
+    } else {
+      setIsOpen(false);
     }
   }, [storage, game.id]);
 
@@ -37,7 +40,10 @@ const CardGame = ({
       <div id={game.id} className={styles.image}>
         <div>
           <figure>
-            <Image src={game.img[src]} alt={game.title} />
+            <Image
+              src={path ? `${path}${game.img[src]}` : game.img[src]}
+              alt={game.title}
+            />
           </figure>
 
           {icon && <ButtonPlus onAddGame={handleAddGame} isOpen={isOpen} />}
@@ -62,7 +68,7 @@ const CardGame = ({
           porcentage={game.porcentage}
           oldPrice={game.oldPrice}
           newPrice={game.newPrice}
-          theme={game.theme}
+          theme={game.profile.theme}
         />
       )}
     </section>
