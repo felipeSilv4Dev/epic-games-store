@@ -130,7 +130,7 @@ const Profile = ({ dist }) => {
 
         <Social />
         <Reviews game={data} />
-        {/* <Requires {...dates} /> */}
+        <Requires game={data} />
       </section>
     );
   }
