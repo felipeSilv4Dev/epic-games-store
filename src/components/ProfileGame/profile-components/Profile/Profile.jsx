@@ -128,8 +128,8 @@ const Profile = ({ dist }) => {
           </Details>
         }
 
-        {/* <Social /> */}
-        {/* <Reviews {...dates} /> */}
+        <Social />
+        <Reviews game={data} />
         {/* <Requires {...dates} /> */}
       </section>
     );

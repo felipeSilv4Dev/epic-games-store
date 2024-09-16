@@ -5,10 +5,10 @@ import ReviewsInfo from "./reviews-components/ReviewsInfo/ReviewsInfo";
 import { Carousel } from "../../../Components/Carousel/Carousel";
 import useMatch from "../../../../Hooks/useMatch";
 
-const Reviews = ({ title, profile }) => {
+const Reviews = ({ game }) => {
   const refInfo = useRef();
   const match = useMatch("89.8125em");
-  const { primary, secondary, terciary } = profile.score;
+  const { primary, secondary, terciary } = game.profile.score;
 
   const reviews = [
     { text: "Críticos recomendam", porcentage: primary },
@@ -24,12 +24,12 @@ const Reviews = ({ title, profile }) => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Notas e avaliações: {title}</h2>
+      <h2 className={styles.title}>Notas e avaliações: {game.title}</h2>
       <div className={styles.reviews + " flex"}>
         {reviews.map(({ text, porcentage }) => (
           <Score
             key={Math.random()}
-            theme={profile.theme}
+            theme={game.profile.theme}
             porcentage={porcentage}
             text={text}
           />
@@ -43,8 +43,8 @@ const Reviews = ({ title, profile }) => {
               key={Math.random()}
               author={author}
               score={score}
-              title={title}
-              company={profile.company}
+              title={game.title}
+              company={game.profile.company}
             />
           ))}
         </div>
@@ -57,8 +57,8 @@ const Reviews = ({ title, profile }) => {
                 key={Math.random()}
                 author={author}
                 score={score}
-                title={title}
-                company={profile.company}
+                title={game.title}
+                company={game.profile.company}
               />
             ))}
           </Carousel>
