@@ -25,7 +25,7 @@ const Ofertas = ({ data, loading }) => {
                 <Card
                   key={game.id}
                   price={true}
-                  icon={true}
+                  icon={false}
                   game={game}
                   src={"src2"}
                 />
@@ -39,7 +39,7 @@ const Ofertas = ({ data, loading }) => {
               <Card
                 key={game.id}
                 price={true}
-                icon={true}
+                icon={false}
                 game={game}
                 src={"src2"}
               />

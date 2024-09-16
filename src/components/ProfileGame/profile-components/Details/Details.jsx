@@ -1,24 +1,11 @@
 import React from "react";
 import styles from "./Details.module.css";
-import CardDetail from "./details-components/CardDetail/CardDetail";
 
-const Details = ({ dates, game, clickGame, clickCar, carrinho, title }) => {
-  const titles = ["edição", "jogo base", "complemento"];
-
+const Details = ({ game, children }) => {
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>{title}</h2>
-      {titles.map((item) => (
-        <CardDetail
-          key={item}
-          {...dates}
-          subtitle={item}
-          clickGame={clickGame}
-          game={game}
-          clickCar={clickCar}
-          carrinho={carrinho}
-        />
-      ))}
+      <h2 className={styles.title}>{game.title}</h2>
+      {children}
     </div>
   );
 };

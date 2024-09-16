@@ -10,6 +10,7 @@ import Details from "../Details/Details";
 import Social from "../Social/Social";
 import Reviews from "../Reviews/Reviews";
 import Requires from "../Requires/Requires";
+import CardDetail from "../CardDetail/CardDetail";
 import { API_URL } from "../../../../Api/Api";
 import Head from "../../../../Helpers/Head";
 import Box from "../Box/Box";
@@ -22,6 +23,8 @@ const Profile = ({ dist }) => {
   const { request, data, loading } = useFetch();
   const [open, setOpen] = useState(false);
   const [report, setReport] = useState(false);
+  const [isSaveList, setIsSaveList] = useState(false);
+  const [isSaveCar, setIsSaveCar] = useState(false);
   const { saveItemLocal: saveCarLocal, storage: storageCar } = useLocalStorage({
     key: "car",
   });
@@ -31,8 +34,7 @@ const Profile = ({ dist }) => {
       key: "games",
     });
 
-  const [isSaveCar, setIsSaveCar] = useState(false);
-  const [isSaveList, setIsSaveList] = useState(false);
+  const titles = ["edição", "jogo base", "complemento"];
 
   const handleSaveCarLocal = (key, id) => {
     saveCarLocal(key, id);
@@ -104,14 +106,27 @@ const Profile = ({ dist }) => {
             </Box>
           )}
         </div>
-        {/* 
-        { <Details
-        dates={dates}
-        clickGame={clickGame}
-        game={game}
-        clickCar={clickCar}
-        carrinho={carrinho}
-        /> } */}
+
+        {
+          <Details game={data}>
+            {titles.map((_, index) => (
+              <CardDetail
+                key={index}
+                game={data}
+                subtitles={_}
+                src={data.profile.img[index]}
+                onSaveCarLocal={handleSaveCarLocal}
+                onSaveListLocal={handleSaveLitLocal}
+                setIsSaveCar={setIsSaveCar}
+                setIsSaveList={setIsSaveList}
+                isSaveCar={isSaveCar}
+                isSaveList={isSaveList}
+                storageCar={storageCar}
+                storageList={storageList}
+              />
+            ))}
+          </Details>
+        }
 
         {/* <Social /> */}
         {/* <Reviews {...dates} /> */}

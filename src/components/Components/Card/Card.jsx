@@ -15,6 +15,7 @@ const CardGame = ({
   onSaveLocal = false,
   path = false,
   storage,
+  theme = false,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -68,7 +69,7 @@ const CardGame = ({
           porcentage={game.porcentage}
           oldPrice={game.oldPrice}
           newPrice={game.newPrice}
-          theme={game.profile.theme}
+          theme={theme && game.profile.theme}
         />
       )}
     </section>

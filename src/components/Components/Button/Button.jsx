@@ -2,9 +2,9 @@ import React from "react";
 import styles from "./Button.module.css";
 import { func } from "prop-types";
 
-const Button = ({ btn, children, theme, onClick = func }) => {
+const Button = ({ btn, children, theme = "var(--btn-3)", onClick = func }) => {
   const style = {
-    backgroundColor: theme ? theme : "var(--btn-3)",
+    backgroundColor: theme,
   };
 
   return (

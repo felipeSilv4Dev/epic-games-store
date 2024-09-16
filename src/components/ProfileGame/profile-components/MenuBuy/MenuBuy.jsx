@@ -98,6 +98,7 @@ const MenuBuy = ({
           priceNow={true}
           subtitle={true}
           icon={false}
+          theme={true}
         />
       </div>
 

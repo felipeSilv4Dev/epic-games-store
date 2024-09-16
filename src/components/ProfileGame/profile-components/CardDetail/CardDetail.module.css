@@ -47,17 +47,18 @@
 
 .priceContainer {
   justify-content: flex-end;
-  width: 100%;
   padding: 2.5rem 3.5rem;
   border-top: 1px solid var(--type-4-dark);
   align-items: center;
   gap: 1.2rem;
+  width: 100%;
+}
+
+.priceContainer span {
+  width: 20rem;
 }
 .price {
   font-size: 1.4rem;
-}
-.priceContainer div {
-  max-width: fit-content;
 }
 
 @media (max-width: 80em) {
@@ -70,8 +71,11 @@
   .image div {
     width: 100%;
   }
-  .priceContainer div button {
-    padding: 1.3rem;
+  .priceContainer span {
+    width: 25rem;
+  }
+  .priceContainer span button {
+    padding: 2rem;
     font-size: 1.4rem;
   }
   .info > div h2 {
@@ -101,10 +105,13 @@
   .priceContainer {
     width: 100%;
   }
+  .priceContainer span {
+    width: 100%;
+  }
   .price {
     font-size: 1.6rem;
   }
-  .priceContainer div {
+  .priceContainer span {
     max-width: 100%;
   }
   .priceContainer div button {
@@ -117,7 +124,7 @@
   .priceContainer {
     padding: 2rem;
   }
-  .priceContainer div button {
+  .priceContainer span button {
     font-size: 1.3rem;
     padding: 1.6rem;
   }
