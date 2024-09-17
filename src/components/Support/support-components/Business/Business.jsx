@@ -1,21 +1,21 @@
 import React from "react";
 import styles from "./Business.module.css";
 import Image from "../../../Components/Image/Image";
-import { useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
 
-const Business = ({ profile, img, id }) => {
-  const navigate = useNavigate();
+const Business = ({ game }) => {
+  const style = {
+    background: `url(${game.profile.img[1]}) no-repeat center center`,
+    backgroundSize: "cover",
+  };
+
   return (
-    <div onClick={() => navigate(`/game/${id}`)} className={styles.container}>
-      <div
-        style={{
-          background: `url(${profile.img[1]}) no-repeat center center`,
-          backgroundSize: "cover",
-        }}
-        className={styles.bg}
-      >
-        <Image src={img.logo} alt="Logo" />
-      </div>
+    <div className={styles.container}>
+      <NavLink to={`/game/${game.id}`}>
+        <div style={style} className={styles.bg}>
+          <Image src={game.img.logo} alt="Logo" />
+        </div>
+      </NavLink>
     </div>
   );
 };

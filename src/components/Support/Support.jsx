@@ -9,6 +9,7 @@ import Head from "../../Helpers/Head";
 import Game from "./support-components/Game/Game";
 import Account from "./support-components/Account/Account";
 import Business from "./support-components/Business/Business";
+import Loading from "../Loading/Loading";
 
 const Suport = () => {
   const { data, request, loading } = useFetch();
@@ -25,66 +26,65 @@ const Suport = () => {
 
   useEffect(top, [top]);
 
-  return (
-    <section className={styles.container + " max appMain"}>
-      <Head
-        title={"Epic Games store | Suporte"}
-        description="compre os jogos mais em conta do mercado"
-      />
-      <h2 className={styles.title}>
-        Bem-vindo ao Suporte ao Jogador da Epic Games
-      </h2>
-      <Link className={styles.status}>
-        STATUS DO SERVIDOR: <span>PARTIALLY DEGRADED SERVICE</span>
-      </Link>
-
-      <div className={styles.camp + " flex"}>
-        <i className={`${styles.icon} fa-solid fa-magnifying-glass`}></i>
-        <input
-          className={styles.input}
-          type="text"
-          placeholder="Pesquisa na central de Ajuda..."
+  if (loading) return <Loading />;
+  if (data) {
+    return (
+      <section className={styles.container + " max appMain"}>
+        <Head
+          title={"Epic Games store | Suporte"}
+          description="compre os jogos mais em conta do mercado"
         />
-      </div>
+        <h2 className={styles.title}>
+          Bem-vindo ao Suporte ao Jogador da Epic Games
+        </h2>
+        <Link className={styles.status}>
+          STATUS DO SERVIDOR: <span>PARTIALLY DEGRADED SERVICE</span>
+        </Link>
 
-      <div className={styles.categories + " flex"}>
-        {data &&
-          data
-            .slice(0, 3)
-            .map(({ id, img }) => (
-              <Categories key={id} img={img.src3} id={id} />
+        <div className={styles.camp + " flex"}>
+          <i className={`${styles.icon} fa-solid fa-magnifying-glass`}></i>
+          <input
+            className={styles.input}
+            type="text"
+            placeholder="Pesquisa na central de Ajuda..."
+          />
+        </div>
+
+        <div className={styles.categories + " flex"}>
+          {data.slice(3, 6).map((game, index) => (
+            <Categories key={game.id} src={game.img.src3} index={index + 1} />
+          ))}
+        </div>
+
+        <section className={styles.game} id="jogos">
+          <h2 className={styles.subtitle}>Jogos</h2>
+
+          <div className={styles.gameContent}>
+            {data.map((game) => (
+              <Game key={game.id} game={game} />
             ))}
-      </div>
+          </div>
+        </section>
 
-      <section className={styles.game} id="jogos">
-        <h2 className={styles.subtitle}>Jogos</h2>
+        <section className={styles.account} id="contas">
+          <h2 className={styles.subtitle}>Contas</h2>
+          <div className={styles.accountContent + " flex"}>
+            {data.slice(6, 10).map((game) => (
+              <Account key={game.id} game={game} />
+            ))}
+          </div>
+        </section>
 
-        <div className={styles.gameContent}>
-          {data && data.map((game) => <Game key={game.id} {...game} />)}
-        </div>
+        <section className={styles.business} id="negócios">
+          <h2 className={styles.subtitle}>Negócios</h2>
+          <div className={styles.accountContent + " flex"}>
+            {data.slice(2, 9).map((game) => (
+              <Business key={game.id} game={game} />
+            ))}
+          </div>
+        </section>
       </section>
-
-      <section className={styles.account} id="contas">
-        <h2 className={styles.subtitle}>Contas</h2>
-        <div className={styles.accountContent + " flex"}>
-          {data &&
-            data
-              .slice(6, 10)
-              .map((account) => <Account key={account.id} {...account} />)}
-        </div>
-      </section>
-
-      <section className={styles.business} id="negócios">
-        <h2 className={styles.subtitle}>Negócios</h2>
-        <div className={styles.accountContent + " flex"}>
-          {data &&
-            data
-              .slice(2, 9)
-              .map((account) => <Business key={account.id} {...account} />)}
-        </div>
-      </section>
-    </section>
-  );
+    );
+  }
 };
-
 export default Suport;

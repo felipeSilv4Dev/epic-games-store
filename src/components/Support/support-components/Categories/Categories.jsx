@@ -20,8 +20,8 @@ const links = [
   },
 ];
 
-const Cartegories = ({ img, id }) => {
-  const { title, icon, offset, duration } = links[id - 1];
+const Cartegories = ({ game, src, index }) => {
+  const { title, icon, duration } = links[index - 1];
 
   return (
     <Link
@@ -35,7 +35,7 @@ const Cartegories = ({ img, id }) => {
       <div className={styles.container + " flex"}>
         <div className={styles.image + " flex"}>
           <i className={`${styles.icon} ${icon}`}></i>
-          <Image src={img} alt="img background" />
+          <Image src={src} alt="img background" />
         </div>
         <p className={styles.title}>{title}</p>
       </div>
