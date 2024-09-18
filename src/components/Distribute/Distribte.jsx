@@ -54,8 +54,8 @@ const Distribte = () => {
       <BannerDist />
 
       <div className={styles.card}>
-        {card.map((c) => (
-          <Card key={c.title} {...c} />
+        {card.map((car) => (
+          <Card key={car.title} card={car} />
         ))}
       </div>
     </div>

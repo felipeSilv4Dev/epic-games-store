@@ -8,7 +8,7 @@ import ProfileGame from "./components/ProfileGame/Profile.Game";
 import { useState } from "react";
 import Markup from "./components/Markup/Markup";
 import Car from "./components/Car/Car";
-import Novidades from "./components/Novidades/Novidades";
+import New from "./components/New/New";
 import Distribte from "./components/Distribute/Distribte";
 import Support from "./components/Support/Support";
 import Browse from "./components/Browse/Browse";
@@ -27,7 +27,7 @@ function App() {
           <Route path="markup" element={<Markup />} />
           <Route path="carrinho" element={<Car />} />
           <Route path="navegar" element={<Browse />} />
-          <Route path="novidades" element={<Novidades />} />
+          <Route path="novidades" element={<New />} />
           <Route path="suporte" element={<Support />} />
           <Route path="distribuir" element={<Distribte />} />
         </Routes>

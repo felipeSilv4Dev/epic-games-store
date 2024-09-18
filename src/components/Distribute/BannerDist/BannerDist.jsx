@@ -16,7 +16,7 @@ const BannerDist = () => {
         <img className={styles.logo} src={logo} alt="logo" />
         <h2>Já disponível para todos os desenvolvedores e editoras</h2>
         <span className={styles.btn}>
-          <Button btn="primary" theme="var(--type-2-light)">
+          <Button btn="primary" theme="var(--type-2-light)" onClick={() => {}}>
             CADASTRE-SE HOJE
           </Button>
         </span>
