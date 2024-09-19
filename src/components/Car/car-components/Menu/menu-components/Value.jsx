@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./Value.module.css";
 
-const Value = ({ txt1, tx2 }) => {
+const Value = ({ name, value }) => {
   return (
     <div className={styles.value + " flex"}>
-      <p>{txt1}</p>
-      <p>{tx2}</p>
+      <p>{name}</p>
+      <p>{value}</p>
     </div>
   );
 };

@@ -120,18 +120,19 @@
 
 .btn span {
   font-size: 1.4rem;
-  cursor: pointer;
   color: var(--type-4-light);
   text-decoration: underline;
+  cursor: pointer;
 }
 .btn span:hover {
   text-decoration: none;
 }
-.btn button {
-  max-width: max-content;
+
+.btn:last-child button {
+  width: 25rem;
 }
 
-@media only screen and (max-width: 80em) {
+@media (max-width: 80em) {
   .infoImage {
     flex-direction: column;
     align-items: start;
@@ -148,13 +149,13 @@
   }
 }
 
-@media only screen and (max-width: 64em) {
+@media (max-width: 64em) {
   .infoImage {
     flex-direction: row;
   }
 }
 
-@media only screen and (max-width: 48em) {
+@media (max-width: 48em) {
   .container {
     padding: 2.3rem;
   }
@@ -212,12 +213,13 @@
   .btn span {
     font-size: 1.6rem;
   }
-  .btn button {
-    max-width: 100%;
+
+  .btn:last-child button {
+    width: 30rem;
   }
 }
 
-@media only screen and (max-width: 17.5em) {
+@media (max-width: 17.5em) {
   .container {
     padding: 1.5rem;
   }

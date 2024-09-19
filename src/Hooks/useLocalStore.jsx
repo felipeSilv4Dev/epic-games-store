@@ -13,8 +13,10 @@ const LocalStorage = ({ key }) => {
     return isLocal && JSON.parse(isLocal);
   }, []);
 
-  const removeItemLocal = (gamesId, id) => {
-    return gamesId.filter((game) => game !== id);
+  const removeItemLocal = (id) => {
+    const gamesId = getItemLocal(key).filter((game) => game !== id);
+    setStorage({ [key]: gamesId });
+    setLocal(key, gamesId);
   };
 
   const saveItemLocal = (key, id) => {
@@ -22,9 +24,7 @@ const LocalStorage = ({ key }) => {
 
     if (gamesId) {
       const includeId = gamesId.includes(id);
-      gamesId = removeItemLocal(gamesId, id);
-
-      includeId ? setLocal(key, [...gamesId]) : setLocal(key, [...gamesId, id]);
+      includeId ? removeItemLocal(id) : setLocal(key, [...gamesId, id]);
     } else {
       setLocal(key, [id]);
     }
@@ -35,7 +35,7 @@ const LocalStorage = ({ key }) => {
     setStorage({ [key]: gamesId });
   }, [key, getItemLocal]);
 
-  return { saveItemLocal, getItemLocal, storage };
+  return { saveItemLocal, getItemLocal, storage, removeItemLocal };
 };
 
 export default LocalStorage;

@@ -5,9 +5,10 @@ import useFetch from "../../Hooks/useFetch";
 import { API_URL } from "../../Api/Api";
 import Card from "./new-components/Card/Card";
 import GameNew from "./new-components/GameNew/GameNew";
+import Loading from "./../Loading/Loading";
 
 const New = () => {
-  const { data, request } = useFetch();
+  const { data, request, loading } = useFetch();
   const top = useTop();
 
   useEffect(() => {
@@ -19,7 +20,7 @@ const New = () => {
     };
   }, [request]);
   useEffect(top, [top]);
-
+  if (loading) return <Loading />;
   if (data) {
     const games = data.slice(7, 9);
 

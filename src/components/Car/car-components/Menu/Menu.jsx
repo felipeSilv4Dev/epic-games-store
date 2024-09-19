@@ -3,63 +3,63 @@ import styles from "./Menu.module.css";
 import Button from "../../../Components/Button/Button";
 import Value from "./menu-components/Value";
 
-const Menu = ({ data }) => {
+const Menu = ({ games }) => {
   const [total, setTotal] = useState(0);
-  const [price, setPrice] = useState(0);
   const [discount, setDiscount] = useState(0);
 
-  const handleCalc = useCallback(
-    (key) => {
-      if (data) {
-        const totalData = data.map((d) =>
-          d[key] ? +d[key].replaceAll(".", "").replace(",", ".") : 0
-        );
-        const totalReal = totalData
-          .reduce((acc, p) => acc + p)
-          .toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  const clearNumber = (number) =>
+    Number(number.replaceAll(".", "").replace(",", "."));
 
-        return totalReal;
-      }
-    },
-    [data]
+  const convertNumberForCurrency = (number) =>
+    number.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
+  const handleTotalPrice = useCallback(
+    (games) =>
+      convertNumberForCurrency(
+        games
+          .map((game) => clearNumber(game.newPrice))
+          .reduce((acc, game) => acc + game)
+      ),
+    []
   );
 
-  const handleDiscount = useCallback(() => {
-    if (data) {
-      const discountData = data.map((d) => {
-        const porcentage = d.porcentage;
-        const priceOld = +d.oldPrice.replaceAll(".", "").replace(",", ".");
-        const discount = (porcentage / 100) * priceOld;
+  const handleDiscountPrice = useCallback(
+    (games) =>
+      convertNumberForCurrency(
+        games
+          .map((game) => {
+            const oldPrice = clearNumber(game.oldPrice);
+            const porcentage = game.porcentage;
 
-        return -discount;
-      });
-
-      const discountReal = discountData
-        .reduce((acc, p) => acc + p)
-        .toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-      setDiscount(discountReal);
-    }
-  }, [data]);
+            return (porcentage / 100) * oldPrice;
+          })
+          .reduce((acc, game) => acc + game)
+      ),
+    []
+  );
 
   useEffect(() => {
-    handleDiscount();
-    setTotal(handleCalc("newPrice"));
-    setPrice(handleCalc("oldPrice"));
-  }, [handleCalc, handleDiscount]);
+    if (!games) return;
+    setTotal(handleTotalPrice(games));
+    setDiscount(handleDiscountPrice(games));
+  }, [handleDiscountPrice, handleTotalPrice, games]);
+
   return (
     <div className={styles.menu}>
       <h2>Resumo de jogos e aplicativos</h2>
 
-      <Value txt1="preço" tx2={price} />
-      <Value txt1="Desconto" tx2={discount} />
+      <Value name="preço" value={total} />
+      <Value name="Desconto" value={discount} />
 
       <div className={styles.imposto}>
-        <Value txt1="imposto" tx2="calculado ao finalizar" />
+        <Value name="imposto" value="calculado ao finalizar" />
       </div>
 
       <div className={styles.total}>
-        <Value txt1="subtotal" tx2={total} />
-        <Button btn="primary">Finalizar compra</Button>
+        <Value vame="subtotal" value={total} />
+        <Button btn="primary" onClick={null}>
+          Finalizar compra
+        </Button>
       </div>
     </div>
   );

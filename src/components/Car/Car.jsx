@@ -9,62 +9,35 @@ import { v4 as uuidv4 } from "uuid";
 import Menu from "./car-components/Menu/Menu";
 import HeaderMarkup from "../Components/HeaderMarkup/HeaderMarkup";
 import Message from "../Components/Message/Message";
+import useLocalStorage from "./../../Hooks/useLocalStore";
 
 const Car = () => {
-  const { request, data: json } = useFetch();
-  const [data, setData] = useState([]);
+  const { data, request } = useFetch();
+  const { storage, removeItemLocal, saveItemLocal } = useLocalStorage({
+    key: "car",
+  });
+  const [games, setGames] = useState([]);
 
   const top = useTop();
-  let games;
-
   useEffect(top, [top]);
-
-  const getGames = useCallback(() => {
-    const item = localStorage.getItem("carrinho");
-
-    if (!item) return;
-    const jsonData = JSON.parse(item);
-    setData(jsonData);
-
-    return jsonData;
-  }, []);
 
   useEffect(() => {
     const controler = new AbortController();
-    const jsonData = getGames();
+    (async () => await request(API_URL, controler.signal))();
+    return () => controler.abort();
+  }, [request]);
 
-    if (jsonData.length) {
-      (async () => await request(API_URL, controler.signal))();
+  useEffect(() => {
+    if (data && storage.car) {
+      const filterGames = storage.car.flatMap((item) =>
+        data.filter((data) => data.id === item)
+      );
+      setGames(filterGames);
     }
+  }, [storage, data]);
 
-    return () => {
-      controler.abort();
-    };
-  }, [request, getGames]);
-
-  const handleClick = ({ currentTarget }) => {
-    setTimeout(() => {
-      const id = +currentTarget.closest("section").id;
-      const game = JSON.parse(localStorage.getItem("carrinho"));
-      const filterGame = game.filter((g) => g !== id);
-
-      localStorage.setItem("carrinho", JSON.stringify(filterGame));
-      setData(filterGame);
-    }, 300);
-  };
-
-  if (json && data.length) {
-    games = data.flatMap((d) => json.filter((j) => j.id === d));
-  }
-
-  const handleMoveList = ({ currentTarget }) => {
-    setTimeout(() => {
-      const id = +currentTarget.closest("section").id;
-      const game = JSON.parse(localStorage.getItem("game"));
-      const gameFilter = game.filter((g) => g !== id);
-      localStorage.setItem("game", JSON.stringify([...gameFilter, id]));
-      handleClick({ currentTarget });
-    }, 300);
+  const handleRemoveGameLocalStorage = (id) => {
+    removeItemLocal(id);
   };
 
   return (
@@ -73,26 +46,25 @@ const Car = () => {
         title="Carrinho"
         description="compre os jogos mais em conta do mercado"
       />
-
       <HeaderMarkup title="Meu carrinho" />
       <div className={styles.content + " flex"}>
         <div className={styles.card + " flex"}>
-          {games &&
-            games.map((g) => (
+          {!!games.length &&
+            games.map((game) => (
               <CardMarkup
-                key={uuidv4()}
-                {...g}
-                onDelete={handleClick}
-                test={<p>sdsd</p>}
-                onMoveList={handleMoveList}
+                key={game.id}
+                game={game}
+                onRemove={handleRemoveGameLocalStorage}
+                onSaveLocal={saveItemLocal}
                 car={true}
               />
             ))}
         </div>
 
-        {games && <Menu data={games} />}
+        {!!games.length && <Menu games={games} />}
       </div>
-      {!games && (
+
+      {!games.length && (
         <Message message="Seu carrinho está vazio" fill="var(--type-6-dark)" />
       )}
     </main>

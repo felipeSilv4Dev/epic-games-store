@@ -127,7 +127,6 @@ h4 {
 @media (max-width: 64em) {
   .max {
     width: initial;
-    /* padding: 0 16px; */
     margin: 0 16px;
   }
 }
