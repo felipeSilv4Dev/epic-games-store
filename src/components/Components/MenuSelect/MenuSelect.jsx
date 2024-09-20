@@ -1,47 +1,46 @@
 import { useState } from "react";
 import styles from "./MenuSelect.module.css";
 
-const MenuSelect = ({ setValue }) => {
-  const [open, setOpen] = useState(false);
-  const [current, setCurrent] = useState("Em promoção");
+const style = {
+  transform: "rotate(-180deg)",
+  top: "-.15rem",
+};
 
-  const style = {
-    transform: "rotate(-180deg)",
-    top: "-.15rem",
+const MenuSelect = ({ onSelected, options }) => {
+  const [open, setOpen] = useState(false);
+  const [label, setLabel] = useState("Em promoção");
+
+  const handleOpenOptions = () => {
+    setOpen(!open);
   };
-  const options = [
-    "Em promoção",
-    "Adicionado recentemente",
-    "Ordem Alfabética",
-    "Preço: Crescente",
-    "Preço: Decrescente",
-  ];
+
+  const handleSelectOption = (option) => {
+    setLabel(option);
+  };
 
   return (
     <button
-      onBlur={() => setOpen(false)}
-      onClick={() => setOpen(!open)}
+      onBlur={() => open && handleOpenOptions()}
+      onClick={handleOpenOptions}
       className={styles.container}
     >
-      <p className={styles.checked + " flex"}>
-        {current}
+      <p className={`${styles.checked}  flex`}>
+        {label}
         <i
           style={open ? style : null}
-          className={styles.icon + " fa-solid fa-chevron-down"}
+          className={`${styles.icon}  fa-solid fa-chevron-down`}
         />
       </p>
 
       {open && (
-        <div
-          onClick={({ target }) => {
-            setValue(Number(target.id));
-            setCurrent(target.textContent);
-          }}
-          className={styles.options}
-        >
-          {options.map((op, i) => (
-            <p key={op} id={i + 1} className={current === op ? " active" : ""}>
-              {op}
+        <div className={styles.options}>
+          {options.map((option) => (
+            <p
+              key={option}
+              className={label === option ? "active" : ""}
+              onClick={() => handleSelectOption(option)}
+            >
+              {option}
             </p>
           ))}
         </div>

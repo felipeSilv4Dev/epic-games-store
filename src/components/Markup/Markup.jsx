@@ -1,124 +1,114 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Markup.module.css";
 import CardMarkup from "../Components/CardMarkup/CardMarkup";
 import useFetch from "../../Hooks/useFetch";
-import email from "../../../public/img/assets/email.png";
 import MenuSelect from "../Components/MenuSelect/MenuSelect";
 import Filter from "./markup-components/Filter/Filter";
 import useMatch from "../../Hooks/useMatch";
-import Image from "../Components/Image/Image";
 import Head from "../../Helpers/Head";
 import useTop from "../../Hooks/useTop";
 import { API_URL } from "../../Api/Api";
 import HeaderMarkup from "../Components/HeaderMarkup/HeaderMarkup";
 import Message from "../Components/Message/Message";
+import EmailNotification from "./markup-components/EmailNotification/EmailNotification";
+import useLocalStorage from "../../Hooks/useLocalStore";
+import FilterMobile from "./markup-components/FilterMobile/FilterMobile";
+import Loading from "../Loading/Loading";
+
+const options = [
+  "Em promoção",
+  "Adicionado recentemente",
+  "Ordem Alfabética",
+  "Preço: Crescente",
+  "Preço: Decrescente",
+];
 
 const Markup = () => {
-  const { request, data } = useFetch();
-  const [json, setJson] = useState([]);
-  const [idOptions, setIdOptions] = useState(1);
+  const { request, data, loading } = useFetch();
+  const top = useTop();
+  const { storage: storageList, removeItemLocal } = useLocalStorage({
+    key: "games",
+  });
+
+  const { storage: storageCar, saveItemLocal } = useLocalStorage({
+    key: "car",
+  });
+
+  const [games, setGames] = useState([]);
   const [open, setOpen] = useState(false);
   const match = useMatch("64em");
-  const top = useTop();
+  const [selected, setSelected] = useState("Em Promoção");
 
   useEffect(top, [top]);
-
-  const getGames = useCallback(() => {
-    const item = localStorage.getItem("game");
-
-    if (!item) return;
-    const jsonData = JSON.parse(item);
-    setJson(jsonData);
-
-    return jsonData;
-  }, []);
-
   useEffect(() => {
     const controler = new AbortController();
-    const jsonData = getGames();
+    (async () => await request(API_URL, controler.signal))();
+    return () => controler.abort();
+  }, [request]);
 
-    if (jsonData.length) {
-      (async () => await request(API_URL, controler.signal))();
+  useEffect(() => {
+    if (data && storageList.games) {
+      const filterGames = storageList.games.flatMap((item) =>
+        data.filter((data) => data.id === item)
+      );
+      setGames(filterGames);
     }
+  }, [storageList, data]);
 
-    return () => {
-      controler.abort();
-    };
-  }, [request, getGames]);
+  // let games = data;
+  // if (data && json.length) {
+  //   if (idOptions === 2)
+  //     game = json.flatMap((j) => data.filter((d) => d.id === j)).reverse();
 
-  const handleClick = ({ currentTarget }) => {
-    setTimeout(() => {
-      const id = +currentTarget.closest("section").id;
-      const game = JSON.parse(localStorage.getItem("game"));
-      const filterGame = game.filter((g) => g !== id);
+  //   if (idOptions === 1)
+  //     game = json
+  //       .flatMap((j) => data.filter((d) => d.id === j))
+  //       .sort((a, b) => b.porcentage - a.porcentage);
 
-      localStorage.setItem("game", JSON.stringify(filterGame));
-      setJson(filterGame);
-    }, 300);
-  };
+  //   if (idOptions === 3) {
+  //     game = json
+  //       .flatMap((j) => data.filter((d) => d.id === j))
+  //       .sort((a, b) => {
+  //         if (a.title.toLowerCase() > b.title.toLowerCase()) {
+  //           return 1;
+  //         } else if (a.title < b.title) {
+  //           return -1;
+  //         } else {
+  //           return 0;
+  //         }
+  //       });
+  //   }
+  //   if (idOptions === 4) {
+  //     game = json
+  //       .flatMap((j) => data.filter((d) => d.id === j))
+  //       .sort((a, b) => {
+  //         const priceA = +a.newPrice.replaceAll(".", "").replace(",", ".");
+  //         const priceB = +b.newPrice.replaceAll(".", "").replace(",", ".");
 
-  let game;
-  if (data && json.length) {
-    if (idOptions === 2)
-      game = json.flatMap((j) => data.filter((d) => d.id === j)).reverse();
+  //         return priceA - priceB;
+  //       });
+  //   }
 
-    if (idOptions === 1)
-      game = json
-        .flatMap((j) => data.filter((d) => d.id === j))
-        .sort((a, b) => b.porcentage - a.porcentage);
+  //   if (idOptions === 5) {
+  //     game = json
+  //       .flatMap((j) => data.filter((d) => d.id === j))
+  //       .sort((a, b) => {
+  //         const priceA = +a.newPrice.replaceAll(".", "").replace(",", ".");
+  //         const priceB = +b.newPrice.replaceAll(".", "").replace(",", ".");
 
-    if (idOptions === 3) {
-      game = json
-        .flatMap((j) => data.filter((d) => d.id === j))
-        .sort((a, b) => {
-          if (a.title.toLowerCase() > b.title.toLowerCase()) {
-            return 1;
-          } else if (a.title < b.title) {
-            return -1;
-          } else {
-            return 0;
-          }
-        });
-    }
-    if (idOptions === 4) {
-      game = json
-        .flatMap((j) => data.filter((d) => d.id === j))
-        .sort((a, b) => {
-          const priceA = +a.newPrice.replaceAll(".", "").replace(",", ".");
-          const priceB = +b.newPrice.replaceAll(".", "").replace(",", ".");
-
-          return priceA - priceB;
-        });
-    }
-
-    if (idOptions === 5) {
-      game = json
-        .flatMap((j) => data.filter((d) => d.id === j))
-        .sort((a, b) => {
-          const priceA = +a.newPrice.replaceAll(".", "").replace(",", ".");
-          const priceB = +b.newPrice.replaceAll(".", "").replace(",", ".");
-
-          return priceB - priceA;
-        });
-    }
-  }
-
+  //         return priceB - priceA;
+  //       });
+  //   }
+  // }
+  if (loading) return <Loading />;
   return (
-    <main className={styles.container + " max appMain"}>
+    <main className={`${styles.container}  max appMain`}>
       <Head
         title="Lista dos desejos"
         description="compre os jogos mais em conta do mercado"
       />
       <HeaderMarkup title="Lista dos desejos" />
-
-      <div className={styles.email + " flex"}>
-        <div className={styles.emailInfo + " flex"}>
-          <Image src={email} alt="email" />
-          <p className="flex">
-            Receber notificações da minha lista de desejos por e-mail.
-          </p>
-        </div>
-      </div>
+      <EmailNotification />
 
       <section className={styles.content + " flex"}>
         <div className={styles.cardContainer}>
@@ -126,38 +116,37 @@ const Markup = () => {
             <div>
               <span>Classsificar por : </span>
 
-              <MenuSelect setValue={setIdOptions} />
+              <MenuSelect onSelected={setSelected} options={options} />
             </div>
 
-            {match && game && (
+            {match && (
               <div className={styles.filter}>
-                <p
-                  id="filter"
-                  className={styles.filterButton + " flex"}
-                  onClick={({ target }) =>
-                    target.id === "filter" && setOpen(true)
-                  }
-                >
-                  filtro
-                  <i className="fa-solid fa-sort-down"></i>
-                </p>
-                {open && <Filter setOpen={setOpen} />}
+                <FilterMobile
+                  setOpen={setOpen}
+                  options={options}
+                  open={open}
+                  setSelected={setSelected}
+                />
               </div>
             )}
           </h2>
+
           <div className={styles.card + " flex"}>
-            {game &&
-              game.map((g) => (
+            {games &&
+              games.map((game) => (
                 <CardMarkup
-                  key={g.id}
-                  {...g}
-                  onDelete={handleClick}
-                  markup={true}
+                  key={game.id}
+                  game={game}
+                  list={true}
+                  KEY={"car"}
+                  storage={storageCar}
+                  onSaveLocal={saveItemLocal}
+                  onRemove={removeItemLocal}
                 />
               ))}
           </div>
 
-          {!game && (
+          {!games.length && (
             <Message
               message="Você ainda não adicionou nada à sua lista de desejos."
               fill="var(--btn-3)"
@@ -165,9 +154,9 @@ const Markup = () => {
           )}
         </div>
 
-        {!match && game && (
+        {!match && games && (
           <div>
-            <Filter option={setIdOptions} />
+            <Filter options={options} setSelected={setSelected} />
           </div>
         )}
       </section>

@@ -1,32 +1,6 @@
 .container {
   color: var(--type-2-light);
-}
-
-.email {
-  margin: 3rem 0;
-  justify-content: space-between;
-  padding: 1.5rem;
-  background-color: var(--type-4-dark);
-  border-radius: 0.4rem;
-}
-
-.email p {
-  font-size: 1.4rem;
-  color: var(--type-4-light);
-  min-height: 4rem;
-  font-weight: 500;
-  text-align: center;
-
-  align-items: center;
-}
-.emailInfo {
-  gap: 2.2rem;
-}
-.emailInfo div {
-  flex: 0 0 auto;
-}
-.emailInfo img {
-  height: 2.8rem;
+  margin-bottom: 10rem;
 }
 
 .content {
@@ -51,9 +25,6 @@
 }
 
 @media (max-width: 64em) {
-  .emailInfo p {
-    font-size: 1.5rem;
-  }
   .option {
     justify-content: space-between;
   }
@@ -61,35 +32,15 @@
   .option button {
     font-size: 1.6rem;
   }
-  .filterButton {
-    font-size: 1.4rem;
-    cursor: pointer;
-    gap: 0.6rem;
-    justify-content: center;
-    height: 3rem;
-  }
+
   .filter {
     flex: 0 0 auto;
   }
   .filter p {
     font-size: 1.6rem;
   }
-  .container {
-    width: 95%;
-  }
 
   .cardContainer {
     flex: 0 0 100%;
-  }
-}
-@media only screen and (max-width: 48em) {
-  .emailInfo {
-    gap: 2rem;
-  }
-  .emailInfo div {
-    display: none;
-  }
-  .emailInfo p {
-    font-size: 1.5rem;
   }
 }

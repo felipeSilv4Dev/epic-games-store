@@ -1,7 +1,7 @@
 .container {
   display: flex;
-  margin-top: 10rem;
   background-color: var(--modal-bg);
+  margin-top: auto;
 }
 
 .content {

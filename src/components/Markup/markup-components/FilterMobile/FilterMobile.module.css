@@ -1,0 +1,9 @@
+@media (max-width: 64em) {
+  .filterButton {
+    font-size: 1.4rem;
+    cursor: pointer;
+    gap: 0.6rem;
+    justify-content: center;
+    height: 3rem;
+  }
+}

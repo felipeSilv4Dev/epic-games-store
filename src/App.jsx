@@ -17,7 +17,7 @@ import Error from "./Helpers/Error";
 function App() {
   const [dist, setDist] = useState({ height: "" });
   return (
-    <section className="app">
+    <section className="app ">
       <BrowserRouter>
         <Header />
         <Nav setDist={setDist} />

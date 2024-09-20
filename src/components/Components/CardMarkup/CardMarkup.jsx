@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./CardMarkup.module.css";
 import Price from "../Price/Price";
 import review from "../../../../public/img/assets/review.png";
@@ -12,11 +12,15 @@ const CardMarkup = ({
   game,
   onRemove,
   onSaveLocal,
+  KEY,
   car = false,
   list = false,
+  storage,
 }) => {
   const [loading, setLoading] = useState(false);
   const [remove, setRemove] = useState(false);
+  const [isSave, setIsSave] = useState(false);
+
   const match = useMatch("48em");
   const navigate = useNavigate();
 
@@ -24,30 +28,33 @@ const CardMarkup = ({
     navigate(`/game/${game.id}`);
   };
 
-  // const handleAddCar = (e) => {
-  //   if (!active) {
-  //     setLoading(true);
-  //     setTimeout(() => {
-  //       addCar(e);
-  //       setLoading(false);
-  //     }, 300);
-  //   }
-  // };
+  useEffect(() => {
+    if (storage && storage[KEY].includes(game.id)) {
+      setIsSave(true);
+    } else {
+      setIsSave(false);
+    }
+  }, [storage, game, setIsSave, KEY]);
 
   const handleRemove = () => {
     setRemove(true);
     setTimeout(() => {
       setRemove(false);
       onRemove(game.id);
+      setIsSave(true);
     }, 200);
   };
 
   const handleAddItemList = () => {
     setLoading(true);
+    setIsSave(true);
+
     setTimeout(() => {
       setLoading(false);
-      onSaveLocal("games", game.id);
-      onRemove(game.id);
+      onSaveLocal(KEY, game.id);
+      {
+        car && onRemove(game.id);
+      }
     }, 200);
   };
 
@@ -93,23 +100,28 @@ const CardMarkup = ({
       </div>
 
       <div className={styles.btn + " flex"}>
-        {
-          // <NavLink>
-          //   <Button btn="secondary">Add</Button>
-          // </NavLink>
-        }
+        <span onClick={handleRemove}>
+          {remove ? <LoadingButton /> : "remover"}
+        </span>
 
-        {car && (
-          <span onClick={handleRemove}>
-            {remove ? <LoadingButton /> : "remover"}
-          </span>
-        )}
-
-        {car && (
-          <Button btn="secondary" onClick={handleAddItemList}>
-            {loading ? <LoadingButton /> : "Mover para lista de desejos"}
-          </Button>
-        )}
+        <Button btn="secondary" onClick={handleAddItemList}>
+          {car &&
+            (loading ? (
+              <LoadingButton />
+            ) : isSave ? (
+              "Na lista dos desejos"
+            ) : (
+              "Mover para lista de desejos"
+            ))}
+          {list &&
+            (loading ? (
+              <LoadingButton />
+            ) : isSave ? (
+              "visualizar carrinho"
+            ) : (
+              "Adicionar ao carrinho"
+            ))}
+        </Button>
       </div>
     </section>
   );
