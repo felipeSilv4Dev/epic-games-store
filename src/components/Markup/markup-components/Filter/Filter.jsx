@@ -4,7 +4,7 @@ import Option from "./filter-components/Option";
 import Button from "../../../Components/Button/Button";
 import useMatch from "../../../../Hooks/useMatch";
 
-const Filter = ({ setSelected, options, setOpen }) => {
+const Filter = ({ setSelected, options, setOpen, selected }) => {
   const match = useMatch("64em");
   const mobile = useMatch("48em");
 
@@ -26,6 +26,7 @@ const Filter = ({ setSelected, options, setOpen }) => {
               title={option}
               option={option}
               setSelected={setSelected}
+              selected={selected}
             />
           ))}
         </div>

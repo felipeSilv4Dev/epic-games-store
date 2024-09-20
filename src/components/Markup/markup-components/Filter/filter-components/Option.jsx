@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Option.module.css";
 
-const Option = ({ title, option, setSelected, button = true }) => {
+const Option = ({ title, option, setSelected, button = true, selected }) => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(false);
 
@@ -14,6 +14,16 @@ const Option = ({ title, option, setSelected, button = true }) => {
   };
   const transform = { transform: open ? "rotate(180deg)" : "initial" };
   const border = { border: open ? "none" : "" };
+
+  useEffect(() => {
+    if (option?.toLowerCase() === selected?.toLowerCase()) {
+      setActive(true);
+      setOpen(true);
+    } else {
+      setActive(false);
+      setOpen(false);
+    }
+  }, [selected, option]);
 
   const handleOpen = () => {
     if (!button) return;
@@ -31,7 +41,7 @@ const Option = ({ title, option, setSelected, button = true }) => {
     <div className={`${styles.container} flex`}>
       <button onClick={handleOpen} className={styles.content}>
         <div style={border} className={`${styles.text} flex`}>
-          <span>{title}</span>
+          <span>{title.split(" ")[1]}</span>
 
           {button && option && (
             <i
@@ -41,6 +51,7 @@ const Option = ({ title, option, setSelected, button = true }) => {
           )}
         </div>
       </button>
+
       {button && open && (
         <button
           style={background}

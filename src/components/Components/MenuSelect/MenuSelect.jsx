@@ -6,16 +6,15 @@ const style = {
   top: "-.15rem",
 };
 
-const MenuSelect = ({ onSelected, options }) => {
+const MenuSelect = ({ setSelected, options, selected }) => {
   const [open, setOpen] = useState(false);
-  const [label, setLabel] = useState("Em promoção");
 
   const handleOpenOptions = () => {
     setOpen(!open);
   };
 
   const handleSelectOption = (option) => {
-    setLabel(option);
+    setSelected(option);
   };
 
   return (
@@ -25,7 +24,8 @@ const MenuSelect = ({ onSelected, options }) => {
       className={styles.container}
     >
       <p className={`${styles.checked}  flex`}>
-        {label}
+        {selected}
+
         <i
           style={open ? style : null}
           className={`${styles.icon}  fa-solid fa-chevron-down`}
@@ -37,7 +37,9 @@ const MenuSelect = ({ onSelected, options }) => {
           {options.map((option) => (
             <p
               key={option}
-              className={label === option ? "active" : ""}
+              className={
+                selected.toLowerCase() === option.toLowerCase() ? "active" : ""
+              }
               onClick={() => handleSelectOption(option)}
             >
               {option}

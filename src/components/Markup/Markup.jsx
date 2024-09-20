@@ -55,6 +55,11 @@ const Markup = () => {
     }
   }, [storageList, data]);
 
+  useEffect(() => {
+    if (selected.toLocaleLowerCase() === "em promoção") {
+      // console.log("main ", selected);
+    }
+  }, [selected]);
   // let games = data;
   // if (data && json.length) {
   //   if (idOptions === 2)
@@ -116,7 +121,11 @@ const Markup = () => {
             <div>
               <span>Classsificar por : </span>
 
-              <MenuSelect onSelected={setSelected} options={options} />
+              <MenuSelect
+                setSelected={setSelected}
+                selected={selected}
+                options={options}
+              />
             </div>
 
             {match && (
@@ -126,6 +135,7 @@ const Markup = () => {
                   options={options}
                   open={open}
                   setSelected={setSelected}
+                  selected={selected}
                 />
               </div>
             )}
@@ -156,7 +166,11 @@ const Markup = () => {
 
         {!match && games && (
           <div>
-            <Filter options={options} setSelected={setSelected} />
+            <Filter
+              options={options}
+              selected={selected}
+              setSelected={setSelected}
+            />
           </div>
         )}
       </section>
