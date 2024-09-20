@@ -31,7 +31,7 @@ const Main = () => {
   };
 
   return (
-    <main className="appMain">
+    <main style={{ marginBottom: "10rem" }} className="appMain">
       <Home data={data} loading={loading} error={error} />
       <Games
         data={data}

@@ -4,7 +4,7 @@ import Price from "../Price/Price";
 import review from "../../../../public/img/assets/review.png";
 import Image from "../Image/Image";
 import Button from "../Button/Button";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import LoadingButton from "../../LoadingButton/LoadingButton";
 import useMatch from "../../../Hooks/useMatch";
 
@@ -20,8 +20,8 @@ const CardMarkup = ({
   const [loading, setLoading] = useState(false);
   const [remove, setRemove] = useState(false);
   const [isSave, setIsSave] = useState(false);
-
   const match = useMatch("48em");
+
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -82,7 +82,7 @@ const CardMarkup = ({
                 <p>A promoção termina 19/03/2024 às 12:00</p>
               </div>
             </div>
-            <div className={styles.review + " flex"}>
+            <div className={`${styles.review} flex`}>
               <Image src={review} alt="livre" />
 
               <p>Livre</p>
@@ -104,7 +104,7 @@ const CardMarkup = ({
           {remove ? <LoadingButton /> : "remover"}
         </span>
 
-        <Button btn="secondary" onClick={handleAddItemList}>
+        <Button btn="secondary" onClick={() => !isSave && handleAddItemList()}>
           {car &&
             (loading ? (
               <LoadingButton />
@@ -113,14 +113,18 @@ const CardMarkup = ({
             ) : (
               "Mover para lista de desejos"
             ))}
-          {list &&
-            (loading ? (
-              <LoadingButton />
-            ) : isSave ? (
-              "visualizar carrinho"
-            ) : (
-              "Adicionar ao carrinho"
-            ))}
+
+          {list && (
+            <NavLink to={isSave && "/carrinho"}>
+              {loading ? (
+                <LoadingButton />
+              ) : isSave ? (
+                "visualizar carrinho"
+              ) : (
+                "Adicionar ao carrinho"
+              )}
+            </NavLink>
+          )}
         </Button>
       </div>
     </section>

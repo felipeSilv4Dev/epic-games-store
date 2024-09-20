@@ -10,10 +10,7 @@
   width: 1.3rem;
   border-radius: 50%;
   position: relative;
-  background: conic-gradient(
-    var(--type-5-light) calc(80 * 3.6deg),
-    transparent 0
-  );
+  background: conic-gradient(var(--btn-1) calc(80 * 3.6deg), transparent 0);
   animation: rotateInfinite 0.8s linear infinite;
 }
 

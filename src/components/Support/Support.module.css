@@ -1,5 +1,6 @@
 .container {
   color: var(--type-2-light);
+  margin-bottom: 10rem;
 }
 .title {
   font-size: 3.5rem;
