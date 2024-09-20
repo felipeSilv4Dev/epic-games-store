@@ -23,7 +23,7 @@ const Option = ({ title, option, setSelected, button = true, selected }) => {
       setActive(false);
       setOpen(false);
     }
-  }, [selected, option]);
+  }, [selected, option, setSelected]);
 
   const handleOpen = () => {
     if (!button) return;
@@ -31,9 +31,14 @@ const Option = ({ title, option, setSelected, button = true, selected }) => {
   };
 
   const handleSelectedOption = () => {
-    if (!active) {
-      setSelected((select) => (select === option ? "" : option));
+    if (active) {
+      setSelected("em promoção");
     }
+
+    if (!active) {
+      setSelected(option);
+    }
+
     setActive(!active);
   };
 

@@ -46,65 +46,73 @@ const Markup = () => {
     return () => controler.abort();
   }, [request]);
 
+  const handleGamesInPromotion = (games) => {
+    setGames(games.sort((a, b) => b.porcentage - a.porcentage));
+  };
+
+  const handleAddRecente = (games) => {
+    setGames(games.reverse());
+  };
+
+  const handlerOrderAlphabetical = (games) => {
+    setGames(
+      games.sort((a, b) => {
+        if (a.title.toLowerCase() > b.title.toLowerCase()) {
+          return 1;
+        } else if (a.title < b.title) {
+          return -1;
+        } else {
+          return 0;
+        }
+      })
+    );
+  };
+
+  const handleCrescentPrice = (games) => {
+    setGames(
+      games.sort((a, b) => {
+        const priceA = +a.newPrice.replaceAll(".", "").replace(",", ".");
+        const priceB = +b.newPrice.replaceAll(".", "").replace(",", ".");
+        return priceA - priceB;
+      })
+    );
+  };
+
+  const handleDecreasingPrice = (games) => {
+    setGames(
+      games.sort((a, b) => {
+        const priceA = +a.newPrice.replaceAll(".", "").replace(",", ".");
+        const priceB = +b.newPrice.replaceAll(".", "").replace(",", ".");
+        return priceB - priceA;
+      })
+    );
+  };
   useEffect(() => {
     if (data && storageList.games) {
       const filterGames = storageList.games.flatMap((item) =>
         data.filter((data) => data.id === item)
       );
-      setGames(filterGames);
+
+      if (selected.toLocaleLowerCase() === "em promoção") {
+        handleGamesInPromotion(filterGames);
+      }
+      if (selected.toLocaleLowerCase() === "adicionado recentemente") {
+        handleAddRecente(filterGames);
+      }
+      if (selected.toLocaleLowerCase() === "ordem alfabética") {
+        handlerOrderAlphabetical(filterGames);
+      }
+      if (selected.toLocaleLowerCase() === "preço: crescente") {
+        handleCrescentPrice(filterGames);
+      }
+      if (selected.toLocaleLowerCase() === "preço: decrescente") {
+        handleDecreasingPrice(filterGames);
+      } else {
+        setGames(filterGames);
+      }
     }
-  }, [storageList, data]);
+  }, [storageList, data, selected]);
 
-  useEffect(() => {
-    if (selected.toLocaleLowerCase() === "em promoção") {
-      // console.log("main ", selected);
-    }
-  }, [selected]);
-  // let games = data;
-  // if (data && json.length) {
-  //   if (idOptions === 2)
-  //     game = json.flatMap((j) => data.filter((d) => d.id === j)).reverse();
-
-  //   if (idOptions === 1)
-  //     game = json
-  //       .flatMap((j) => data.filter((d) => d.id === j))
-  //       .sort((a, b) => b.porcentage - a.porcentage);
-
-  //   if (idOptions === 3) {
-  //     game = json
-  //       .flatMap((j) => data.filter((d) => d.id === j))
-  //       .sort((a, b) => {
-  //         if (a.title.toLowerCase() > b.title.toLowerCase()) {
-  //           return 1;
-  //         } else if (a.title < b.title) {
-  //           return -1;
-  //         } else {
-  //           return 0;
-  //         }
-  //       });
-  //   }
-  //   if (idOptions === 4) {
-  //     game = json
-  //       .flatMap((j) => data.filter((d) => d.id === j))
-  //       .sort((a, b) => {
-  //         const priceA = +a.newPrice.replaceAll(".", "").replace(",", ".");
-  //         const priceB = +b.newPrice.replaceAll(".", "").replace(",", ".");
-
-  //         return priceA - priceB;
-  //       });
-  //   }
-
-  //   if (idOptions === 5) {
-  //     game = json
-  //       .flatMap((j) => data.filter((d) => d.id === j))
-  //       .sort((a, b) => {
-  //         const priceA = +a.newPrice.replaceAll(".", "").replace(",", ".");
-  //         const priceB = +b.newPrice.replaceAll(".", "").replace(",", ".");
-
-  //         return priceB - priceA;
-  //       });
-  //   }
-  // }
   if (loading) return <Loading />;
   return (
     <main className={`${styles.container}  max appMain`}>
