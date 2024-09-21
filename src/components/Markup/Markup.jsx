@@ -93,22 +93,28 @@ const Markup = () => {
         data.filter((data) => data.id === item)
       );
 
-      if (selected.toLocaleLowerCase() === "em promoção") {
-        handleGamesInPromotion(filterGames);
-      }
-      if (selected.toLocaleLowerCase() === "adicionado recentemente") {
-        handleAddRecente(filterGames);
-      }
-      if (selected.toLocaleLowerCase() === "ordem alfabética") {
-        handlerOrderAlphabetical(filterGames);
-      }
-      if (selected.toLocaleLowerCase() === "preço: crescente") {
-        handleCrescentPrice(filterGames);
-      }
-      if (selected.toLocaleLowerCase() === "preço: decrescente") {
-        handleDecreasingPrice(filterGames);
-      } else {
-        setGames(filterGames);
+      switch (selected.toLowerCase()) {
+        case "em promoção":
+          handleGamesInPromotion(filterGames);
+          break;
+
+        case "adicionado recentemente":
+          handleAddRecente(filterGames);
+          break;
+        case "ordem alfabética":
+          handlerOrderAlphabetical(filterGames);
+          break;
+
+        case "preço: crescente":
+          handleCrescentPrice(filterGames);
+          break;
+
+        case "preço: decrescente":
+          handleDecreasingPrice(filterGames);
+          break;
+
+        default:
+          setGames(filterGames);
       }
     }
   }, [storageList, data, selected]);
@@ -123,20 +129,22 @@ const Markup = () => {
       <HeaderMarkup title="Lista dos desejos" />
       <EmailNotification />
 
-      <section className={styles.content + " flex"}>
+      <section className={`${styles.content} flex`}>
         <div className={styles.cardContainer}>
-          <h2 className={styles.option + " flex"}>
-            <div>
-              <span>Classsificar por : </span>
+          <h2 className={`${styles.option} flex`}>
+            {!!games.length && (
+              <div>
+                <span>Classsificar por : </span>
 
-              <MenuSelect
-                setSelected={setSelected}
-                selected={selected}
-                options={options}
-              />
-            </div>
+                <MenuSelect
+                  setSelected={setSelected}
+                  selected={selected}
+                  options={options}
+                />
+              </div>
+            )}
 
-            {match && (
+            {match && !!games.length && (
               <div className={styles.filter}>
                 <FilterMobile
                   setOpen={setOpen}
@@ -150,7 +158,7 @@ const Markup = () => {
           </h2>
 
           <div className={styles.card + " flex"}>
-            {games &&
+            {!!games.length &&
               games.map((game) => (
                 <CardMarkup
                   key={game.id}
@@ -172,7 +180,7 @@ const Markup = () => {
           )}
         </div>
 
-        {!match && games && (
+        {!match && !!games.length && (
           <div>
             <Filter
               options={options}

@@ -17,7 +17,7 @@ const Ofertas = ({ data, loading }) => {
     const ofertas = data.filter((item) => item.oferta);
 
     return (
-      <section className={styles.container + " flex max"}>
+      <section className={`${styles.container} flex max`}>
         {!match &&
           ofertas.map((game) => {
             return (

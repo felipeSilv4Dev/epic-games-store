@@ -16,7 +16,7 @@ const Galery = ({ data, loading }) => {
   if (data) {
     const gratis = data.filter((item) => item.gratis);
     return (
-      <section className={styles.container + " max"}>
+      <section className={`${styles.container} max`}>
         <div>
           <div className={styles.header + " flex"}>
             <div className="flex">
@@ -24,7 +24,9 @@ const Galery = ({ data, loading }) => {
               <h2 className={styles.title}>jogos grátis</h2>
             </div>
 
-            <h2 className={styles.btn}>Ver Mais</h2>
+            <NavLink className={styles.btn} to={"/navegar"}>
+              Ver Mais
+            </NavLink>
           </div>
 
           <div className={styles.content + " flex"}>

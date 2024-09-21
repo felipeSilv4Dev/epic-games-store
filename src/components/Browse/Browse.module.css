@@ -1,8 +1,19 @@
+.container {
+  margin-bottom: 10rem;
+}
 .menu {
   font-size: 1.4rem;
   color: var(--type-4-light);
 }
-
+.title {
+  text-transform: uppercase;
+  font-size: 4.3rem;
+}
+.content {
+  margin-top: 2rem;
+  gap: 3rem;
+  align-items: start;
+}
 .games {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

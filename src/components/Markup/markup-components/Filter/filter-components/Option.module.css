@@ -62,7 +62,7 @@
 }
 .option i {
   font-size: 1rem;
-  color: var(--type-2-light);
+  color: var(--btn-1);
 }
 .option:focus {
   border-color: var(--type-2-light);

@@ -35,12 +35,12 @@
   height: 16rem;
   border-radius: 0.5rem;
 }
-.image .imgContianer {
+.image .imgContainer {
   flex: 0 0 max-content;
   position: relative;
   cursor: pointer;
 }
-.image .imgContianer::before {
+.image .imgContainer::before {
   content: "";
   width: 100%;
   height: 100%;
@@ -52,7 +52,7 @@
   opacity: 0;
   transition: all 0.2s;
 }
-.imgContianer:hover::before {
+.imgContainer:hover::before {
   opacity: 0.1;
 }
 .title {
@@ -114,7 +114,7 @@
 .btn {
   justify-content: flex-end;
   margin-top: 2rem;
-  gap: 2rem;
+  gap: 1rem;
   max-width: 100%;
 }
 
@@ -123,6 +123,8 @@
   color: var(--type-4-light);
   text-decoration: underline;
   cursor: pointer;
+  width: 10rem;
+  text-align: center;
 }
 .btn span:hover {
   text-decoration: none;

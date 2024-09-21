@@ -33,7 +33,7 @@ const ListGame = ({ data, loading }) => {
   const refList = useRef();
 
   return (
-    <section className={style.container + " max"}>
+    <section className={`${style.container} max`}>
       {!match &&
         list.map((props) => {
           return (

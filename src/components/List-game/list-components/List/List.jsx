@@ -9,9 +9,12 @@ const List = ({ props, nav = true, data, loading }) => {
   if (data) {
     return (
       <div className={styles.container}>
-        <div className={styles.header + " flex"}>
+        <div className={`${styles.header} flex`}>
           <h2 className={styles.title}>{props.title}</h2>
-          <p className={styles.btn}>{props.btn}</p>
+
+          <NavLink className={styles.btn} to={"/navegar"}>
+            {props.btn}
+          </NavLink>
         </div>
 
         <div>

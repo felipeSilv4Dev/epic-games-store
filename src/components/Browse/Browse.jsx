@@ -5,78 +5,150 @@ import useTop from "../../Hooks/useTop";
 import useFetch from "../../Hooks/useFetch";
 import MenuSelect from "../Components/MenuSelect/MenuSelect";
 import Card from "../Components/Card/Card";
+import Loading from "../Loading/Loading";
+import UseMatch from "../../Hooks/useMatch";
+import useLocalStorage from "../../Hooks/useLocalStore";
+import Filter from "../Markup/markup-components/Filter/Filter";
+import { NavLink } from "react-router-dom";
+
+const options = [
+  "Em promoção",
+  "Adicionado recentemente",
+  "Ordem Alfabética",
+  "Preço: Crescente",
+  "Preço: Decrescente",
+];
 
 const Browse = () => {
-  const [option, setOption] = useState(1);
-
   const { data, request, loading } = useFetch();
+  const [selected, setSelected] = useState("Em Promoção");
+  const { storage, saveItemLocal } = useLocalStorage({
+    key: "games",
+  });
   const top = useTop();
 
+  const [games, setGames] = useState([]);
+  const match = UseMatch("64em");
+
+  useEffect(top, [top]);
   useEffect(() => {
     const controler = new AbortController();
     (async () => await request(API_URL, controler.signal))();
-
-    return () => {
-      controler.abort();
-    };
+    return () => controler.abort();
   }, [request]);
-  useEffect(top, [top]);
-  if (!data) return;
-  let games;
-  if (option === 1) {
-    games = data.sort((a, b) => b.porcentage - a.porcentage);
-  }
 
-  if (option === 2) games = data.reverse();
+  const handleGamesInPromotion = (games) => {
+    setGames(games.sort((a, b) => b.porcentage - a.porcentage));
+  };
 
-  if (option === 3) {
-    games = data.sort((a, b) => {
-      if (a.title.toLowerCase() > b.title.toLowerCase()) {
-        return 1;
-      } else if (a.title < b.title) {
-        return -1;
-      } else {
-        return 0;
+  const handleAddRecente = (games) => {
+    setGames(games.reverse());
+  };
+
+  const handlerOrderAlphabetical = (games) => {
+    setGames(
+      games.sort((a, b) => {
+        if (a.title.toLowerCase() > b.title.toLowerCase()) {
+          return 1;
+        } else if (a.title < b.title) {
+          return -1;
+        } else {
+          return 0;
+        }
+      })
+    );
+  };
+
+  const handleCrescentPrice = (games) => {
+    setGames(
+      games.sort((a, b) => {
+        const priceA = +a.newPrice.replaceAll(".", "").replace(",", ".");
+        const priceB = +b.newPrice.replaceAll(".", "").replace(",", ".");
+        return priceA - priceB;
+      })
+    );
+  };
+
+  const handleDecreasingPrice = (games) => {
+    setGames(
+      games.sort((a, b) => {
+        const priceA = +a.newPrice.replaceAll(".", "").replace(",", ".");
+        const priceB = +b.newPrice.replaceAll(".", "").replace(",", ".");
+        return priceB - priceA;
+      })
+    );
+  };
+
+  useEffect(() => {
+    if (data) {
+      const dataCurrent = data.slice();
+      switch (selected.toLowerCase()) {
+        case "em promoção":
+          handleGamesInPromotion(dataCurrent);
+          break;
+
+        case "adicionado recentemente":
+          handleAddRecente(dataCurrent);
+          break;
+
+        case "ordem alfabética":
+          console.log(selected);
+          handlerOrderAlphabetical(dataCurrent);
+          break;
+
+        case "preço: crescente":
+          handleCrescentPrice(dataCurrent);
+          break;
+
+        case "preço: decrescente":
+          handleDecreasingPrice(dataCurrent);
+          break;
+
+        default:
+          setGames(dataCurrent);
       }
-    });
-  }
-  if (option === 4) {
-    games = data.sort((a, b) => {
-      const priceA = +a.newPrice.replaceAll(".", "").replace(",", ".");
-      const priceB = +b.newPrice.replaceAll(".", "").replace(",", ".");
+    }
+  }, [data, selected]);
 
-      return priceA - priceB;
-    });
-  }
-  if (option === 5) {
-    games = data.sort((a, b) => {
-      const priceA = +a.newPrice.replaceAll(".", "").replace(",", ".");
-      const priceB = +b.newPrice.replaceAll(".", "").replace(",", ".");
-
-      return priceB - priceA;
-    });
-  }
+  if (loading) return <Loading />;
 
   return (
-    <section className={styles.container + " max appMain"}>
-      <h2>Popular games</h2>
+    <section className={`${styles.container} max appMain`}>
+      <h2 className={styles.title}>Popular games</h2>
       <span>
         <span className={styles.menu}>Mostrar:</span>
-        <MenuSelect setValue={setOption} />
+        <MenuSelect
+          options={options}
+          selected={selected}
+          setSelected={setSelected}
+        />
       </span>
 
-      <div className={styles.games}>
-        {games.map((game) => (
-          <Card
-            key={game.id}
-            {...game}
-            subtitleOpen={true}
-            descriptionText={""}
-            radius={0.4}
-            img={game.img.src1}
-            icon={true}
-          />
-        ))}
+      <div className={`${styles.content} flex`}>
+        <div className={styles.games}>
+          {!!games.length &&
+            games.map((game) => (
+              <NavLink key={game.id} to={`/game/${game.id}`}>
+                <Card
+                  game={game}
+                  img={game.img.src1}
+                  subtitle={true}
+                  onSaveLocal={saveItemLocal}
+                  storage={storage}
+                />
+              </NavLink>
+            ))}
+        </div>
+
+        {!match && !!games.length && (
+          <div>
+            <Filter
+              options={options}
+              selected={selected}
+              setSelected={setSelected}
+            />
+          </div>
+        )}
       </div>
     </section>
   );

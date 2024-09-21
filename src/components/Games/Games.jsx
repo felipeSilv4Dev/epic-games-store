@@ -29,13 +29,15 @@ const Games = ({
     const mob = data.filter((game) => game[keyApi]).slice(0, 6);
 
     return (
-      <section className={styles.container + " max"}>
-        <div className={styles.header + " flex"}>
+      <section className={`${styles.container} max`}>
+        <div className={`${styles.header} flex`}>
           <h2>{header}</h2>
-          <h3>{textButton}</h3>
+          <h3>
+            <NavLink to={"/navegar"}>{textButton}</NavLink>
+          </h3>
         </div>
 
-        <div className={styles.card + " flex"}>
+        <div className={`${styles.card} flex`}>
           {!mobile &&
             cardGame.map((game) => (
               <NavLink key={game.id} to={`game/${game.id}`}>

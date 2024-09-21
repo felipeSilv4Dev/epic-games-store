@@ -32,12 +32,13 @@ const CardGame = ({
   };
 
   const handleAddGame = (e) => {
+    e.preventDefault();
     setIsOpen((open) => !open);
     onSaveLocal("games", game.id, e);
   };
 
   return (
-    <section id={game.id} className={styles.container + " flex"}>
+    <section id={game.id} className={`${styles.container} flex`}>
       <div id={game.id} className={styles.image}>
         <div>
           <figure>

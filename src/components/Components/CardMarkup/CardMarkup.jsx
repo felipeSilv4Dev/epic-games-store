@@ -6,7 +6,6 @@ import Image from "../Image/Image";
 import Button from "../Button/Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import LoadingButton from "../../LoadingButton/LoadingButton";
-import useMatch from "../../../Hooks/useMatch";
 
 const CardMarkup = ({
   game,
@@ -20,13 +19,7 @@ const CardMarkup = ({
   const [loading, setLoading] = useState(false);
   const [remove, setRemove] = useState(false);
   const [isSave, setIsSave] = useState(false);
-  const match = useMatch("48em");
-
   const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate(`/game/${game.id}`);
-  };
 
   useEffect(() => {
     if (storage && storage[KEY].includes(game.id)) {
@@ -61,12 +54,14 @@ const CardMarkup = ({
   return (
     <section id={game.id} className={styles.container}>
       <div>
-        <div className={styles.image + " flex"}>
-          <div onClick={handleClick} className={styles.imgContianer + " flex"}>
-            <Image src={game.img.src1} alt={game.title} />
-          </div>
+        <div className={`${styles.image} flex`}>
+          <NavLink to={`/game/${game.id}`}>
+            <div className={`${styles.imgContainer} flex`}>
+              <Image src={game.img.src1} alt={game.title} />
+            </div>
+          </NavLink>
           <div className={styles.content}>
-            <div className={styles.infoImage + " flex"}>
+            <div className={`${styles.infoImage} flex`}>
               <div>
                 <span>{game.subtitle}</span>
                 <span>Acesso antecipado</span>
@@ -99,33 +94,43 @@ const CardMarkup = ({
         </p>
       </div>
 
-      <div className={styles.btn + " flex"}>
+      <div className={`${styles.btn} flex`}>
         <span onClick={handleRemove}>
           {remove ? <LoadingButton /> : "remover"}
         </span>
 
-        <Button btn="secondary" onClick={() => !isSave && handleAddItemList()}>
-          {car &&
-            (loading ? (
+        {car && (
+          <Button
+            btn="secondary"
+            onClick={() =>
+              !isSave ? handleAddItemList() : navigate("/markup")
+            }
+          >
+            {loading ? (
               <LoadingButton />
             ) : isSave ? (
               "Na lista dos desejos"
             ) : (
               "Mover para lista de desejos"
-            ))}
-
-          {list && (
-            <NavLink to={isSave && "/carrinho"}>
-              {loading ? (
-                <LoadingButton />
-              ) : isSave ? (
-                "visualizar carrinho"
-              ) : (
-                "Adicionar ao carrinho"
-              )}
-            </NavLink>
-          )}
-        </Button>
+            )}
+          </Button>
+        )}
+        {list && (
+          <Button
+            btn="secondary"
+            onClick={() =>
+              !isSave ? handleAddItemList() : navigate("/carrinho")
+            }
+          >
+            {loading ? (
+              <LoadingButton />
+            ) : isSave ? (
+              "visualizar carrinho"
+            ) : (
+              "Adicionar ao carrinho"
+            )}
+          </Button>
+        )}
       </div>
     </section>
   );

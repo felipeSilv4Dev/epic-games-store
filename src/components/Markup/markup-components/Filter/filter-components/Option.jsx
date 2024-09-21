@@ -46,7 +46,7 @@ const Option = ({ title, option, setSelected, button = true, selected }) => {
     <div className={`${styles.container} flex`}>
       <button onClick={handleOpen} className={styles.content}>
         <div style={border} className={`${styles.text} flex`}>
-          <span>{title.split(" ")[1]}</span>
+          <span>{button ? title.split(" ")[1] : title}</span>
 
           {button && option && (
             <i
