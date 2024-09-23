@@ -30,7 +30,7 @@ const Home = ({ data, loading, error }) => {
   };
 
   useEffect(() => {
-    if (homeGames) {
+    if (homeGames && !match) {
       setCount((count) => count + 0);
 
       if (count === homeGames.length) setCount(0);
@@ -41,7 +41,7 @@ const Home = ({ data, loading, error }) => {
 
       return () => clearInterval(countClear);
     }
-  }, [count, homeGames]);
+  }, [count, homeGames, match]);
 
   if (loading) return <Loading loading={loading} />;
   // if (error) return <Error message={error} />;
