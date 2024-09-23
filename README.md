@@ -1,4 +1,4 @@
-# Social network for dogs
+# Epic Games Store
 
 <div align="center" >
 <img align="start" src="./src/Assets/hd-img/img-1.jpg" height='120' >
