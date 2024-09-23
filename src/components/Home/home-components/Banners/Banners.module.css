@@ -200,7 +200,7 @@
   background-color: var(--type-3-light);
   color: var(--type-1-dark);
 }
-@media only screen and (max-width: 64em) {
+@media (max-width: 64em) {
   .time {
     width: 78%;
     height: 43vw;
@@ -208,7 +208,7 @@
   }
 }
 
-@media only screen and (max-width: 48em) {
+@media (max-width: 48em) {
   .container:global(.animation) {
     animation: none;
   }
@@ -308,7 +308,7 @@
   }
 }
 
-@media only screen and (max-width: 36em) {
+@media (max-width: 36em) {
   .logo img {
     height: 10vw;
     left: -4vw;

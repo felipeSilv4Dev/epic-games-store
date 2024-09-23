@@ -89,7 +89,7 @@ h1 {
   }
 }
 
-@media only screen and (max-width: 17.5em) {
+@media (max-width: 17.5em) {
   h1 {
     font-size: 2rem;
   }

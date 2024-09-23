@@ -58,7 +58,7 @@
   opacity: 0;
 }
 
-@media only screen and (max-width: 64em) {
+@media (max-width: 64em) {
   .overlay:global(.active) {
     opacity: 1;
     background-color: rgba(0, 0, 0, 0.5);

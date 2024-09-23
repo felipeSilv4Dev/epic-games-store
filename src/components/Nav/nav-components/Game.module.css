@@ -24,7 +24,7 @@
   text-decoration: underline;
 }
 
-@media only screen and (max-width: 64em) {
+@media (max-width: 64em) {
   .img {
     height: 5rem;
   }
@@ -37,7 +37,7 @@
   }
 }
 
-@media only screen and (max-width: 48em) {
+@media (max-width: 48em) {
   .title {
     font-size: 1.6rem;
   }

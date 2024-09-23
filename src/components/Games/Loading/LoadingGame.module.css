@@ -28,7 +28,7 @@
   }
 }
 
-@media only screen and (max-width: 64em) {
+@media (max-width: 64em) {
   .container {
     gap: 2rem;
   }
@@ -37,7 +37,7 @@
   }
 }
 
-@media only screen and (max-width: 48em) {
+@media (max-width: 48em) {
   .container {
     gap: 2.5rem;
   }

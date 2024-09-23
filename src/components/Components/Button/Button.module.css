@@ -48,14 +48,14 @@
   background-color: var(--type-3-dark);
 }
 
-@media only screen and (max-width: 48em) {
+@media (max-width: 48em) {
   .btn {
     padding: 2rem;
     font-size: 1.6rem;
   }
 }
 
-@media only screen and (max-width: 17.5em) {
+@media (max-width: 17.5em) {
   .btn {
     font-size: 1.4rem;
   }

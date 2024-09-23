@@ -30,13 +30,13 @@
   }
 }
 
-@media only screen and (max-width: 64em) {
+@media (max-width: 64em) {
   .list {
     height: 50vw;
   }
 }
 
-@media only screen and (max-width: 48em) {
+@media (max-width: 48em) {
   .list {
     height: 90vw;
   }

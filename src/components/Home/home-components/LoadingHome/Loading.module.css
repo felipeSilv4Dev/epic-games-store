@@ -48,7 +48,7 @@
     background-position: -200%;
   }
 }
-@media only screen and (max-width: 64em) {
+@media (max-width: 64em) {
   .banner {
     height: 40vw;
   }
@@ -59,7 +59,7 @@
   }
 }
 
-@media only screen and (max-width: 48em) {
+@media (max-width: 48em) {
   .banner {
     height: 100vw;
     width: 80vw;

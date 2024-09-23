@@ -59,7 +59,7 @@
   color: var(--type-2-light);
 }
 
-@media only screen and (max-width: 90em) {
+@media (max-width: 90em) {
   .container {
     gap: 1.5rem;
     padding: 0.9vw 1.3rem;
@@ -69,7 +69,7 @@
     font-size: 12px;
   }
 }
-@media only screen and (max-width: 64em) {
+@media (max-width: 64em) {
   .photo img {
     height: 4.8vw;
   }
