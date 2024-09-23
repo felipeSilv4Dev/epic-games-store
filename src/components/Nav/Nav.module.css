@@ -1,14 +1,12 @@
 .container {
+  all: unset;
   background-color: var(--body-bg);
   padding: 2.5rem 0;
-  position: relative;
-}
-.container:global(.active) {
   position: sticky;
-  top: 0;
-  width: 100%;
+  top: -0.2rem;
   z-index: 1000;
 }
+
 .content {
   margin-right: auto;
   gap: 2rem;

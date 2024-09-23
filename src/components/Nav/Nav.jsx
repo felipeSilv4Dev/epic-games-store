@@ -24,20 +24,6 @@ const Nav = ({ setDist }) => {
     setPath(loaction.pathname);
   }, [loaction]);
 
-  function handleScroll() {
-    if (!container.current) return;
-    const active = container.current.classList.contains("active");
-    const { offsetTop } = container.current;
-
-    if (active && scrollY < offsetTop) {
-      container.current.classList.remove("active");
-    }
-
-    if (!active && scrollY >= offsetTop) {
-      container.current.classList.add("active");
-    }
-  }
-
   useEffect(() => {
     if (container.current) {
       const { offsetHeight } = container.current;
@@ -53,10 +39,6 @@ const Nav = ({ setDist }) => {
       controler.abort();
     };
   }, [request]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-  }, []);
 
   const handleChange = useCallback(
     ({ target }) => {
