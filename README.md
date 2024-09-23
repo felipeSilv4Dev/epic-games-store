@@ -82,7 +82,7 @@ $ npm run dev
 
 <br>
 
-<strong>Site : https://rede-dogs.netlify.app/</strong>
+<strong>Site : https://epic-games-store.netlify.app/</strong>
 
 ---
 
