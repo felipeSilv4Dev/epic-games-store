@@ -14,11 +14,11 @@ const NavModal = ({ setNav, nav }) => {
             <NavLink to="/">Descobrir</NavLink>
           </li>
           <li>
-            <NavLink to="navegar">Navegar</NavLink>
+            <NavLink to="/navegar">Navegar</NavLink>
           </li>
 
           <li>
-            <NavLink to="novidades">Novidades</NavLink>
+            <NavLink to="/novidades">Novidades</NavLink>
           </li>
         </div>
       </div>

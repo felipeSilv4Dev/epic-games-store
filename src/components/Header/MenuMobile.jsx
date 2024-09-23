@@ -50,7 +50,7 @@ const MenuMobile = ({ active, onClose }) => {
         </div>
 
         <div className={styles.btn_container}>
-          <a className={styles.btn} href="#Disribuica">
+          <a className={styles.btn} href="#">
             download
           </a>
         </div>

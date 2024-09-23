@@ -90,7 +90,7 @@
   color: var(--type-4-light);
 }
 
-@media only screen and (max-width: 80em) {
+@media (max-width: 80em) {
   .nav {
     all: unset;
     color: var(--type-4-light);
@@ -140,7 +140,7 @@
   }
 }
 
-@media only screen and (max-width: 64em) {
+@media (max-width: 64em) {
   .input {
     position: initial;
     left: initial;

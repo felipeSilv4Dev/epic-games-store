@@ -9,7 +9,7 @@ const Game = ({ id, title, img }) => {
   const navigate = useNavigate();
   return (
     <div
-      onPointerDown={() => navigate(`game/${id}`)}
+      onPointerDown={() => navigate(`/game/${id}`)}
       id={id}
       className={styles.container + " flex"}
     >
