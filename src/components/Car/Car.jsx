@@ -43,16 +43,16 @@ const Car = () => {
   if (loading) return <Loading />;
 
   return (
-    <main className={styles.container + " max appMain"}>
+    <main className={`${styles.container} max appMain`}>
       <Head
         title="Carrinho"
         description="compre os jogos mais em conta do mercado"
       />
       <HeaderMarkup title="Meu carrinho" />
-      <div className={styles.content + " flex"}>
-        <div className={styles.card + " flex"}>
-          {!!games.length &&
-            games.map((game) => (
+      {!!games.length && (
+        <div className={`${styles.content}  flex`}>
+          <div className={`${styles.card}  flex`}>
+            {games.map((game) => (
               <CardMarkup
                 key={game.id}
                 game={game}
@@ -63,10 +63,11 @@ const Car = () => {
                 storage={storageList}
               />
             ))}
-        </div>
+          </div>
 
-        {!!games.length && <Menu games={games} />}
-      </div>
+          {!!games.length && <Menu games={games} />}
+        </div>
+      )}
 
       {!games.length && (
         <Message message="Seu carrinho está vazio" fill="var(--type-6-dark)" />
