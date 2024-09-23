@@ -1,11 +1,11 @@
 # Epic Games Store
 
 <div align="center" >
-<img align="start" src="./src/Assets/hd-img/img-1.jpg" height='120' >
-<img align="start" src="./src/Assets/hd-img/img-2.jpg" height='120' >
-<img align="start" src="./src/Assets/hd-img/img-3.jpg"  height='120'>
-<img align="start" src="./src/Assets/hd-img/img-4.jpg" height='120'  >
-<img align="start" src="./src/Assets/hd-img/img-5.jpg" height='120' >
+<img align="start" src="./src/Assets/hd-img/img-1.png" height='120' >
+<img align="start" src="./src/Assets/hd-img/img-2.png" height='120' >
+<img align="start" src="./src/Assets/hd-img/img-3.png"  height='120'>
+<img align="start" src="./src/Assets/hd-img/img-4.png" height='120'  >
+<img align="start" src="./src/Assets/hd-img/img-5.png" height='120' >
 </div>
 
 <p>
