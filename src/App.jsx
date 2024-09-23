@@ -23,13 +23,13 @@ function App() {
         <Nav setDist={setDist} />
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="game/:id" element={<ProfileGame dist={dist} />} />
-          <Route path="markup" element={<Markup />} />
-          <Route path="carrinho" element={<Car />} />
-          <Route path="navegar" element={<Browse />} />
-          <Route path="novidades" element={<New />} />
-          <Route path="suporte" element={<Support />} />
-          <Route path="distribuir" element={<Distribte />} />
+          <Route path="/game/:id" element={<ProfileGame dist={dist} />} />
+          <Route path="/markup" element={<Markup />} />
+          <Route path="/carrinho" element={<Car />} />
+          <Route path="/navegar" element={<Browse />} />
+          <Route path="/novidades" element={<New />} />
+          <Route path="/suporte" element={<Support />} />
+          <Route path="/distribuir" element={<Distribte />} />
         </Routes>
       </BrowserRouter>
       <Footer />
