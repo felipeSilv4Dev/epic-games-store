@@ -28,6 +28,7 @@ const Banner = ({ banner, index, count, homeRef }) => {
 
   return (
     <section
+      id={banner.id}
       ref={element}
       onClick={handleNavigateID}
       style={tanslatebanner}

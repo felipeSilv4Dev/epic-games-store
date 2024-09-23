@@ -42,8 +42,8 @@ const Games = ({
             cardGame.map((game) => (
               <NavLink key={game.id} to={`game/${game.id}`}>
                 <Card
+                  key={game.id}
                   game={game}
-                  img={game.img.src1}
                   subtitle={true}
                   onSaveLocal={onSaveLocal}
                   storage={storage}
@@ -55,8 +55,8 @@ const Games = ({
             <Carousel ref={refGame} control={false}>
               {mob.map((game) => (
                 <Card
+                  key={game.id}
                   game={game}
-                  img={game.img.src1}
                   subtitle={true}
                   storage={storage}
                   onSaveLocal={onSaveLocal}

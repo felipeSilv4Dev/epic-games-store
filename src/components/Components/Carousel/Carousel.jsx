@@ -1,6 +1,7 @@
 import React, { forwardRef, useCallback, useEffect, useRef } from "react";
 import styles from "./Carousel.module.css";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 export const Carousel = forwardRef(function SildeComponent(props, ref) {
   const wrapper = ref;
@@ -208,9 +209,8 @@ export const Carousel = forwardRef(function SildeComponent(props, ref) {
   );
 
   const eventControl = useCallback(
-    (e) => {
+    (e, i) => {
       e.preventDefault();
-      const { id } = e.currentTarget;
 
       if (!controls.current) return;
       [...controls.current.children].map((link) => {
@@ -218,18 +218,18 @@ export const Carousel = forwardRef(function SildeComponent(props, ref) {
       });
 
       e.currentTarget.classList.add("active");
-      changeSlide(+id);
+      changeSlide(i);
     },
     [changeSlide]
   );
   const handleClick = useCallback(
     ({ target }) => {
-      if (dist.mov == 0) {
+      if (dist.mov === 0) {
         const { id } = target.closest("section");
         const icon = target === target.closest("i");
 
         if (id && !icon) {
-          navigate(`game/${id}`);
+          navigate(`/game/${id}`);
         }
       }
     },
@@ -268,11 +268,16 @@ export const Carousel = forwardRef(function SildeComponent(props, ref) {
             {!custom &&
               children
                 .filter((child) => child !== undefined)
-                .map((child, i) => {
-                  const { id } = child.props;
+                .map((_, i) => {
+                  const id = uuidv4();
 
                   return (
-                    <a key={id} id={i} onClick={eventControl} href={"#" + id}>
+                    <a
+                      key={id}
+                      id={i}
+                      onClick={(e) => eventControl(e, i)}
+                      href={"#" + id}
+                    >
                       {id}
                     </a>
                   );
