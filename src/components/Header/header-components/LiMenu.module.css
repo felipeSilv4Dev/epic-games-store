@@ -11,3 +11,6 @@
 .link:hover {
   background-color: var(--type-5-dark);
 }
+.link:global(.active) {
+  background-color: var(--type-5-dark);
+}

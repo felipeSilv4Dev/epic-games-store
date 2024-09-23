@@ -3,7 +3,6 @@ import styles from "./MenuSelect.module.css";
 
 const style = {
   transform: "rotate(-180deg)",
-  top: "-.15rem",
 };
 
 const MenuSelect = ({ setSelected, options, selected }) => {

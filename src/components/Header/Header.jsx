@@ -80,13 +80,13 @@ const Header = () => {
         <div className={styles.nav}>
           <ul className="flex">
             <li>
-              <NavLink className="link" to="suporte">
+              <NavLink className="link" to="/suporte">
                 Suporte
               </NavLink>
             </li>
 
             <li>
-              <NavLink className="link" to="distribuir">
+              <NavLink className="link" to="/distribuir">
                 Distribuição
               </NavLink>
             </li>
@@ -120,7 +120,7 @@ const Header = () => {
             <span className={styles.btn_span}></span>
           </button>
         )}
-        {<MenuMobile active={mobile} />}
+        {<MenuMobile active={mobile} onClose={handleClick} />}
         {<Modal active={modal} setModal={setModal} />}
       </header>
 

@@ -1,9 +1,11 @@
 @media (max-width: 64em) {
   .filterButton {
-    font-size: 1.4rem;
-    cursor: pointer;
     gap: 0.6rem;
-    justify-content: center;
-    height: 3rem;
+  }
+  .filterButton * {
+    align-items: center;
+    cursor: pointer;
+    gap: 1rem;
+    font-size: 1.4rem;
   }
 }

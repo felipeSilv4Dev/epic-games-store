@@ -30,6 +30,10 @@
     background-color: var(--modal-bg);
     gap: 0.5rem;
   }
+
+  .btn button {
+    width: 50%;
+  }
   .btn button:first-child {
     padding: 1.5rem;
     border: none;

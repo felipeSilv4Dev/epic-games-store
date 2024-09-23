@@ -1,5 +1,6 @@
 .container {
   color: var(--type-2-light);
+  margin-bottom: 10rem;
 }
 
 h1 {
@@ -66,7 +67,7 @@ h1 {
 @media (max-width: 48em) {
   .container {
     width: 95%;
-    margin: 0 auto;
+    margin: 0 auto 10rem;
     padding: 0;
   }
   h1 {

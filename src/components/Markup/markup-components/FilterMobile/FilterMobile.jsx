@@ -2,7 +2,7 @@ import React from "react";
 import Filter from "../Filter/Filter";
 import styles from "./FilterMobile.module.css";
 
-const FilterMobile = ({ setOpen, options, setSelected, open }) => {
+const FilterMobile = ({ setOpen, options, setSelected, open, selected }) => {
   return (
     <>
       <p
@@ -14,7 +14,12 @@ const FilterMobile = ({ setOpen, options, setSelected, open }) => {
       </p>
 
       {open && (
-        <Filter setOpen={setOpen} options={options} setSelected={setSelected} />
+        <Filter
+          setOpen={setOpen}
+          options={options}
+          setSelected={setSelected}
+          selected={selected}
+        />
       )}
     </>
   );

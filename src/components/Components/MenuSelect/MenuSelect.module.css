@@ -6,6 +6,7 @@
   border: 1px solid transparent;
   border-radius: 0.5rem;
   padding: 0.4rem 0.6rem;
+  align-items: center;
 }
 .container:focus {
   border-color: var(--type-2-light);
@@ -20,9 +21,8 @@
 
 .icon {
   font-size: 1.1rem;
-  position: relative;
-  top: 0.2rem;
   transition: all 0.2s;
+  position: relative;
 }
 
 .options {
@@ -43,4 +43,10 @@
 .options p:hover,
 .options p:global(.active) {
   background-color: var(--type-6-dark);
+}
+
+@media (max-width: 64em) {
+  .container {
+    font-size: 1.6rem;
+  }
 }

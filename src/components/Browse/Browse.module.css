@@ -1,22 +1,68 @@
 .container {
   margin-bottom: 10rem;
 }
+
 .menu {
   font-size: 1.4rem;
+  margin: 2rem 0;
+  justify-content: space-between;
+}
+
+.menu span {
   color: var(--type-4-light);
 }
 .title {
-  text-transform: uppercase;
   font-size: 4.3rem;
 }
 .content {
-  margin-top: 2rem;
   gap: 3rem;
   align-items: start;
 }
+
 .games {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
-  margin-top: 2rem;
+}
+
+.view * {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 80em) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 64em) {
+  .view > p {
+    font-size: 1.8rem;
+  }
+  .container {
+    width: initial;
+  }
+  .title {
+    font-size: 3rem;
+  }
+  .view {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 48em) {
+  .games {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .games section {
+    width: 100%;
+  }
+}
+
+@media (max-width: 21.5em) {
+  .title {
+    font-size: 2.5rem;
+  }
+  .games {
+    grid-template-columns: 1fr;
+  }
 }

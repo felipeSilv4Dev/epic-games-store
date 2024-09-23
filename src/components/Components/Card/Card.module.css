@@ -66,7 +66,7 @@
   border-radius: 0 0 0.4rem 0.4rem;
 }
 
-@media only screen and (max-width: 64em) {
+@media (max-width: 64em) {
   .title {
     font-size: 1.6rem;
     width: 22vw;
@@ -76,7 +76,7 @@
   }
 }
 
-@media only screen and (max-width: 48em) {
+@media (max-width: 48em) {
   .container {
     flex-shrink: 0;
     width: 70%;
@@ -93,7 +93,7 @@
   }
 }
 
-@media only screen and (max-width: 17.5em) {
+@media (max-width: 17.5em) {
   .circle {
     font-size: 1.6rem;
   }

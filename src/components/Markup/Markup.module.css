@@ -28,8 +28,7 @@
   .option {
     justify-content: space-between;
   }
-  .option span,
-  .option button {
+  .option span {
     font-size: 1.6rem;
   }
 

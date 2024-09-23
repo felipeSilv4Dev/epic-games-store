@@ -10,6 +10,7 @@ import UseMatch from "../../Hooks/useMatch";
 import useLocalStorage from "../../Hooks/useLocalStore";
 import Filter from "../Markup/markup-components/Filter/Filter";
 import { NavLink } from "react-router-dom";
+import FilterMobile from "../Markup/markup-components/FilterMobile/FilterMobile";
 
 const options = [
   "Em promoção",
@@ -22,11 +23,13 @@ const options = [
 const Browse = () => {
   const { data, request, loading } = useFetch();
   const [selected, setSelected] = useState("Em Promoção");
+
   const { storage, saveItemLocal } = useLocalStorage({
     key: "games",
   });
   const top = useTop();
 
+  const [open, setOpen] = useState(false);
   const [games, setGames] = useState([]);
   const match = UseMatch("64em");
 
@@ -115,13 +118,27 @@ const Browse = () => {
   return (
     <section className={`${styles.container} max appMain`}>
       <h2 className={styles.title}>Popular games</h2>
-      <span>
-        <span className={styles.menu}>Mostrar:</span>
-        <MenuSelect
-          options={options}
-          selected={selected}
-          setSelected={setSelected}
-        />
+      <span className={`${styles.menu} flex`}>
+        <div>
+          <span className={styles.view}>Mostrar:</span>
+          <MenuSelect
+            options={options}
+            selected={selected}
+            setSelected={setSelected}
+          />
+        </div>
+
+        {match && !!games.length && (
+          <div className={styles.view}>
+            <FilterMobile
+              setOpen={setOpen}
+              options={options}
+              open={open}
+              setSelected={setSelected}
+              selected={selected}
+            />
+          </div>
+        )}
       </span>
 
       <div className={`${styles.content} flex`}>
@@ -141,7 +158,7 @@ const Browse = () => {
         </div>
 
         {!match && !!games.length && (
-          <div>
+          <div className={styles.filter}>
             <Filter
               options={options}
               selected={selected}
