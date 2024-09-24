@@ -46,7 +46,7 @@
 
 @media (max-width: 64em) {
   .container {
-    padding: 3rem 3rem 1.5rem 3rem;
+    padding: 3rem 2rem 0 2rem;
   }
 
   .title {

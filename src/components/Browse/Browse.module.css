@@ -55,10 +55,20 @@
     margin: 0 auto 10rem;
   }
   .games {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
+
   .games section {
     width: 100%;
+  }
+  .games section > div {
+    width: 100%;
+  }
+  .games section > div div {
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: end;
   }
 }
 

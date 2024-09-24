@@ -62,10 +62,17 @@
     width: 100%;
     background-color: var(--body-bg);
     opacity: 1;
+    overflow: hidden;
+    justify-content: initial;
+  }
+
+  .content {
+    overflow-y: scroll;
+    height: 65%;
   }
   .btn {
     justify-content: space-between;
-    padding: 6rem 2.8rem 15rem;
+    padding: 2rem 2.8rem 100%;
   }
   .btn button {
     width: fit-content;

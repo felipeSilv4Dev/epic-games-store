@@ -79,10 +79,11 @@
 @media (max-width: 48em) {
   .container {
     flex-shrink: 0;
-    width: 70%;
+    width: 90%;
     overflow-x: hidden;
     margin-bottom: 1.5rem;
   }
+
   .container:not(:last-child) {
     margin-right: 0;
   }
