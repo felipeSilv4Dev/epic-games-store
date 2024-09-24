@@ -50,8 +50,12 @@
   }
 }
 @media (max-width: 48em) {
+  .container {
+    width: 85%;
+    margin: 0 auto 10rem;
+  }
   .games {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
   .games section {
     width: 100%;

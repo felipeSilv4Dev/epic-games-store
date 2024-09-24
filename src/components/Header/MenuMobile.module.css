@@ -45,7 +45,7 @@
 .btn_container {
   padding: 2.4rem;
   place-self: center;
-  margin-bottom: 2rem;
+  margin-bottom: 15rem;
   transform: translateY(4rem);
   transition: all 0.3s;
   opacity: 0;
