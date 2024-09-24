@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  margin: 0 auto;
   margin-top: 2rem;
   margin-bottom: 10rem;
 }
@@ -10,6 +9,7 @@
 @media (max-width: 64em) {
   .card {
     width: 95%;
+    margin: 2rem auto 10rem;
     grid-template-columns: 1fr;
   }
 }
