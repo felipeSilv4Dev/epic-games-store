@@ -223,12 +223,12 @@ export const Carousel = forwardRef(function SildeComponent(props, ref) {
     [changeSlide]
   );
   const handleClick = useCallback(
-    ({ target }) => {
+    ({ e, target }) => {
       if (dist.mov === 0) {
         const { id } = target.closest("section");
-        const icon = "icon" === target.closest("span").id;
-
-        if (id && !icon) {
+        const icon = "icon" === target.closest("span")?.id;
+        if (icon) return;
+        if (id) {
           navigate(`/game/${id}`);
         }
       }
@@ -253,8 +253,8 @@ export const Carousel = forwardRef(function SildeComponent(props, ref) {
   }, [wrapper, slideConfig, onStart, changeSlide, control, dist]);
 
   useEffect(() => {
-    addSlide();
-  }, [addSlide]);
+    addSlide(indexDetect.now);
+  }, [addSlide, indexDetect]);
 
   return (
     <div ref={wrapper} className={styles.wrapper}>
