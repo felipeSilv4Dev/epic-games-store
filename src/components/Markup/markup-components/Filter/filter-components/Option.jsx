@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Option.module.css";
 
-const Option = ({ title, option, setSelected, button = true, selected }) => {
+const Option = ({
+  title,
+  option,
+  setSelected,
+  button = true,
+  selected,
+  onCloseFilter,
+}) => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(false);
 
@@ -37,6 +44,7 @@ const Option = ({ title, option, setSelected, button = true, selected }) => {
 
     if (!active) {
       setSelected(option);
+      onCloseFilter();
     }
 
     setActive(!active);

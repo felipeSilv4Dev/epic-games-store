@@ -103,3 +103,34 @@
     transform: rotate(-180deg);
   }
 }
+
+@media (max-width: 48em) {
+  .icon {
+    visibility: visible;
+    height: 3rem;
+    width: 3rem;
+    top: 6vw;
+    right: 6vw;
+  }
+
+  .icon::after {
+    content: "";
+    position: absolute;
+    height: 0.2rem;
+    width: 1.4rem;
+    border-radius: 1rem;
+    background-color: var(--type-4-light);
+    opacity: 0;
+    animation: onEnd 0s 0.5s forwards;
+  }
+  .icon::before {
+    content: "";
+    position: absolute;
+    width: 0.21rem;
+    height: 1.4rem;
+  }
+
+  .checked {
+    height: 1.4rem;
+  }
+}

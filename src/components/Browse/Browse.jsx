@@ -95,7 +95,6 @@ const Browse = () => {
           break;
 
         case "ordem alfabética":
-          console.log(selected);
           handlerOrderAlphabetical(dataCurrent);
           break;
 

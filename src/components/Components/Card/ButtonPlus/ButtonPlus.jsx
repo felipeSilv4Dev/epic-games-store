@@ -8,7 +8,11 @@ const ButtonPlus = ({ onAddGame, isOpen }) => {
 
   return (
     <>
-      <span onClick={onAddGame} className={`${styles.icon} ${isActive}`}>
+      <span
+        id="icon"
+        onClick={onAddGame}
+        className={`${styles.icon} ${isActive}`}
+      >
         <svg
           className={`${styles.checked} ${isActive} svg css-uwwqev`}
           xmlns="http://www.w3.org/2000/svg"

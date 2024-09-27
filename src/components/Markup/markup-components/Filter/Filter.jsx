@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Filter.module.css";
 import Option from "./filter-components/Option";
 import Button from "../../../Components/Button/Button";
@@ -27,6 +27,7 @@ const Filter = ({ setSelected, options, setOpen, selected }) => {
               option={option}
               setSelected={setSelected}
               selected={selected}
+              onCloseFilter={handleCloseFilter}
             />
           ))}
         </div>

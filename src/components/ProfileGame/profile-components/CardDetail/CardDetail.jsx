@@ -80,7 +80,7 @@ const CardDetail = ({
           <NavLink to={isSaveCar && "/carrinho"}>
             <Button
               btn="secondary"
-              onClick={() => onSaveCarLocal("car", game.id)}
+              onClick={() => !isSaveCar && onSaveCarLocal("car", game.id)}
             >
               {loadingCar && <LoadingButton />}
               {!loadingCar &&
