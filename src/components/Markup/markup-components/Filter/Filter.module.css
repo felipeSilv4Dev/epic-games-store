@@ -72,7 +72,7 @@
   }
   .btn {
     justify-content: space-between;
-    padding: 2rem 2.8rem 100%;
+    padding: 2rem 2.8rem auto;
   }
   .btn button {
     width: fit-content;

@@ -285,11 +285,13 @@ export const Carousel = forwardRef(function SildeComponent(props, ref) {
 
             {custom &&
               custom.map((item, i) => {
+                const id = uuidv4();
+
                 return (
                   <div
                     className={styles.control}
-                    onClick={eventControl}
-                    key={i * Math.random()}
+                    onClick={(e) => eventControl(e, i)}
+                    key={id}
                     id={i}
                   >
                     {item}
