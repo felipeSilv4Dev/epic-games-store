@@ -74,6 +74,8 @@
   .games section > div div span {
     top: 2vw;
     right: 2vw;
+    height: 2.8rem;
+    width: 2.8rem;
   }
 }
 

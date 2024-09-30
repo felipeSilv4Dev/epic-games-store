@@ -56,7 +56,7 @@ const Menu = ({ games }) => {
       </div>
 
       <div className={styles.total}>
-        <Value vame="subtotal" value={total} />
+        <Value name="subtotal" value={total} />
         <Button btn="primary" onClick={null}>
           Finalizar compra
         </Button>
